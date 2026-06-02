@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dhaniytqukmkv"]
+
+[ext_resource type="Script" uid="uid://dpb2snxgdw3p6" path="res://Scripts/stage_01.gd" id="1_2yjap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m4ha"]
+bg_color = Color(0.17705494, 0.71045756, 0.38180548, 1)
+
+[node name="Control" type="Control" unique_id=56148026]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2yjap")
+
+[node name="Panel" type="Panel" parent="." unique_id=803653746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4m4ha")
+
+[node name="Label" type="Label" parent="." unique_id=927178621]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -84.5
+offset_right = 257.0
+offset_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Cena: 02
+
+Aqui terá as opções de jogo
+Música - FX - Extras
+
+aperte 'enter' para voltar"
+horizontal_alignment = 1
