@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bx4yyyrypmk2u"]
+
+[ext_resource type="Script" uid="uid://cqxnkkua46fxb" path="res://menu_button.gd" id="1_yrgx8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5kik"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrgx8"]
+bg_color = Color(0.6128619, 0.33291617, 0.11594612, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpvkq"]
+bg_color = Color(0.87309647, 0.40594178, 0.7129024, 1)
+
+[node name="MenuButton" type="MenuButton" unique_id=2129954893]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_u5kik")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yrgx8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cpvkq")
+text = "Button"
+script = ExtResource("1_yrgx8")
