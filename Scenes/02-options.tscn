@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dhaniytqukmkv"]
 
-[ext_resource type="Script" uid="uid://dpb2snxgdw3p6" path="res://Scripts/stage_01.gd" id="1_2yjap"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m4ha"]
 bg_color = Color(0.17705494, 0.71045756, 0.38180548, 1)
 
@@ -12,7 +10,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2yjap")
 
 [node name="Panel" type="Panel" parent="." unique_id=803653746]
 layout_mode = 1

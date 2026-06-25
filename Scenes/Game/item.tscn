@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bto7yntfx3v8a"]
+
+[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="1_4qacp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.44159755, 0.23665223, 0.31708813, 1)
+
+[node name="Item" type="MarginContainer" unique_id=458987166]
+
+[node name="Panel" type="Panel" parent="." unique_id=1836436612]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1678407323]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1061840668]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "EXPANSÃO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=548126830]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=49887426]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_4qacp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1538670624]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2069211409]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1400569366]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1745608281]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_4qacp")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1589560213]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1431076283]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=341543311]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1354985360]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_4qacp")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=193105373]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1739855475]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2119389156]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"

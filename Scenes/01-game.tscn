@@ -1,37 +1,26 @@
 [gd_scene format=3 uid="uid://blt1qg6n423in"]
 
-[ext_resource type="Script" uid="uid://dpb2snxgdw3p6" path="res://Scripts/stage_01.gd" id="1_ea7fd"]
-[ext_resource type="Script" uid="uid://c3vbswg6b3t4f" path="res://Scripts/button.gd" id="2_ndsx1"]
-[ext_resource type="Script" uid="uid://hhdbqql71g65" path="res://Scripts/lb_ligacoes.gd" id="3_dfrvd"]
-[ext_resource type="Script" uid="uid://dyjb1tt8b3qbx" path="res://Scripts/game_manager.gd" id="4_welcp"]
-[ext_resource type="Script" uid="uid://bfxtusfbhoaem" path="res://Scripts/data_handler.gd" id="5_ehpp2"]
+[ext_resource type="Texture2D" uid="uid://bv48g2ujw1lhc" path="res://Assets/IMG/Mockup.png" id="2_a1v5b"]
+[ext_resource type="PackedScene" uid="uid://dqdlordgd2hni" path="res://Scenes/Game/Painel_Atendimento.tscn" id="3_dfrvd"]
+[ext_resource type="PackedScene" uid="uid://bge17d1iadmth" path="res://Scenes/Game/Painel_Tipos_Conscientizados.tscn" id="4_welcp"]
+[ext_resource type="PackedScene" uid="uid://1vh6fq5cf15l" path="res://Scenes/Game/Painel_Ligacoes_Atendidas.tscn" id="5_ehpp2"]
+[ext_resource type="PackedScene" uid="uid://jaayhjink2ho" path="res://Scenes/Game/Painel_Loja.tscn" id="6_dfrvd"]
+[ext_resource type="PackedScene" uid="uid://yy57y8fdh8yp" path="res://Scenes/Game/Painel_Conscientizacao_Populacao.tscn" id="6_tlyib"]
+[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="7_welcp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlyib"]
-bg_color = Color(0.88939655, 0.4748937, 0.08416151, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7we58"]
+texture = ExtResource("2_a1v5b")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pyk1"]
-bg_color = Color(1, 0.34824917, 0.19901907, 1)
-shadow_size = 12
+[node name="MainGame" type="CanvasLayer" unique_id=627893110]
+metadata/_edit_horizontal_guides_ = [40.0, 136.0, 143.0, 426.0]
+metadata/_edit_vertical_guides_ = [827.0, 243.0, 12.0, 1139.0, 812.0, 257.0]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryk25"]
-bg_color = Color(0, 0.62895006, 0.98290104, 1)
+[node name="Background" type="Panel" parent="." unique_id=1057655537]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7we58")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3a5q"]
-bg_color = Color(0.29548526, 0.6496862, 0.77365345, 1)
-
-[node name="Main_Game" type="Node" unique_id=550148813]
-script = ExtResource("1_ea7fd")
-
-[node name="UI" type="Control" parent="." unique_id=2043035273]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="UI" unique_id=927178621]
-layout_mode = 1
+[node name="Label" type="Label" parent="." unique_id=927178621]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -51,99 +40,116 @@ Parte principal do jogo
 onde o player ficará por mais tempo"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="UI" unique_id=1057655537]
+[node name="Painel_Atendimento" parent="." unique_id=289334806 instance=ExtResource("3_dfrvd")]
+offset_left = 257.0
+offset_top = 143.0
+offset_right = -340.0
+offset_bottom = -222.0
+
+[node name="Painel_Tipos_Conscientizados" parent="." unique_id=321290812 instance=ExtResource("4_welcp")]
+offset_left = 12.0
+offset_top = 143.0
+offset_right = -909.0
+offset_bottom = -222.0
+
+[node name="Painel_Ligacoes_Atendidas2" parent="." unique_id=1347403350 instance=ExtResource("5_ehpp2")]
+offset_left = 12.0
+offset_top = 40.0
+offset_right = 243.0
+offset_bottom = 136.0
+
+[node name="Painel_Conscientizacao_Populacao" parent="." unique_id=970357718 instance=ExtResource("6_tlyib")]
+offset_left = 257.0
+offset_top = 40.0
+offset_right = 812.0
+offset_bottom = 136.0
+
+[node name="PnlLoja" parent="." unique_id=1927967953 instance=ExtResource("6_dfrvd")]
+offset_left = 827.0
+offset_top = 143.0
+offset_right = 1139.0
+offset_bottom = 426.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1510100668]
+offset_left = 827.0
+offset_top = 40.0
+offset_right = 1123.0
+offset_bottom = 136.0
+theme_override_constants/separation = 12
+
+[node name="Pausa" type="TextureButton" parent="HBoxContainer" unique_id=714910293]
+self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("7_welcp")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Pausa" unique_id=784510273]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tlyib")
-
-[node name="Button" type="Button" parent="." unique_id=1741170248]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -15.5
-offset_right = 55.0
-offset_bottom = 15.5
+offset_left = -45.5
+offset_top = -37.5
+offset_right = 45.5
+offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 45
-text = "CLIQUE AQUI"
-script = ExtResource("2_ndsx1")
+text = "DIAS QUE
+RESTAM
+30/30"
+horizontal_alignment = 1
 
-[node name="Lb_Ligacoes" type="Label" parent="." unique_id=1599122705]
+[node name="Pausa2" type="TextureButton" parent="HBoxContainer" unique_id=578522503]
+self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("7_welcp")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="HBoxContainer/Pausa2" unique_id=1502223056]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -125.0
-offset_right = 47.0
-offset_bottom = -97.0
+offset_left = -33.0
+offset_top = -37.5
+offset_right = 33.0
+offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Ligações: "
-script = ExtResource("3_dfrvd")
+text = "LIGA
+DESLIGA
+SOM"
+horizontal_alignment = 1
 
-[node name="Pb_Ligacoes" type="ProgressBar" parent="." unique_id=705709579]
+[node name="Pausa3" type="TextureButton" parent="HBoxContainer" unique_id=1508641459]
+self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("7_welcp")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label3" type="Label" parent="HBoxContainer/Pausa3" unique_id=1575697163]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.5
-offset_top = -82.5
-offset_right = 98.5
-offset_bottom = -55.5
+offset_left = -31.0
+offset_top = -24.5
+offset_right = 31.0
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.6382967, 0.60008645, 1)
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 19
-theme_override_styles/background = SubResource("StyleBoxFlat_4pyk1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ryk25")
-
-[node name="Lb_satisf" type="Label" parent="." unique_id=112515515]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -172.0
-offset_top = 18.0
-offset_right = 172.0
-offset_bottom = 52.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "Satisfação da população geral"
-
-[node name="Pb_Satisfacao_geral" type="ProgressBar" parent="." unique_id=227763501]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -522.0
-offset_top = 61.0
-offset_right = 522.0
-offset_bottom = 128.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 25
-theme_override_font_sizes/font_size = 40
-theme_override_styles/background = SubResource("StyleBoxFlat_n3a5q")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ryk25")
-
-[node name="GameManager" type="Node" parent="." unique_id=1742745389]
-script = ExtResource("4_welcp")
-
-[node name="PassiveIncomeTimer" type="Timer" parent="GameManager" unique_id=996021829]
-autostart = true
-
-[node name="DataHandler" type="Node" parent="." unique_id=1659420301]
-script = ExtResource("5_ehpp2")
+text = "PAUSAR
+JOGO"
+horizontal_alignment = 1

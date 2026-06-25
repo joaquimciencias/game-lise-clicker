@@ -1,0 +1,224 @@
+[gd_scene format=3 uid="uid://bge17d1iadmth"]
+
+[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="1_7dhmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+bg_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dhmq"]
+bg_color = Color(0.30588236, 0.22745098, 0.27058825, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj30s"]
+bg_color = Color(0.23137255, 0.26666668, 0.34117648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
+bg_color = Color(0.30588236, 0.29411766, 0.22352941, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suvey"]
+bg_color = Color(0.21960784, 0.2901961, 0.24313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[node name="PnlConscientizacao" type="MarginContainer" unique_id=321290812]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -923.0
+offset_bottom = -423.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="." unique_id=1116868257]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yf5fn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=711002557]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="tiposConscientizados" type="Label" parent="VBoxContainer" unique_id=2011236445]
+layout_mode = 2
+text = "Tipos Conscientizados"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=2045888323]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-0.1, 0)
+offset_transform_scale = Vector2(0.945, 0.945)
+
+[node name="Fisicas" type="MarginContainer" parent="VBoxContainer/VBoxContainer" unique_id=1223307921]
+layout_mode = 2
+offset_transform_position = Vector2(-0.285, 0)
+offset_transform_position_ratio = Vector2(0.03, 0.365)
+offset_transform_scale = Vector2(1.67, 1.67)
+offset_transform_rotation = -0.27052602
+offset_transform_pivot = Vector2(0.165, 0)
+
+[node name="PainelFisicos" type="Panel" parent="VBoxContainer/VBoxContainer/Fisicas" unique_id=1658230259]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dhmq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Fisicas" unique_id=1524138133]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Fisicas/HBoxContainer" unique_id=1660055476]
+modulate = Color(0.90588236, 0.27058825, 0.35686275, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("1_7dhmq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Fisicas/HBoxContainer" unique_id=1210647477]
+layout_mode = 2
+text = "Físicas"
+
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Fisicas/HBoxContainer" unique_id=744511922]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(-5, 0)
+theme_override_font_sizes/font_size = 28
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="Psicologicas" type="MarginContainer" parent="VBoxContainer/VBoxContainer" unique_id=2023987065]
+layout_mode = 2
+offset_transform_position = Vector2(-0.285, 0)
+offset_transform_position_ratio = Vector2(0.03, 0.365)
+offset_transform_scale = Vector2(1.67, 1.67)
+offset_transform_rotation = -0.27052602
+offset_transform_pivot = Vector2(0.165, 0)
+
+[node name="PainelPsicologicos" type="Panel" parent="VBoxContainer/VBoxContainer/Psicologicas" unique_id=108472267]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oj30s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Psicologicas" unique_id=952874373]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer" unique_id=666720006]
+modulate = Color(0.28235295, 0.45490196, 0.70980394, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("1_7dhmq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer" unique_id=617549192]
+layout_mode = 2
+text = "Psicologicas"
+
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer" unique_id=773462365]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(-5, 0)
+theme_override_font_sizes/font_size = 28
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="Morais" type="MarginContainer" parent="VBoxContainer/VBoxContainer" unique_id=761257168]
+layout_mode = 2
+offset_transform_position = Vector2(-0.285, 0)
+offset_transform_position_ratio = Vector2(0.03, 0.365)
+offset_transform_scale = Vector2(1.67, 1.67)
+offset_transform_rotation = -0.27052602
+offset_transform_pivot = Vector2(0.165, 0)
+
+[node name="PainelMorais" type="Panel" parent="VBoxContainer/VBoxContainer/Morais" unique_id=707564145]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Morais" unique_id=839712458]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Morais/HBoxContainer" unique_id=33617716]
+modulate = Color(0.98039216, 0.69803923, 0.2627451, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("1_7dhmq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Morais/HBoxContainer" unique_id=184319182]
+layout_mode = 2
+text = "Morais"
+
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Morais/HBoxContainer" unique_id=995493353]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(-5, 0)
+theme_override_font_sizes/font_size = 28
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="Patrimoniais" type="MarginContainer" parent="VBoxContainer/VBoxContainer" unique_id=558388335]
+layout_mode = 2
+offset_transform_position = Vector2(-0.285, 0)
+offset_transform_position_ratio = Vector2(0.03, 0.365)
+offset_transform_scale = Vector2(1.67, 1.67)
+offset_transform_rotation = -0.27052602
+offset_transform_pivot = Vector2(0.165, 0)
+
+[node name="PainelPatrimoniais" type="Panel" parent="VBoxContainer/VBoxContainer/Patrimoniais" unique_id=914388375]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_suvey")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Patrimoniais" unique_id=104678161]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer" unique_id=1533557724]
+modulate = Color(0.49019608, 0.6627451, 0.32156864, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("1_7dhmq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer" unique_id=1105025912]
+layout_mode = 2
+text = "Patrimoniais"
+
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer" unique_id=1697469908]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(-5, 0)
+theme_override_font_sizes/font_size = 28
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 3

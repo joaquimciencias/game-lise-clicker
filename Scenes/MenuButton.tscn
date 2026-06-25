@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dkg2ss3o528j2"]
 
-[ext_resource type="Script" uid="uid://lsbdpn0psamu" path="res://Scripts/menu_button.gd" id="1_j7qw7"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.15847227, 0.15847233, 0.15847221, 1)
@@ -33,6 +31,18 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0.43872616, 0.06018833, 2.4065375e-08, 0.6)
 shadow_size = 5
 
+[sub_resource type="GDScript" id="GDScript_s1yor"]
+script/source = "extends Button
+
+@export var scene : PackedScene
+
+func _on_pressed() -> void:
+	if scene != null:
+		get_tree().change_scene_to_packed(scene)
+	else:
+		push_warning(\"ATENÇÃO!: Defina no Inspetor uma cena para este botão!\")
+"
+
 [node name="MenuButton" type="Button" unique_id=821937510]
 offset_right = 100.0
 offset_bottom = 42.0
@@ -43,6 +53,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7dm0k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1bvp3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0xm2m")
 text = "Button"
-script = ExtResource("1_j7qw7")
+script = SubResource("GDScript_s1yor")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://jji7dfptqi1l"]
 
-[ext_resource type="Script" uid="uid://d2ktjhwsgwll2" path="res://Scripts/main_menu.gd" id="1_1tw60"]
+[ext_resource type="Texture2D" uid="uid://bvmehehh1ej4p" path="res://Assets/IMG/Fundo.png" id="2_7we58"]
 [ext_resource type="PackedScene" uid="uid://dkg2ss3o528j2" path="res://Scenes/MenuButton.tscn" id="2_s1yor"]
+[ext_resource type="PackedScene" uid="uid://blt1qg6n423in" path="res://Scenes/01-game.tscn" id="3_172gg"]
+[ext_resource type="PackedScene" uid="uid://dhaniytqukmkv" path="res://Scenes/02-options.tscn" id="4_7we58"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
-bg_color = Color(0.7192035, 0.5718752, 0.37420273, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jvruc"]
+texture = ExtResource("2_7we58")
 
 [node name="MainMenu" type="CanvasLayer" unique_id=643699828]
-script = ExtResource("1_1tw60")
 
 [node name="Background" type="Panel" parent="." unique_id=1100237124]
 anchors_preset = 15
@@ -15,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+theme_override_styles/panel = SubResource("StyleBoxTexture_jvruc")
 
 [node name="UserInterface" type="MarginContainer" parent="." unique_id=831212140]
 anchors_preset = 15
@@ -34,6 +35,8 @@ theme_override_constants/separation = 6
 
 [node name="LiseLogo" type="Label" parent="UserInterface/MenuOptions" unique_id=2049152389]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
 theme_override_colors/font_shadow_color = Color(0.51274824, 0.107140146, 0.229482, 0)
 theme_override_font_sizes/font_size = 150
 text = "LISE"
@@ -44,18 +47,13 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Start" parent="UserInterface/MenuOptions" unique_id=821937510 instance=ExtResource("2_s1yor")]
+[node name="Jogar" parent="UserInterface/MenuOptions" unique_id=821937510 instance=ExtResource("2_s1yor")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Jogar"
+scene = ExtResource("3_172gg")
 
-[node name="Options" parent="UserInterface/MenuOptions" unique_id=183552311 instance=ExtResource("2_s1yor")]
+[node name="Opcoes" parent="UserInterface/MenuOptions" unique_id=1414709962 instance=ExtResource("2_s1yor")]
 layout_mode = 2
-text = "Opções
-"
-action_type = 1
-
-[node name="Exit" parent="UserInterface/MenuOptions" unique_id=1962946858 instance=ExtResource("2_s1yor")]
-layout_mode = 2
-text = "Sair"
-action_type = 2
+text = "Opções"
+scene = ExtResource("4_7we58")

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://yy57y8fdh8yp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
+bg_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PnlConscientizacao_Populacao" type="MarginContainer" unique_id=289334806]
+offset_right = 555.0
+offset_bottom = 96.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1116868257]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogn1v")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1908187550]
+layout_mode = 2
+size_flags_vertical = 4
+offset_transform_enabled = true
+
+[node name="LigAtendidas" type="Label" parent="HBoxContainer" unique_id=969365343]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Conscientização da População:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer" unique_id=510126843]
+modulate = Color(1, 0.101960786, 1, 1)
+layout_mode = 2
+size_flags_vertical = 1
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.98, 0.98)
+value = 43.0
+
+[node name="Texto" type="Label" parent="HBoxContainer" unique_id=239273400]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Cada relato conscientizado ajuda a transformar vidas!"
+horizontal_alignment = 1
+vertical_alignment = 1

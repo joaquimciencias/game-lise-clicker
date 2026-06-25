@@ -1,0 +1,975 @@
+[gd_scene format=3 uid="uid://jaayhjink2ho"]
+
+[ext_resource type="Script" uid="uid://c8who1od5egee" path="res://Scripts/PainelLoja/painel_Main_Loja.gd" id="1_dwmft"]
+[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="1_fseda"]
+[ext_resource type="Script" uid="uid://cuuvvry2qp6m2" path="res://Scripts/PainelLoja/painel_Anim_Loja.gd" id="2_hhi18"]
+[ext_resource type="PackedScene" uid="uid://bto7yntfx3v8a" path="res://Scenes/Game/item.tscn" id="3_emquu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
+bg_color = Color(0.21568628, 0.43137255, 0.43137255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fseda"]
+bg_color = Color(0, 0.3761023, 0.19770488, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwmft"]
+bg_color = Color(0, 0.3172792, 0.5620934, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhi18"]
+bg_color = Color(0.43629545, 0.2638162, 0.12620696, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emquu"]
+bg_color = Color(0.18262756, 0.23162818, 0.71079534, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rkqw"]
+bg_color = Color(0.5175737, 0.103443615, 0.0021760394, 1)
+
+[node name="PainelMainLoja" type="MarginContainer" unique_id=289334806]
+offset_right = 312.0
+offset_bottom = 282.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dwmft")
+
+[node name="PainelAnimLoja" type="Panel" parent="." unique_id=1116868257]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogn1v")
+script = ExtResource("2_hhi18")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja" unique_id=1213295169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer" unique_id=607144412]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 21
+text = "Plano de ação  \"Loja\""
+horizontal_alignment = 1
+
+[node name="HBoxBotoes" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer" unique_id=1456469062]
+layout_mode = 2
+
+[node name="Expansao" type="Button" parent="PainelAnimLoja/VBoxContainer/HBoxBotoes" unique_id=1394992678]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Expansão"
+
+[node name="Conscientizacao" type="Button" parent="PainelAnimLoja/VBoxContainer/HBoxBotoes" unique_id=973435051]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Conscientização"
+
+[node name="Formacao" type="Button" parent="PainelAnimLoja/VBoxContainer/HBoxBotoes" unique_id=1585400237]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Formação"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PainelAnimLoja/VBoxContainer" unique_id=1994077923]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+draw_focus_border = true
+vertical_scroll_mode = 2
+
+[node name="ConteudoExpansao" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer" unique_id=1416643201]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Item" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao" unique_id=458987166 instance=ExtResource("3_emquu")]
+layout_mode = 2
+
+[node name="Item2" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao" unique_id=112834459]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2" unique_id=1603344884]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2" unique_id=1451069189]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer" unique_id=617850937]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Abrigo Seguro"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer" unique_id=464775578]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer" unique_id=610641239]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer" unique_id=337176714]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1162535147]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1285840366]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1648887908]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1245120263]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1641826572]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1049740832]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1191895311]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=580159017]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1117625529]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=345578784]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item3" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao" unique_id=1850173862]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3" unique_id=836323296]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwmft")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3" unique_id=684687562]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer" unique_id=257330049]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Nucleo de Capacitacão"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer" unique_id=1556337527]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer" unique_id=267780406]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer" unique_id=275747877]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2087802955]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=181475464]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=313346780]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1457632826]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1190433187]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=545343706]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1209059494]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1253821151]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1975929369]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1201278400]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item4" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao" unique_id=1509882588]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4" unique_id=1841165995]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhi18")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4" unique_id=2012904150]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer" unique_id=1904893639]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Delegacia"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer" unique_id=1225854327]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer" unique_id=1255871537]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer" unique_id=734859310]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=802116530]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1219572865]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=212705552]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=929432911]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1757846502]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2116383558]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=721862747]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=763445496]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=93663803]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoExpansao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1553868707]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="ConteudoConscientizacao" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer" unique_id=701213050]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Item" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao" unique_id=753054038]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item" unique_id=174329827]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_emquu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item" unique_id=856824730]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer" unique_id=1715801997]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "CONSCIENTIZACAO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer" unique_id=635178215]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer" unique_id=1471327504]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer" unique_id=1344204508]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1973308279]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1716447602]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=610140349]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=441365127]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1632953080]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=626651733]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1292750801]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1091517915]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1037900699]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2048442466]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item2" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao" unique_id=1181605326]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2" unique_id=1732672452]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2" unique_id=1634002462]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer" unique_id=405228870]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Abrigo Seguro"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer" unique_id=1428401799]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer" unique_id=560675375]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer" unique_id=780345716]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=323561431]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=311800664]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=495644747]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=423110448]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=758346954]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1578044379]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=991737374]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=121898642]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1112939767]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1686176238]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item3" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao" unique_id=251960881]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3" unique_id=1224422731]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwmft")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3" unique_id=620401220]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer" unique_id=146874776]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Nucleo de Capacitacão"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer" unique_id=418488517]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer" unique_id=1594205661]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer" unique_id=1536240304]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=958565856]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=994707308]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2061920754]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1041132478]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=320830979]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1836934579]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=587308653]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1180765946]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1659410923]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1217312700]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item4" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao" unique_id=1284871975]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4" unique_id=1062816180]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhi18")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4" unique_id=1756955080]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer" unique_id=80942486]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Delegacia"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer" unique_id=932741747]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer" unique_id=1209244827]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer" unique_id=1869955210]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1311210586]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1987798576]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=272082904]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=292429187]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=679689522]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=769253771]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=990412571]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1157663253]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1361053693]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=37605973]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="ConteudoFormacao" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer" unique_id=1250553477]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Item" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao" unique_id=1542381628]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item" unique_id=971774007]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6rkqw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item" unique_id=1236898498]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer" unique_id=380953245]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "FORMAÇÃO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer" unique_id=376985359]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer" unique_id=565675673]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer" unique_id=2103580399]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1652746373]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=746207765]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=240916982]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=710359950]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1639793109]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1192734254]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1339383964]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2144057812]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1002771539]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=716050444]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item2" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao" unique_id=2102107399]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2" unique_id=594609417]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2" unique_id=559111343]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer" unique_id=792641225]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Abrigo Seguro"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer" unique_id=70860022]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer" unique_id=1643802662]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer" unique_id=1597942895]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=337888481]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2137284964]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=901801576]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=697631302]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1586533231]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1690630165]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1846708021]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=394009996]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1232089727]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=47589065]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item3" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao" unique_id=850808215]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3" unique_id=1144109415]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwmft")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3" unique_id=211599410]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer" unique_id=679293823]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Nucleo de Capacitacão"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer" unique_id=439622869]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer" unique_id=2085553797]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer" unique_id=139872633]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=674942937]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=941087685]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1226603212]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=630761034]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=122571887]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1574759944]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=134729744]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2007707629]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1368980183]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item3/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=905791352]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
+
+[node name="Item4" type="MarginContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao" unique_id=273520552]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4" unique_id=2069333806]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhi18")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4" unique_id=1425589892]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer" unique_id=73350719]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Delegacia"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer" unique_id=904085578]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer" unique_id=1749590391]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_fseda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer" unique_id=281857723]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.95, 0.95)
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=143235683]
+layout_mode = 2
+text = "Necessário:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=673521648]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1408440068]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=545901895]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1386554401]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=161731180]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=598313291]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_fseda")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1290485281]
+layout_mode = 2
+text = "Tipo_Fisico:"
+
+[node name="Label3" type="Label" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=770037148]
+layout_mode = 2
+text = "15"
+
+[node name="Button" type="Button" parent="PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao/Item4/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=980900817]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Comprar"
