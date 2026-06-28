@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bge17d1iadmth"]
 
 [ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="1_7dhmq"]
+[ext_resource type="Script" uid="uid://dwb2guvwr0wt5" path="res://Scripts/PainelTiposConscientizados/painel_tipos_conscientizados.gd" id="1_lch8f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
 bg_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
@@ -51,6 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_lch8f")
 
 [node name="Panel" type="Panel" parent="." unique_id=1116868257]
 layout_mode = 2

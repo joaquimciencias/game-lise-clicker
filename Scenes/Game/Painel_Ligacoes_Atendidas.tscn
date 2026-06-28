@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://1vh6fq5cf15l"]
 
+[ext_resource type="Script" uid="uid://pqaxthts8ohm" path="res://Scripts/PainelLigacoesAtendidas/painel_ligacoes_atendidas.gd" id="1_m1irx"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
 bg_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
 corner_radius_top_left = 10
@@ -10,6 +12,7 @@ corner_radius_bottom_left = 10
 [node name="PnlLigacoes_Atendidas" type="MarginContainer" unique_id=289334806]
 offset_right = 231.0
 offset_bottom = 89.0
+script = ExtResource("1_m1irx")
 
 [node name="Panel" type="Panel" parent="." unique_id=1116868257]
 layout_mode = 2

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dqdlordgd2hni"]
 
+[ext_resource type="Script" uid="uid://bq3kpovsdilsy" path="res://Scripts/PainelAtendimento/painel_atendimento.gd" id="1_ad4th"]
 [ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="1_qqpa5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
@@ -25,6 +26,7 @@ offset_right = -595.0
 offset_bottom = -379.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ad4th")
 
 [node name="Panel" type="Panel" parent="." unique_id=1116868257]
 layout_mode = 2
@@ -60,7 +62,7 @@ layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_qqpa5")
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxTipoViolencia" unique_id=350623556]
+[node name="NomeViolencia" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxTipoViolencia" unique_id=350623556]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -121,3 +123,5 @@ show_percentage = false
 modulate = Color(1, 0.5686275, 0, 1)
 layout_mode = 2
 text = "CLIQUE AQUI PARA ATENDIMENTO"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

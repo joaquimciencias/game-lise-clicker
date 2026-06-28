@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://blt1qg6n423in"]
 
+[ext_resource type="Script" uid="uid://b6rp5vuhbup4d" path="res://Scripts/game.gd" id="1_ehpp2"]
 [ext_resource type="Texture2D" uid="uid://bv48g2ujw1lhc" path="res://Assets/IMG/Mockup.png" id="2_a1v5b"]
 [ext_resource type="PackedScene" uid="uid://dqdlordgd2hni" path="res://Scenes/Game/Painel_Atendimento.tscn" id="3_dfrvd"]
 [ext_resource type="PackedScene" uid="uid://bge17d1iadmth" path="res://Scenes/Game/Painel_Tipos_Conscientizados.tscn" id="4_welcp"]
@@ -12,6 +13,7 @@
 texture = ExtResource("2_a1v5b")
 
 [node name="MainGame" type="CanvasLayer" unique_id=627893110]
+script = ExtResource("1_ehpp2")
 metadata/_edit_horizontal_guides_ = [40.0, 136.0, 143.0, 426.0]
 metadata/_edit_vertical_guides_ = [827.0, 243.0, 12.0, 1139.0, 812.0, 257.0]
 
@@ -52,7 +54,7 @@ offset_top = 143.0
 offset_right = -909.0
 offset_bottom = -222.0
 
-[node name="Painel_Ligacoes_Atendidas2" parent="." unique_id=1347403350 instance=ExtResource("5_ehpp2")]
+[node name="Painel_Ligacoes_Atendidas" parent="." unique_id=1347403350 instance=ExtResource("5_ehpp2")]
 offset_left = 12.0
 offset_top = 40.0
 offset_right = 243.0
