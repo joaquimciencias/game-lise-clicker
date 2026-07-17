@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://crykumbmo7xex"]
+
+[ext_resource type="Script" uid="uid://bxy6gpty4ihle" path="res://Scripts/Eventos/ViolenciaSexual/evento_violencia_sexual.gd" id="1_w6hpp"]
+[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="2_dgcow"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knir1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.9621281, 0.09614452, 0.24631736, 0.6)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.42799994, 0.63221323, 0.9217931, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="EventoViolenciaSexual" type="Control" unique_id=1114660449]
+layout_mode = 3
+anchor_left = 0.16059028
+anchor_top = 0.15277778
+anchor_right = 0.8385417
+anchor_bottom = 0.8518519
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_w6hpp")
+metadata/_edit_horizontal_guides_ = [99.0, 552.0, 324.0]
+metadata/_edit_vertical_guides_ = [185.0, 966.0, 576.0]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1584066118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1309830451]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knir1")
+
+[node name="TimerProgresso" type="Timer" parent="." unique_id=247612418]
+wait_time = 60.0
+one_shot = true
+
+[node name="LabelTimer" type="Label" parent="." unique_id=1193681171]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 6.0
+offset_right = 767.0
+offset_bottom = 48.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "30.0s"
+
+[node name="LabelDescricao" type="Label" parent="." unique_id=1838131606]
+layout_mode = 0
+offset_top = 111.0
+offset_right = 781.0
+offset_bottom = 184.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Um caso de violência sexual foi identificado!
+ Acione a rede imediatamente!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=258037880]
+layout_mode = 0
+anchor_left = 0.04865557
+anchor_top = 0.44812363
+anchor_right = 0.95134443
+anchor_bottom = 0.9293598
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="MarginContainer2" unique_id=48067025]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2" unique_id=1142599088]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="LabelDescricao2" type="Label" parent="MarginContainer2/VBoxContainer2" unique_id=900011150]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Progresso do atendimento:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBarAtendimento" type="ProgressBar" parent="MarginContainer2/VBoxContainer2" unique_id=1287616617]
+layout_mode = 2
+size_flags_vertical = 1
+value = 100.0
+
+[node name="BotaoAcionar" type="Button" parent="MarginContainer2/VBoxContainer2" unique_id=1600385612]
+layout_mode = 2
+text = "CLIQUE AQUI PARA LIGAR PARA A DELEGACIA"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=945650988]
+position = Vector2(391, 65)
+scale = Vector2(0.5859375, 0.5859375)
+texture = ExtResource("2_dgcow")

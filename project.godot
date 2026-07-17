@@ -17,8 +17,12 @@ config/icon="uid://cr5rkomwwsq2v"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/count/Desktop/LISE.avi"
 
 [physics]
 

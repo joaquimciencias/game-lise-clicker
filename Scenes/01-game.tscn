@@ -2,27 +2,192 @@
 
 [ext_resource type="Script" uid="uid://b6rp5vuhbup4d" path="res://Scripts/game.gd" id="1_ehpp2"]
 [ext_resource type="Texture2D" uid="uid://bv48g2ujw1lhc" path="res://Assets/IMG/Mockup.png" id="2_a1v5b"]
-[ext_resource type="PackedScene" uid="uid://dqdlordgd2hni" path="res://Scenes/Game/Painel_Atendimento.tscn" id="3_dfrvd"]
-[ext_resource type="PackedScene" uid="uid://bge17d1iadmth" path="res://Scenes/Game/Painel_Tipos_Conscientizados.tscn" id="4_welcp"]
-[ext_resource type="PackedScene" uid="uid://1vh6fq5cf15l" path="res://Scenes/Game/Painel_Ligacoes_Atendidas.tscn" id="5_ehpp2"]
-[ext_resource type="PackedScene" uid="uid://jaayhjink2ho" path="res://Scenes/Game/Painel_Loja.tscn" id="6_dfrvd"]
-[ext_resource type="PackedScene" uid="uid://yy57y8fdh8yp" path="res://Scenes/Game/Painel_Conscientizacao_Populacao.tscn" id="6_tlyib"]
+[ext_resource type="PackedScene" uid="uid://dqdlordgd2hni" path="res://Scenes/Paineis/Painel_Atendimento.tscn" id="3_dfrvd"]
+[ext_resource type="PackedScene" uid="uid://bbyfet6onremx" path="res://Scenes/painel_topo_inicial.tscn" id="3_n3a5q"]
+[ext_resource type="PackedScene" uid="uid://bge17d1iadmth" path="res://Scenes/Paineis/Painel_Tipos_Conscientizados.tscn" id="4_welcp"]
+[ext_resource type="PackedScene" uid="uid://1vh6fq5cf15l" path="res://Scenes/Paineis/Painel_Ligacoes_Atendidas.tscn" id="5_ehpp2"]
+[ext_resource type="PackedScene" uid="uid://jaayhjink2ho" path="res://Scenes/Paineis/Painel_Main_Loja.tscn" id="6_dfrvd"]
+[ext_resource type="PackedScene" uid="uid://yy57y8fdh8yp" path="res://Scenes/Paineis/Painel_Conscientizacao_Populacao.tscn" id="6_tlyib"]
 [ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="7_welcp"]
+[ext_resource type="Script" uid="uid://df0wrjjrqlnj2" path="res://Scripts/Resources/ItemLojaResource.gd" id="8_ryk25"]
+[ext_resource type="PackedScene" uid="uid://dphycmd0ootjn" path="res://Scenes/jogo_pausado.tscn" id="8_tlyib"]
+[ext_resource type="Script" uid="uid://ws4uoghe5t3c" path="res://Scripts/Resources/RequisitoResources.gd" id="9_n3a5q"]
+[ext_resource type="PackedScene" uid="uid://bybpi3hsci57f" path="res://Scenes/painel_fila_mulheres.tscn" id="13_mlarl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7we58"]
 texture = ExtResource("2_a1v5b")
 
+[sub_resource type="Resource" id="Resource_u7wyg"]
+script = ExtResource("9_n3a5q")
+icone = ExtResource("7_welcp")
+custo = 1000
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_1lltp"]
+script = ExtResource("9_n3a5q")
+tipo = 1
+custo = 10000
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_wri8l"]
+script = ExtResource("8_ryk25")
+nome_item = "Igor"
+requisitos = Array[ExtResource("9_n3a5q")]([SubResource("Resource_u7wyg"), SubResource("Resource_1lltp")])
+metadata/_custom_type_script = "uid://df0wrjjrqlnj2"
+
+[sub_resource type="Resource" id="Resource_3s67r"]
+script = ExtResource("9_n3a5q")
+tipo = 2
+icone = ExtResource("7_welcp")
+custo = 6
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_rk8di"]
+script = ExtResource("9_n3a5q")
+tipo = 3
+custo = 8
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_iulaf"]
+script = ExtResource("8_ryk25")
+nome_item = "Isadora"
+requisitos = Array[ExtResource("9_n3a5q")]([SubResource("Resource_3s67r"), SubResource("Resource_rk8di")])
+metadata/_custom_type_script = "uid://df0wrjjrqlnj2"
+
+[sub_resource type="Resource" id="Resource_wdfiv"]
+script = ExtResource("9_n3a5q")
+tipo = 1
+custo = 3
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_1kpnr"]
+script = ExtResource("9_n3a5q")
+tipo = 3
+custo = 2
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_s72ll"]
+script = ExtResource("9_n3a5q")
+tipo = 2
+custo = 1
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_ytwjt"]
+script = ExtResource("8_ryk25")
+nome_item = "Ítalo"
+requisitos = Array[ExtResource("9_n3a5q")]([SubResource("Resource_wdfiv"), SubResource("Resource_1kpnr"), SubResource("Resource_s72ll")])
+metadata/_custom_type_script = "uid://df0wrjjrqlnj2"
+
+[sub_resource type="Resource" id="Resource_50ys6"]
+script = ExtResource("9_n3a5q")
+tipo = 1
+custo = 11
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_73ddx"]
+script = ExtResource("8_ryk25")
+nome_item = "Lucas Barbosa"
+preco_compra = 12
+requisitos = Array[ExtResource("9_n3a5q")]([SubResource("Resource_50ys6")])
+metadata/_custom_type_script = "uid://df0wrjjrqlnj2"
+
+[sub_resource type="Resource" id="Resource_0vup6"]
+script = ExtResource("9_n3a5q")
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_xsgi0"]
+script = ExtResource("9_n3a5q")
+tipo = 2
+custo = 190
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_jr847"]
+script = ExtResource("8_ryk25")
+nome_item = "Joaquim"
+requisitos = Array[ExtResource("9_n3a5q")]([SubResource("Resource_0vup6"), SubResource("Resource_xsgi0"), null])
+metadata/_custom_type_script = "uid://df0wrjjrqlnj2"
+
+[sub_resource type="Resource" id="Resource_ryk25"]
+script = ExtResource("9_n3a5q")
+custo = 65
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_n3a5q"]
+script = ExtResource("9_n3a5q")
+tipo = 1
+custo = 5
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_mlarl"]
+script = ExtResource("9_n3a5q")
+tipo = 2
+metadata/_custom_type_script = "uid://ws4uoghe5t3c"
+
+[sub_resource type="Resource" id="Resource_uwtac"]
+script = ExtResource("8_ryk25")
+requisitos = Array[ExtResource("9_n3a5q")]([SubResource("Resource_ryk25"), SubResource("Resource_n3a5q"), SubResource("Resource_mlarl")])
+metadata/_custom_type_script = "uid://df0wrjjrqlnj2"
+
 [node name="MainGame" type="CanvasLayer" unique_id=627893110]
 script = ExtResource("1_ehpp2")
-metadata/_edit_horizontal_guides_ = [40.0, 136.0, 143.0, 426.0]
-metadata/_edit_vertical_guides_ = [827.0, 243.0, 12.0, 1139.0, 812.0, 257.0]
+metadata/_edit_horizontal_guides_ = [99.0, 495.0]
+metadata/_edit_vertical_guides_ = [1135.0, 886.0]
 
 [node name="Background" type="Panel" parent="." unique_id=1057655537]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7we58")
 
+[node name="Painel_Topo_Inicial" parent="." unique_id=423273896 instance=ExtResource("3_n3a5q")]
+
+[node name="Painel_Barra_Conscientizacao" parent="." unique_id=970357718 instance=ExtResource("6_tlyib")]
+offset_left = 13.0
+offset_top = 52.0
+offset_right = 1135.0
+offset_bottom = 94.0
+
+[node name="Painel_Tipos_Conscientizados" parent="." unique_id=321290812 instance=ExtResource("4_welcp")]
+offset_left = 12.0
+offset_top = 99.0
+offset_right = 193.0
+offset_bottom = 495.0
+
+[node name="Painel_Atendimento" parent="." unique_id=289334806 instance=ExtResource("3_dfrvd")]
+offset_left = 202.0
+offset_top = 99.0
+offset_right = -275.0
+offset_bottom = -153.0
+
+[node name="Painel_Fila_Mulheres" parent="." unique_id=1309833481 instance=ExtResource("13_mlarl")]
+offset_left = 886.0
+offset_top = 99.0
+offset_right = 1135.0
+offset_bottom = 495.0
+
+[node name="Painel_Ligacoes_Atendidas" parent="." unique_id=1347403350 instance=ExtResource("5_ehpp2")]
+visible = false
+offset_left = 1190.0
+offset_top = -133.0
+offset_right = 1410.0
+offset_bottom = -37.0
+
+[node name="PnlLoja" parent="." unique_id=1927967953 node_paths=PackedStringArray("painel_conscientizacao") instance=ExtResource("6_dfrvd")]
+visible = false
+offset_left = 827.0
+offset_top = 143.0
+offset_right = 1139.0
+offset_bottom = 426.0
+itens_expansao = Array[ExtResource("8_ryk25")]([SubResource("Resource_wri8l"), SubResource("Resource_iulaf"), SubResource("Resource_ytwjt")])
+itens_conscientizacao = Array[ExtResource("8_ryk25")]([SubResource("Resource_73ddx")])
+itens_formacao = Array[ExtResource("8_ryk25")]([SubResource("Resource_jr847"), SubResource("Resource_uwtac")])
+painel_conscientizacao = NodePath("../Painel_Barra_Conscientizacao")
+
+[node name="JogoPausado" parent="." unique_id=2052550778 instance=ExtResource("8_tlyib")]
+visible = false
+
 [node name="Label" type="Label" parent="." unique_id=927178621]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,118 +205,4 @@ text = "Cena: 01
 
 Parte principal do jogo
 onde o player ficará por mais tempo"
-horizontal_alignment = 1
-
-[node name="Painel_Atendimento" parent="." unique_id=289334806 instance=ExtResource("3_dfrvd")]
-offset_left = 257.0
-offset_top = 143.0
-offset_right = -340.0
-offset_bottom = -222.0
-
-[node name="Painel_Tipos_Conscientizados" parent="." unique_id=321290812 instance=ExtResource("4_welcp")]
-offset_left = 12.0
-offset_top = 143.0
-offset_right = -909.0
-offset_bottom = -222.0
-
-[node name="Painel_Ligacoes_Atendidas" parent="." unique_id=1347403350 instance=ExtResource("5_ehpp2")]
-offset_left = 12.0
-offset_top = 40.0
-offset_right = 243.0
-offset_bottom = 136.0
-
-[node name="Painel_Conscientizacao_Populacao" parent="." unique_id=970357718 instance=ExtResource("6_tlyib")]
-offset_left = 257.0
-offset_top = 40.0
-offset_right = 812.0
-offset_bottom = 136.0
-
-[node name="PnlLoja" parent="." unique_id=1927967953 instance=ExtResource("6_dfrvd")]
-offset_left = 827.0
-offset_top = 143.0
-offset_right = 1139.0
-offset_bottom = 426.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1510100668]
-offset_left = 827.0
-offset_top = 40.0
-offset_right = 1123.0
-offset_bottom = 136.0
-theme_override_constants/separation = 12
-
-[node name="Pausa" type="TextureButton" parent="HBoxContainer" unique_id=714910293]
-self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture_normal = ExtResource("7_welcp")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="HBoxContainer/Pausa" unique_id=784510273]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.5
-offset_top = -37.5
-offset_right = 45.5
-offset_bottom = 37.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "DIAS QUE
-RESTAM
-30/30"
-horizontal_alignment = 1
-
-[node name="Pausa2" type="TextureButton" parent="HBoxContainer" unique_id=578522503]
-self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture_normal = ExtResource("7_welcp")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Label2" type="Label" parent="HBoxContainer/Pausa2" unique_id=1502223056]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -37.5
-offset_right = 33.0
-offset_bottom = 37.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "LIGA
-DESLIGA
-SOM"
-horizontal_alignment = 1
-
-[node name="Pausa3" type="TextureButton" parent="HBoxContainer" unique_id=1508641459]
-self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture_normal = ExtResource("7_welcp")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Label3" type="Label" parent="HBoxContainer/Pausa3" unique_id=1575697163]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -24.5
-offset_right = 31.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PAUSAR
-JOGO"
 horizontal_alignment = 1

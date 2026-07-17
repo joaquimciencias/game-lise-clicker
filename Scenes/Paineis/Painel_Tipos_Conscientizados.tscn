@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://dwb2guvwr0wt5" path="res://Scripts/PainelTiposConscientizados/painel_tipos_conscientizados.gd" id="1_lch8f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
-bg_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
+bg_color = Color(0.05490196, 0.047058824, 0.101960786, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dhmq"]
-bg_color = Color(0.30588236, 0.22745098, 0.27058825, 1)
+bg_color = Color(0.16470589, 0.09411765, 0.14117648, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -43,13 +43,8 @@ corner_radius_bottom_left = 10
 corner_detail = 4
 
 [node name="PnlConscientizacao" type="MarginContainer" unique_id=321290812]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -923.0
-offset_bottom = -423.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 152.0
+offset_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_lch8f")
@@ -64,7 +59,8 @@ theme_override_constants/separation = 15
 
 [node name="tiposConscientizados" type="Label" parent="VBoxContainer" unique_id=2011236445]
 layout_mode = 2
-text = "Tipos Conscientizados"
+theme_override_colors/font_color = Color(0.54509807, 0.5294118, 0.72156864, 1)
+text = "Tipos Registrados"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=2045888323]
@@ -86,10 +82,14 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_7dhmq")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Fisicas" unique_id=1524138133]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Fisicas" unique_id=415880624]
 layout_mode = 2
 
-[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Fisicas/HBoxContainer" unique_id=1660055476]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Fisicas/VBoxContainer" unique_id=1524138133]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Fisicas/VBoxContainer/HBoxContainer" unique_id=1660055476]
 modulate = Color(0.90588236, 0.27058825, 0.35686275, 1)
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -97,11 +97,11 @@ texture = ExtResource("1_7dhmq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Fisicas/HBoxContainer" unique_id=1210647477]
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Fisicas/VBoxContainer/HBoxContainer" unique_id=1210647477]
 layout_mode = 2
 text = "Físicas"
 
-[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Fisicas/HBoxContainer" unique_id=744511922]
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Fisicas/VBoxContainer" unique_id=1189091102]
 layout_mode = 2
 size_flags_horizontal = 3
 offset_transform_enabled = true
@@ -124,10 +124,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_oj30s")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Psicologicas" unique_id=952874373]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Psicologicas" unique_id=2071996388]
 layout_mode = 2
 
-[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer" unique_id=666720006]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Psicologicas/VBoxContainer" unique_id=952874373]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Psicologicas/VBoxContainer/HBoxContainer" unique_id=666720006]
 modulate = Color(0.28235295, 0.45490196, 0.70980394, 1)
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -135,11 +138,11 @@ texture = ExtResource("1_7dhmq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer" unique_id=617549192]
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Psicologicas/VBoxContainer/HBoxContainer" unique_id=617549192]
 layout_mode = 2
 text = "Psicologicas"
 
-[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer" unique_id=773462365]
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Psicologicas/VBoxContainer" unique_id=773462365]
 layout_mode = 2
 size_flags_horizontal = 3
 offset_transform_enabled = true
@@ -162,10 +165,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Morais" unique_id=839712458]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Morais" unique_id=1296575604]
 layout_mode = 2
 
-[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Morais/HBoxContainer" unique_id=33617716]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Morais/VBoxContainer" unique_id=839712458]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Morais/VBoxContainer/HBoxContainer" unique_id=33617716]
 modulate = Color(0.98039216, 0.69803923, 0.2627451, 1)
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -173,11 +179,11 @@ texture = ExtResource("1_7dhmq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Morais/HBoxContainer" unique_id=184319182]
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Morais/VBoxContainer/HBoxContainer" unique_id=184319182]
 layout_mode = 2
 text = "Morais"
 
-[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Morais/HBoxContainer" unique_id=995493353]
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Morais/VBoxContainer" unique_id=995493353]
 layout_mode = 2
 size_flags_horizontal = 3
 offset_transform_enabled = true
@@ -200,10 +206,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_suvey")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Patrimoniais" unique_id=104678161]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Patrimoniais" unique_id=1212554804]
 layout_mode = 2
 
-[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer" unique_id=1533557724]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Patrimoniais/VBoxContainer2" unique_id=104678161]
+layout_mode = 2
+
+[node name="Icone" type="TextureRect" parent="VBoxContainer/VBoxContainer/Patrimoniais/VBoxContainer2/HBoxContainer" unique_id=1533557724]
 modulate = Color(0.49019608, 0.6627451, 0.32156864, 1)
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -211,11 +220,11 @@ texture = ExtResource("1_7dhmq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer" unique_id=1105025912]
+[node name="Texto" type="Label" parent="VBoxContainer/VBoxContainer/Patrimoniais/VBoxContainer2/HBoxContainer" unique_id=1105025912]
 layout_mode = 2
 text = "Patrimoniais"
 
-[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer" unique_id=1697469908]
+[node name="Num" type="Label" parent="VBoxContainer/VBoxContainer/Patrimoniais/VBoxContainer2" unique_id=1697469908]
 layout_mode = 2
 size_flags_horizontal = 3
 offset_transform_enabled = true

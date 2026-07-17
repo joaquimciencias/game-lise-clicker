@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bybpi3hsci57f"]
+
+[ext_resource type="Script" uid="uid://bdyjrxyfejiq" path="res://Scripts/Painel_Fila_Mulheres/painel_fila_mulheres.gd" id="1_nrtg4"]
+
+[sub_resource type="Shader" id="Shader_kqi3h"]
+code = "shader_type canvas_item;
+
+uniform vec4 color_top : source_color = vec4(0.65, 0.40, 1.0, 1.0);
+uniform vec4 color_bottom : source_color = vec4(0.20, 0.05, 0.45, 1.0);
+void fragment() {
+    COLOR = mix(color_top, color_bottom, UV.y);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3ldg"]
+shader = SubResource("Shader_kqi3h")
+shader_parameter/color_top = Color(0.65, 0.4, 1, 1)
+shader_parameter/color_bottom = Color(0.2, 0.05, 0.45, 1)
+
+[node name="Painel_Fila_Mulheres" type="MarginContainer" unique_id=1309833481]
+clip_children = 1
+offset_right = 262.0
+offset_bottom = 420.0
+script = ExtResource("1_nrtg4")
+
+[node name="Panel" type="Panel" parent="." unique_id=1620213227]
+material = SubResource("ShaderMaterial_t3ldg")
+clip_contents = true
+layout_mode = 2
+
+[node name="ContainerFila" type="Control" parent="." unique_id=1889070967]
+clip_contents = true
+layout_mode = 2

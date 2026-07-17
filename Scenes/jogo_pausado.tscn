@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dphycmd0ootjn"]
+
+[ext_resource type="Script" uid="uid://f3rg0brkldp2" path="res://Scripts/jogo_pausado.gd" id="1_lm0au"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.7764706)
+
+[node name="JogoPausado" type="MarginContainer" unique_id=2052550778]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lm0au")
+
+[node name="Panel" type="Panel" parent="." unique_id=993514297]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="BotaoContinuar" type="Button" parent="." unique_id=1451417804]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 34
+text = "Despausar Jogo"
+
+[connection signal="pressed" from="BotaoContinuar" to="." method="_on_botao_continuar_pressed"]

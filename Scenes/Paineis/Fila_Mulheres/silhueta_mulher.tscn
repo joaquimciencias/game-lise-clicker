@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ciui80lnfms01"]
+
+[ext_resource type="Texture2D" uid="uid://dy8ugqlmtab1j" path="res://Assets/IMG/silhueta.png" id="1_mfpmg"]
+
+[node name="SilhuetaMulher" type="TextureRect" unique_id=1501876102]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 269)
+offset_right = 269.0
+offset_bottom = 398.0
+texture = ExtResource("1_mfpmg")
+expand_mode = 1
+stretch_mode = 6

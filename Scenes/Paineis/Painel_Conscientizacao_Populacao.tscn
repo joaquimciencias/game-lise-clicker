@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://yy57y8fdh8yp"]
+
+[ext_resource type="Script" uid="uid://cmvt03ys7np5x" path="res://Scripts/PainelConscientizacaoPopulacao/painel_barra_conscientizacao.gd" id="1_bfg5m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
+bg_color = Color(0.07058824, 0.0627451, 0.12941177, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.7529412, 0.5176471, 0.9882353, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Painel_Barra_Conscientizacao" type="MarginContainer" unique_id=289334806]
+offset_right = 654.0
+offset_bottom = 46.0
+script = ExtResource("1_bfg5m")
+
+[node name="Panel" type="Panel" parent="." unique_id=1116868257]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogn1v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=65092543]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1765368489]
+layout_mode = 2
+size_flags_vertical = 4
+offset_transform_enabled = true
+
+[node name="LigAtendidas" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=969365343]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Consciência da
+População"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer" unique_id=510126843]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.98, 0.98)
+theme_override_styles/fill = SubResource("StyleBoxFlat_g4v7s")
+value = 6.86
