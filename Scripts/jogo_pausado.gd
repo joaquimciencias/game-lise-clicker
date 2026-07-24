@@ -4,6 +4,7 @@ extends MarginContainer
 signal jogo_retomado
 
 func _ready() -> void:
+	add_to_group("janelas_pausa")
 	hide()
 
 func abrir() -> void:

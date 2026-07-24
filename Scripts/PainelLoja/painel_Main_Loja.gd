@@ -1,5 +1,6 @@
-extends MarginContainer
+extends Control
 
+signal loja_fechada
 signal compra_finalizada_com_sucesso(mensagem_texto: String)
 
 @export var item_loja_cena: PackedScene # Ajuste o caminho se necessário
@@ -19,7 +20,20 @@ signal compra_finalizada_com_sucesso(mensagem_texto: String)
 @onready var conteudo_conscientizacao = $PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoConscientizacao
 @onready var conteudo_formacao = $PainelAnimLoja/VBoxContainer/ScrollContainer/ConteudoFormacao
 
+@onready var lbl_fisica_loja = $PainelAnimLoja/VBoxContainer/HBoxContainer2/Fisicas/HBoxContainer/Num
+@onready var lbl_psicologica_loja = $PainelAnimLoja/VBoxContainer/HBoxContainer2/Psicologicas/HBoxContainer/Num
+@onready var lbl_moral_loja = $PainelAnimLoja/VBoxContainer/HBoxContainer2/Morais/HBoxContainer/Num
+@onready var lbl_patrimonial_loja = $PainelAnimLoja/VBoxContainer/HBoxContainer2/Patrimoniais/HBoxContainer/Num
+
+
 func _ready():
+	# Conecta a função de atualizar os itens ao sinal global do EventBus
+	EventBus.pontos_atualizados.connect(_atualizar_todos_os_itens)
+	
+	# Atualiza os itens uma vez logo ao abrir/instanciar a loja
+	_atualizar_todos_os_itens()
+	
+	add_to_group("loja_principal") # Garante que a Main encontre a loja no grupo
 	# Conectar sinais dos botões de abas
 	btn_expansao.pressed.connect(_on_expansao_pressed)
 	btn_conscientizacao.pressed.connect(_on_conscientizacao_pressed)
@@ -94,6 +108,8 @@ func _on_item_compra_solicitada(item_clicado_data: ItemLojaResource):
 func _atualizar_todos_os_itens():
 	var pontos_jogador = _obter_pontos_reais_jogador()
 	
+	_atualizar_painel_pontos_copiado()
+	
 	for aba in [conteudo_expansao, conteudo_conscientizacao, conteudo_formacao]:
 		if not aba: continue
 		for item in aba.get_children():
@@ -120,3 +136,25 @@ func _obter_pontos_reais_jogador() -> Dictionary:
 		RequisitoResource.TipoRequisito.MORAIS: 0, 
 		RequisitoResource.TipoRequisito.PATRIMONIAIS: 0 
 	}
+
+
+func _atualizar_painel_pontos_copiado():
+	var pontos = _obter_pontos_reais_jogador()
+	
+	if lbl_fisica_loja:
+		lbl_fisica_loja.text = str(pontos.get(RequisitoResource.TipoRequisito.FISICAS, 0))
+	if lbl_psicologica_loja:
+		lbl_psicologica_loja.text = str(pontos.get(RequisitoResource.TipoRequisito.PSICOLOGICAS, 0))
+	if lbl_moral_loja:
+		lbl_moral_loja.text = str(pontos.get(RequisitoResource.TipoRequisito.MORAIS, 0))
+	if lbl_patrimonial_loja:
+		lbl_patrimonial_loja.text = str(pontos.get(RequisitoResource.TipoRequisito.PATRIMONIAIS, 0))
+
+func _on_fechar_pressed() -> void:
+	loja_fechada.emit() # Avisa o MainGame que a loja foi fechada
+	hide()
+
+func _exit_tree() -> void:
+	# Boa prática: desconecta quando a loja for destruída/fechada da tela
+	if EventBus.pontos_atualizados.is_connected(_atualizar_todos_os_itens):
+		EventBus.pontos_atualizados.disconnect(_atualizar_todos_os_itens)

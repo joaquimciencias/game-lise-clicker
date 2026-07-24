@@ -2,11 +2,12 @@ extends MarginContainer
 
 signal pontos_atualizados(total_pontos: int)
 
+
 # Pegando a referência dos 4 labels de texto "Num" baseados na hierarquia da sua imagem
-@onready var lbl_fisica = $VBoxContainer/VBoxContainer/Fisicas/VBoxContainer/Num
-@onready var lbl_psicologica = $VBoxContainer/VBoxContainer/Psicologicas/VBoxContainer/Num
-@onready var lbl_moral = $VBoxContainer/VBoxContainer/Morais/VBoxContainer/Num
-@onready var lbl_patrimonial = $VBoxContainer/VBoxContainer/Patrimoniais/VBoxContainer2/Num
+@onready var lbl_fisica = $VBoxContainer/VBoxContainer/Fisicas/HBoxContainer/Num
+@onready var lbl_psicologica = $VBoxContainer/VBoxContainer/Psicologicas/HBoxContainer/Num
+@onready var lbl_moral = $VBoxContainer/VBoxContainer/Morais/HBoxContainer/Num
+@onready var lbl_patrimonial = $VBoxContainer/VBoxContainer/Patrimoniais/HBoxContainer/Num
 
 # Contadores individuais
 var cont_fisica: int = 0
@@ -52,17 +53,12 @@ func registrar_novo_caso(tipo_recebido: int) -> void:
 			cont_patrimonial += 1
 			lbl_patrimonial.text = str(cont_patrimonial)
 
-	# --- NOVO: Calcula o total e avisa a Main que os pontos mudaram ---
+	# 1. Mantém o seu sinal local original (caso a cena 'Game' ainda use ele diretamente)
 	var total_ligacoes_atendidas = cont_fisica + cont_psicologica + cont_moral + cont_patrimonial
 	pontos_atualizados.emit(total_ligacoes_atendidas)
 
-	# Seu código original que notifica a loja continua aqui embaixo:
-	_notificar_mudanca_loja()
-
-func _notificar_mudanca_loja():
-	var main_loja = get_tree().get_first_node_in_group("loja_principal")
-	if main_loja.has_method("_atualizar_todos_os_itens"):
-		main_loja._atualizar_todos_os_itens()
+	# 2. Avisa o EventBus global que os pontos/casos mudaram
+	EventBus.pontos_atualizados.emit()
 
 # Retorna os pontos reais acumulados no jogo mapeados para o Enum dos requisitos
 func obter_pontos_atuais() -> Dictionary:

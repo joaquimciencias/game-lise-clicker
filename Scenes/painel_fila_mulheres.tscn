@@ -16,17 +16,35 @@ shader = SubResource("Shader_kqi3h")
 shader_parameter/color_top = Color(0.65, 0.4, 1, 1)
 shader_parameter/color_bottom = Color(0.2, 0.05, 0.45, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Painel_Fila_Mulheres" type="MarginContainer" unique_id=1309833481]
 clip_children = 1
 offset_right = 262.0
 offset_bottom = 420.0
 script = ExtResource("1_nrtg4")
 
-[node name="Panel" type="Panel" parent="." unique_id=1620213227]
+[node name="ContainerFila" type="Panel" parent="." unique_id=1620213227]
+clip_children = 2
 material = SubResource("ShaderMaterial_t3ldg")
-clip_contents = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yf5fn")
 
-[node name="ContainerFila" type="Control" parent="." unique_id=1889070967]
-clip_contents = true
+[node name="Interrogacao" type="Label" parent="." unique_id=1531638415]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 118
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titulo" type="Label" parent="." unique_id=661231775]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Vítima"
+horizontal_alignment = 1

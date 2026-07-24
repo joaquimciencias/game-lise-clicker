@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bge17d1iadmth" path="res://Scenes/Paineis/Painel_Tipos_Conscientizados.tscn" id="4_welcp"]
 [ext_resource type="PackedScene" uid="uid://yy57y8fdh8yp" path="res://Scenes/Paineis/Painel_Conscientizacao_Populacao.tscn" id="6_tlyib"]
 [ext_resource type="PackedScene" uid="uid://dphycmd0ootjn" path="res://Scenes/jogo_pausado.tscn" id="8_tlyib"]
-[ext_resource type="PackedScene" uid="uid://jaayhjink2ho" path="res://Scenes/Paineis/Painel_Main_Loja.tscn" id="10_4pyk1"]
 [ext_resource type="PackedScene" uid="uid://bybpi3hsci57f" path="res://Scenes/painel_fila_mulheres.tscn" id="13_mlarl"]
 [ext_resource type="PackedScene" uid="uid://dng5vojaos8b4" path="res://Scenes/Paineis/painel_mini_mapa.tscn" id="14_7u3cf"]
 
@@ -114,9 +113,5 @@ offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="JogoPausado" parent="." unique_id=2052550778 instance=ExtResource("8_tlyib")]
-visible = false
-layout_mode = 1
-
-[node name="PainelMainLoja" parent="." unique_id=1780509758 instance=ExtResource("10_4pyk1")]
 visible = false
 layout_mode = 1

@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://crykumbmo7xex"]
 
 [ext_resource type="Script" uid="uid://bxy6gpty4ihle" path="res://Scripts/Eventos/ViolenciaSexual/evento_violencia_sexual.gd" id="1_w6hpp"]
-[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="2_dgcow"]
+[ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="3_b4q0l"]
+[ext_resource type="Texture2D" uid="uid://d2nrqdr1xr7fi" path="res://Assets/exclamation.png" id="3_lf3fl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("3_b4q0l")
+shader_parameter/lod = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knir1"]
 bg_color = Color(1, 1, 1, 1)
@@ -9,18 +14,48 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0.9621281, 0.09614452, 0.24631736, 0.6)
+shadow_color = Color(1, 0.12941177, 0.2784314, 1)
 shadow_size = 6
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+bg_color = Color(0.7014679, 0.10832559, 0.21819735, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf3fl"]
+bg_color = Color(0.5372549, 0.5254902, 0.61960787, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.972549, 0.972549, 0.972549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4q0l"]
+bg_color = Color(0.76862746, 0.12941177, 0.2784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
-bg_color = Color(0.42799994, 0.63221323, 0.9217931, 1)
+bg_color = Color(0.3254902, 0.3137255, 0.41960785, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.972549, 0.972549, 0.972549, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="EventoViolenciaSexual" type="Control" unique_id=1114660449]
+process_mode = 3
 layout_mode = 3
 anchor_left = 0.16059028
 anchor_top = 0.15277778
@@ -30,76 +65,101 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_w6hpp")
-metadata/_edit_horizontal_guides_ = [99.0, 552.0, 324.0]
-metadata/_edit_vertical_guides_ = [185.0, 966.0, 576.0]
+metadata/_edit_horizontal_guides_ = [99.0, 552.0, 324.0, 0.0]
+metadata/_edit_vertical_guides_ = [185.0, 966.0, 576.0, 0.0, 1152.0]
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1584066118]
+[node name="PanelDesfoque" type="Panel" parent="." unique_id=57193378]
+material = SubResource("ShaderMaterial_g4v7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -98.0
+offset_right = 186.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Panel2" type="Panel" parent="." unique_id=1309830451]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1309830451]
-layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_knir1")
+metadata/_edit_use_anchors_ = true
 
 [node name="TimerProgresso" type="Timer" parent="." unique_id=247612418]
 wait_time = 60.0
 one_shot = true
 
-[node name="LabelTimer" type="Label" parent="." unique_id=1193681171]
-layout_mode = 0
-offset_left = 693.0
-offset_top = 6.0
-offset_right = 767.0
-offset_bottom = 48.0
+[node name="PanelTimer" type="Panel" parent="." unique_id=771609461]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 672.0
+offset_top = 5.0
+offset_right = -5.5
+offset_bottom = -391.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yf5fn")
+
+[node name="LabelTimer" type="Label" parent="PanelTimer" unique_id=1193681171]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9756722
+anchor_top = 0.022075055
+anchor_right = 0.9756722
+anchor_bottom = 0.022075055
+offset_left = -84.98207
+offset_top = 3.7417219
+offset_right = -10.982071
+offset_bottom = 45.741722
+grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "30.0s"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="LabelDescricao" type="Label" parent="." unique_id=1838131606]
+[node name="LabelDescricao2" type="Label" parent="." unique_id=624927515]
 layout_mode = 0
-offset_top = 111.0
+offset_top = 51.0
 offset_right = 781.0
-offset_bottom = 184.0
+offset_bottom = 69.0
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "Um caso de violência sexual foi identificado!
- Acione a rede imediatamente!"
+theme_override_font_sizes/font_size = 13
+text = "Prioridade crítica"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=258037880]
-layout_mode = 0
-anchor_left = 0.04865557
-anchor_top = 0.44812363
-anchor_right = 0.95134443
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15492958
+anchor_top = 0.50110376
+anchor_right = 0.83866835
 anchor_bottom = 0.9293598
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="MarginContainer2" unique_id=48067025]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lf3fl")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2" unique_id=1142599088]
+custom_minimum_size = Vector2(321.12, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-
-[node name="LabelDescricao2" type="Label" parent="MarginContainer2/VBoxContainer2" unique_id=900011150]
-layout_mode = 2
-size_flags_vertical = 10
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Progresso do atendimento:"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ProgressBarAtendimento" type="ProgressBar" parent="MarginContainer2/VBoxContainer2" unique_id=1287616617]
 layout_mode = 2
@@ -107,10 +167,88 @@ size_flags_vertical = 1
 value = 100.0
 
 [node name="BotaoAcionar" type="Button" parent="MarginContainer2/VBoxContainer2" unique_id=1600385612]
+custom_minimum_size = Vector2(288.06, 0)
 layout_mode = 2
-text = "CLIQUE AQUI PARA LIGAR PARA A DELEGACIA"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = -7
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_b4q0l")
+text = " LIGAR PARA A DELEGACIA"
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=510652979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 114.0
+offset_right = -54.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer3" unique_id=1963038094]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="LabelDescricao3" type="Label" parent="MarginContainer3/Panel" unique_id=893800227]
+custom_maximum_size = Vector2(600, -1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "\"Alô?! Me ajuda... Ele me... ele fez de novo. Disse que ninguém ia
+ acreditar em mim. Meu corpo ainda dói... eu me sinto tão suja. 
+Espera... acho que ele voltou. Eu preciso deslig—...\"
+(A ligação cai...)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LabelDescricao" type="Label" parent="." unique_id=1838131606]
+layout_mode = 0
+offset_top = 68.0
+offset_right = 781.0
+offset_bottom = 110.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.12941177, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(0.26928037, 0.03353472, 0.04882832, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Interceptação Emergencial"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=945650988]
-position = Vector2(391, 65)
-scale = Vector2(0.5859375, 0.5859375)
-texture = ExtResource("2_dgcow")
+position = Vector2(391, 7.6293945e-06)
+scale = Vector2(0.73437554, 0.73437536)
+texture = ExtResource("3_lf3fl")
+
+[node name="Label" type="Label" parent="." unique_id=784367046]
+layout_mode = 0
+offset_left = 23.999996
+offset_top = 125.0
+offset_right = 68.0
+offset_bottom = 263.0
+rotation = -0.43633232
+theme_override_colors/font_color = Color(1, 0.12941177, 0.2784314, 1)
+theme_override_font_sizes/font_size = 101
+text = "\""
+
+[node name="Label2" type="Label" parent="." unique_id=502937212]
+layout_mode = 0
+offset_left = 719.00006
+offset_top = 116.99999
+offset_right = 763.00006
+offset_bottom = 255.0
+rotation = 0.43633232
+theme_override_colors/font_color = Color(1, 0.12941177, 0.2784314, 1)
+theme_override_font_sizes/font_size = 101
+text = "\""

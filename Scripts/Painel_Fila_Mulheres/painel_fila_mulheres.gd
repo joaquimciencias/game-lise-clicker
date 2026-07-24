@@ -2,7 +2,7 @@ extends MarginContainer
 
 const SILHUETA_CENA = preload("res://Scenes/Paineis/Fila_Mulheres/silhueta_mulher.tscn")
 
-@onready var container_fila: Control = $ContainerFila
+@onready var container_fila: Panel = $ContainerFila
 
 var espacamento_x: float = 60.0 
 var limite_maximo: int = 2

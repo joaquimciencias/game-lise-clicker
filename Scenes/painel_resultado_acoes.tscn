@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://cmdjwaqdoemhv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r8nc"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.4107054, 0.67882913, 0.36377206, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt11x"]
+bg_color = Color(1, 0.33298364, 0.35254145, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Painel_ResultadoAcoes" type="MarginContainer" unique_id=1448433872]
+offset_left = 886.0
+offset_top = 504.0
+offset_right = 1136.0
+offset_bottom = 632.0
+
+[node name="Panel" type="Panel" parent="." unique_id=978602260]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=763529622]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer" unique_id=868742520]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7r8nc")
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel2" unique_id=1798777276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resultado das Ações"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1577445936]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=773904115]
+custom_minimum_size = Vector2(41.08, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=500991151]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel2" unique_id=191656109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1308534233]
+custom_minimum_size = Vector2(76.965, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=2086560492]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/Panel2" unique_id=1863598765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Correto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=881941604]
+custom_minimum_size = Vector2(101.785, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer4" unique_id=2101425242]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer4/Panel2" unique_id=696593659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Patrimonial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1517588707]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=352523854]
+custom_minimum_size = Vector2(41.08, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=65500279]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt11x")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/Panel2" unique_id=1416665465]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=125801803]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer2/VBoxContainer3" unique_id=2139715399]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt11x")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer3/Panel2" unique_id=1133168517]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Incorreto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=13667946]
+custom_minimum_size = Vector2(101.785, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer2/VBoxContainer4" unique_id=683851130]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt11x")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer4/Panel2" unique_id=1595082637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Patrimonial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=67062243]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=266433544]
+custom_minimum_size = Vector2(41.08, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer3/VBoxContainer2" unique_id=899163470]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer2/Panel2" unique_id=913113117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=1678486732]
+custom_minimum_size = Vector2(76.965, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer3/VBoxContainer3" unique_id=1704911402]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer3/Panel2" unique_id=461941676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Correto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=1324863800]
+custom_minimum_size = Vector2(101.785, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer3/VBoxContainer4" unique_id=558555639]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer4/Panel2" unique_id=1106063071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Patrimonial"
+horizontal_alignment = 1
+vertical_alignment = 1

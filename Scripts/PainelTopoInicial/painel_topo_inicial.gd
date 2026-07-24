@@ -1,5 +1,7 @@
 extends MarginContainer # Ou MarginContainer/Control, dependendo do tipo do seu nó raiz
 
+signal jogo_pausado
+
 # Referências baseadas na hierarquia da sua imagem
 @onready var lbl_dias = $HBoxConteudo/VBoxDiasRestantes/BotaoDiasRestantes/CenterContainer/VBoxContainer/Num
 @onready var lbl_ligacoes = $HBoxConteudo/HBoxLigacoesTotais/BotaoLigacoesTotais/CenterContainer/VBoxContainer/Num
@@ -26,3 +28,7 @@ func atualizar_precisao(porcentagem: float) -> void:
 	if lbl_precisao:
 		# "%.0f%%" formata o float sem casas decimais e adiciona o símbolo de %
 		lbl_precisao.text = "%.0f%%" % porcentagem
+
+
+func _on_botao_pausa_pressed() -> void:
+	emit_signal("jogo_pausado")
