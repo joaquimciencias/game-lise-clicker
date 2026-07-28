@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blt1qg6n423in"]
 
-[ext_resource type="Script" uid="uid://b6rp5vuhbup4d" path="res://Scripts/game.gd" id="1_ehpp2"]
+[ext_resource type="Script" uid="uid://4wqd58jvqxop" path="res://Scripts/game.gd" id="1_ehpp2"]
 [ext_resource type="Texture2D" uid="uid://bv48g2ujw1lhc" path="res://Assets/IMG/Mockup.png" id="2_a1v5b"]
 [ext_resource type="PackedScene" uid="uid://dqdlordgd2hni" path="res://Scenes/Paineis/Painel_Atendimento.tscn" id="3_dfrvd"]
 [ext_resource type="PackedScene" uid="uid://bbyfet6onremx" path="res://Scenes/painel_topo_inicial.tscn" id="3_n3a5q"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://jaayhjink2ho" path="res://Scenes/Paineis/Painel_Main_Loja.tscn" id="10_4pyk1"]
 [ext_resource type="PackedScene" uid="uid://bybpi3hsci57f" path="res://Scenes/painel_fila_mulheres.tscn" id="13_mlarl"]
 [ext_resource type="PackedScene" uid="uid://dng5vojaos8b4" path="res://Scenes/Paineis/painel_mini_mapa.tscn" id="14_7u3cf"]
+[ext_resource type="PackedScene" uid="uid://cmdjwaqdoemhv" path="res://Scenes/painel_resultado_acoes.tscn" id="15_toast"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7we58"]
 texture = ExtResource("2_a1v5b")
@@ -105,18 +106,43 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.010416667
 anchor_top = 0.7777778
-anchor_right = 0.9852431
+anchor_right = 0.7612847
 anchor_bottom = 0.97530866
-offset_left = 0.0
 offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="JogoPausado" parent="." unique_id=2052550778 instance=ExtResource("8_tlyib")]
 visible = false
 layout_mode = 1
 
+[node name="Painel_ResultadoAcoes" parent="." unique_id=541315978 instance=ExtResource("15_toast")]
+layout_mode = 1
+offset_left = 886.0
+offset_top = 504.0
+offset_right = -17.0
+offset_bottom = -16.0
+
+[node name="LabelAnimacaoDia" type="Label" parent="." unique_id=1001979444]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.535
+anchor_right = 0.5
+anchor_bottom = 0.535
+offset_left = -44.0
+offset_top = -45.180023
+offset_right = 44.0
+offset_bottom = -0.1800232
+pivot_offset = Vector2(44, 22)
+theme_override_font_sizes/font_size = 32
+text = "-1 Dia"
+horizontal_alignment = 1
+
 [node name="PainelMainLoja" parent="." unique_id=1780509758 instance=ExtResource("10_4pyk1")]
 visible = false
 layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 50.0

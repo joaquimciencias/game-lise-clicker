@@ -110,8 +110,8 @@ func retomar_atendimento() -> void:
 	if timer.is_paused():
 		timer.paused = false
 		# Retoma o tween também se necessário (embora o iniciar_novo_tempo() costume resolver)
-		if tween_barra:
-			tween_barra.paused = false
+		#if tween_barra:
+			#tween_barra.paused = false
 	elif timer.is_stopped() and not lista_de_relatos.is_empty():
 		iniciar_novo_tempo()
 

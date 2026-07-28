@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://crykumbmo7xex"]
+
+[ext_resource type="Script" uid="uid://bxy6gpty4ihle" path="res://Scripts/Eventos/evento_25.gd" id="1_w6hpp"]
+[ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="3_b4q0l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("3_b4q0l")
+shader_parameter/lod = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knir1"]
+bg_color = Color(0.08, 0.05, 0.09, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.08, 0.2, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0, 0.2, 0.4)
+shadow_size = 12
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4q0l"]
+bg_color = Color(0.85, 0.08, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="EventoViolenciaSexual" type="Control" unique_id=1692973756]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w6hpp")
+
+[node name="PanelDesfoque" type="Panel" parent="." unique_id=2114328345]
+material = SubResource("ShaderMaterial_g4v7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OverlaySirene" type="Control" parent="." unique_id=1563456168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SirenRed" type="ColorRect" parent="OverlaySirene" unique_id=40873040]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0.15, 1)
+
+[node name="SirenBlue" type="ColorRect" parent="OverlaySirene" unique_id=1283745835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.35, 1, 1)
+
+[node name="OverlayGlitch" type="ColorRect" parent="." unique_id=1460068558]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.85, 1, 0.25)
+
+[node name="PanelPrincipal" type="Panel" parent="." unique_id=409656225]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -240.0
+offset_right = 380.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knir1")
+
+[node name="LabelTitulo" type="Label" parent="." unique_id=1862872739]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 105.0
+offset_right = 350.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+text = "LIGAÇÃO INTERCEPTADA — EMERGÊNCIA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="LabelPrioridade" type="Label" parent="." unique_id=2083455271]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 145.0
+offset_right = 350.0
+offset_bottom = 170.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "PRIORIDADE MÁXIMA — VÍTIMA EM RISCO IMINENTE"
+horizontal_alignment = 1
+
+[node name="PanelTimer" type="Panel" parent="." unique_id=1440823777]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 95.0
+offset_right = -200.0
+offset_bottom = 135.0
+grow_horizontal = 0
+
+[node name="LabelTimer" type="Label" parent="PanelTimer" unique_id=1469245993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.1, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "35.0s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainerRelato" type="VBoxContainer" parent="." unique_id=651418089]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -123.0
+offset_right = 320.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainerRelato" unique_id=804134448]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Aviso" type="Label" parent="MarginContainerRelato/Panel" unique_id=1868361538]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.95, 0.92, 0.95, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainerAcao" type="MarginContainer" parent="." unique_id=1346454290]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -20.0
+offset_right = 220.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerAcao" unique_id=355327654]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ProgressBarAtendimento" type="ProgressBar" parent="MarginContainerAcao/VBoxContainer" unique_id=917141760]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="BotaoAcionar" type="Button" parent="MarginContainerAcao/VBoxContainer" unique_id=1905984063]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_b4q0l")
+text = "🚨 LIGAR PARA A POLÍCIA (190)"
+
+[node name="TimerProgresso" type="Timer" parent="." unique_id=1526990754]
+one_shot = true
+
+[node name="Audios" type="Node" parent="." unique_id=1164576342]
+
+[node name="AudioSirene" type="AudioStreamPlayer" parent="Audios" unique_id=1085154769]
+
+[node name="AudioHeartbeat" type="AudioStreamPlayer" parent="Audios" unique_id=1622565349]
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="Audios" unique_id=390938396]
+
+[node name="AudioGlitch" type="AudioStreamPlayer" parent="Audios" unique_id=1743318911]

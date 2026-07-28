@@ -17,7 +17,7 @@ func _ready() -> void:
 		progress_bar_damage.min_value = 0.0
 		progress_bar_damage.step = 0.0
 
-	definir_conscientizacao(100.0) # Começa zerada
+	definir_conscientizacao(0.0) # Começa zerada
 	
 	# Ajusta a posição inicial do nó de partículas para a base da barra
 	_atualizar_area_particulas()
@@ -61,6 +61,7 @@ func definir_conscientizacao(valor_alvo: float) -> void:
 func _process(_delta: float) -> void:
 	# Atualiza dinamicamente enquanto a barra anima suavemente com o Tween
 	_atualizar_area_particulas()
+
 
 
 func _atualizar_area_particulas() -> void:

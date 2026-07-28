@@ -95,7 +95,7 @@ func _on_item_compra_solicitada(item_clicado_data: ItemLojaResource):
 				novo_custo += 1
 			req.custo = int(novo_custo)
 
-		# --- MODIFICADO: Em vez de criar o popup aqui, avisa a MainGame ---
+		# --- NOTIFICA O JOGO PARA MOSTRAR O POPUP ---
 		var texto_notificacao = "Melhoria Adquirida:\n%s!" % item_clicado_data.nome_item
 		compra_finalizada_com_sucesso.emit(texto_notificacao)
 

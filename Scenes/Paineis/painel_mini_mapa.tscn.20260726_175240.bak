@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dng5vojaos8b4"]
+
+[node name="Painel_MiniMapa" type="MarginContainer" unique_id=2011799781]
+offset_left = 12.0
+offset_top = 504.0
+offset_right = 1135.0
+offset_bottom = 632.0
+
+[node name="Panel" type="Panel" parent="." unique_id=2064801532]
+layout_mode = 2
+
+[node name="Label_MiniMapa" type="Label" parent="." unique_id=212506258]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = " Mini-Mapa"
+
+[node name="Label" type="Label" parent="." unique_id=1497389661]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Em Desenvolvimento..."

@@ -18,7 +18,7 @@ config/icon="uid://cr5rkomwwsq2v"
 [autoload]
 
 TransitionScreen="*uid://dw8xa70pbo2mq"
-EventBus="*uid://o1andgh2r4mv"
+EventBus="*uid://d041rfax5h3mm"
 
 [display]
 

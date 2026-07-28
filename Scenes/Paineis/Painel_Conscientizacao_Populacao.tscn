@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yy57y8fdh8yp"]
 
-[ext_resource type="Script" uid="uid://cmvt03ys7np5x" path="res://Scripts/PainelConscientizacaoPopulacao/painel_barra_conscientizacao.gd" id="1_bfg5m"]
+[ext_resource type="Script" uid="uid://brvnmydg2554" path="res://Scripts/PainelConscientizacaoPopulacao/painel_barra_conscientizacao.gd" id="1_bfg5m"]
 [ext_resource type="Texture2D" uid="uid://dxl27w4ps02ih" path="res://Assets/fita-roxa.png" id="2_6ipvi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]

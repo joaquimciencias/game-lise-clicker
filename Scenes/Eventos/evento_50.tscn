@@ -1,0 +1,169 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcycgdagw1gtj"]
+
+[ext_resource type="Script" uid="uid://dt82ycpiuciqm" path="res://Scripts/Eventos/evento_50.gd" id="1_sj0du"]
+[ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="2_amkia"]
+[ext_resource type="Texture2D" uid="uid://d2nrqdr1xr7fi" path="res://Assets/exclamation.png" id="3_p2lgt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("2_amkia")
+shader_parameter/lod = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knir1"]
+bg_color = Color(0.05, 0.07, 0.12, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.231, 0.51, 0.965, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.231, 0.51, 0.965, 0.45)
+shadow_size = 14
+shadow_offset = Vector2(0, 2)
+
+[node name="EventoFakeNews" type="Control" unique_id=1114660449]
+process_mode = 3
+layout_mode = 3
+anchor_left = 0.16059028
+anchor_top = 0.15277778
+anchor_right = 0.8385417
+anchor_bottom = 0.8518519
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sj0du")
+
+[node name="PanelDesfoque" type="Panel" parent="." unique_id=57193378]
+material = SubResource("ShaderMaterial_g4v7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -98.0
+offset_right = 186.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PanelBorderGlow" type="Panel" parent="." unique_id=1309830451]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knir1")
+
+[node name="TimerProgresso" type="Timer" parent="." unique_id=247612418]
+wait_time = 30.0
+one_shot = true
+
+[node name="LabelPrioridade" type="Label" parent="." unique_id=624927515]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 781.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.6, 0.78, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "MONITORAMENTO DE REDES — OPERAÇÃO REDE LILÁS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="LabelTitulo" type="Label" parent="." unique_id=1838131606]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 781.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.231, 0.51, 0.965, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.05, 0.15, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 22
+text = "🛡️ REDE LILÁS: COMBATE À DESINFORMAÇÃO"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=945650988]
+position = Vector2(391, 10)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_p2lgt")
+
+[node name="MarginContainerRelato" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="MarginContainerRelato"]
+layout_mode = 2
+
+[node name="Aviso" type="Label" parent="MarginContainerRelato/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="ContainerBaloes" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTimerHUD" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -160.0
+offset_top = 15.0
+offset_right = -25.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.95, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "⏱️ Tempo: 30.0s"
+horizontal_alignment = 2
+
+[node name="LabelPlacarHUD" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 200.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.3, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "🎯 Fake News Derrubadas: 0/3"

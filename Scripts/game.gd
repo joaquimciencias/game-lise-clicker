@@ -6,10 +6,12 @@ const POPUP_NOTIFICACAO_SCENE = preload("res://Scenes/popup_notificacao.tscn")
 # Cenas dos Eventos Extras mapeadas por porcentagem da barra (25%, 50%, 75%)
 # Ajuste os caminhos das cenas de 50% e 75% conforme suas pastas
 const EVENTOS_EXTRAS = {
-	25.0: preload("res://Scenes/Paineis/Painel_Main_Loja.tscn"),
-	50.0: preload("res://Scenes/Eventos/evento_violencia_sexual.tscn"), # Substitua pela cena do evento de 50%
-	75.0: preload("res://Scenes/Eventos/evento_violencia_sexual.tscn")  # Substitua pela cena do evento de 75%
+	25.0: preload("res://Scenes/Eventos/evento_25.tscn"),
+	50.0: preload("res://Scenes/Eventos/evento_50.tscn"), # Substitua pela cena do evento de 50%
+	75.0: preload("res://Scenes/Eventos/evento_75.tscn")  # Substitua pela cena do evento de 75%
 }
+
+const CENA_VITORIA_DERROTA := "res://Scenes/Paineis/Painel_Vitoria_Derrota.tscn"
 
 # Constantes de impacto na conscientização da população
 const CORRECT_GAIN: float = 3.0
@@ -21,15 +23,18 @@ const TIMEOUT_PENALTY: float = -0.5
 @onready var painel_fila_mulheres = $Painel_Fila_Mulheres
 @onready var pnl_conscientizacao: Control = $Painel_Tipos_Conscientizados
 @onready var pnl_barra_conscientizacao: Control = $Painel_Barra_Conscientizacao
+@onready var painel_resultado_acoes: Control = $Painel_ResultadoAcoes
+
 @onready var jogo_pausado: MarginContainer = $JogoPausado
 
+@onready var lbl_animacao_dia: Label = $LabelAnimacaoDia
 
 # Variáveis para controle das estatísticas do Topo
 var total_tentativas: int = 0
 var total_acertos: int = 0
 
 var dias_totais: int = 30
-var dias_restantes: int = 28
+var dias_restantes: int = 30 #------ COLOQUE AQUI O VALOR DOS DIAS RESTANTES
 
 # Estado global da conscientização (0.0 a 100.0)
 var conscientizacao_atual: float = 0.0
@@ -40,6 +45,10 @@ var eventos_disparados: Array[float] = []
 var pressed = false
 
 var contador_relatos_loja: int = 0
+
+var jogo_finalizado: bool = false
+var tempo_jogo_segundos: float = 0.0
+var total_ligacoes: int = 0
 
 func _ready() -> void:
 	# Conecta o sinal global do minigame vindo do EventBus
@@ -63,6 +72,14 @@ func _ready() -> void:
 	var loja = get_tree().get_first_node_in_group("loja_principal")
 	if loja:
 		loja.compra_finalizada_com_sucesso.connect(criar_popup_na_tela_cheia)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		conscientizacao_atual+=15
+	if not jogo_finalizado:
+		tempo_jogo_segundos += delta
+	
+
 
 func _on_violencia_computada(tipo: String) -> void:
 	if pnl_conscientizacao.has_method("atualizar_contador"):
@@ -95,12 +112,19 @@ func _on_tentativa_atendimento_processada(resultado: int) -> void:
 			total_acertos += 1
 			delta = CORRECT_GAIN
 			acertou = true
+			EventBus.atendimento_classificacao_correta.emit()
 		1: # ERRADO (ResultadoRodada.ERRADO)
 			delta = WRONG_PENALTY
 			acertou = false
+			EventBus.atendimento_classificacao_errada.emit()
 		2: # TIMEOUT (ResultadoRodada.TIMEOUT)
 			delta = TIMEOUT_PENALTY
 			acertou = false
+			EventBus.atendimento_ligacao_perdida.emit()
+
+	if painel_resultado_acoes and painel_atendimento.relato_atual:
+		var categoria: String = painel_atendimento.relato_atual.get("tipo", "Ação")
+		painel_resultado_acoes.mostrar_acao(categoria, resultado, delta)
 
 	# 1. Atualiza a precisão geral do topo
 	var precisao_atual: float = 100.0
@@ -115,11 +139,17 @@ func _on_tentativa_atendimento_processada(resultado: int) -> void:
 	
 	if pnl_barra_conscientizacao:
 		pnl_barra_conscientizacao.definir_conscientizacao(conscientizacao_atual)
+	
+	EventBus.conscientizacao_alterada.emit(conscientizacao_atual)
 
 	# 3. CHAMA O FEEDBACK NO PAINEL COM O VALOR DAS CONSTANTES DO MAIN:
 	if painel_atendimento and painel_atendimento.has_method("exibir_feedback"):
 		# Aguarda a animação do Fade In e Fade Out terminar
 		await painel_atendimento.exibir_feedback(acertou, delta)
+
+		if conscientizacao_atual >= 100.0:
+			await _finalizar_jogo(true)
+			return
 		
 		# Avança a fila visual de mulheres
 		_on_relato_concluido()
@@ -137,10 +167,6 @@ func _on_tentativa_atendimento_processada(resultado: int) -> void:
 		
 	# 4. Verifica os gatilhos dos eventos extras (25%, 50%, 75%)
 	verificar_eventos_extras()
-
-	# 5. Verificação de Fim de Jogo / Vitória
-	if conscientizacao_atual >= 100.0:
-		print("Vitória! População totalmente conscientizada!")
 
 # --- SISTEMA GENÉRICO DE EVENTOS EXTRAS ---
 
@@ -179,6 +205,8 @@ func _on_minigame_extra_concluido(sucesso: bool, limiar: float) -> void:
 		print("Falha no evento de %d%%! Demora na resposta." % int(limiar))
 		conscientizacao_atual = clamp(conscientizacao_atual - 3.0, 0.0, 100.0)
 	
+	EventBus.conscientizacao_alterada.emit(conscientizacao_atual)
+	
 	if pnl_barra_conscientizacao:
 		pnl_barra_conscientizacao.definir_conscientizacao(conscientizacao_atual)
 		
@@ -188,6 +216,7 @@ func _on_minigame_extra_concluido(sucesso: bool, limiar: float) -> void:
 
 
 func _on_pontos_conscientizacao_atualizados(total_pontos: int) -> void:
+	total_ligacoes = total_pontos
 	if painel_topo:
 		painel_topo.atualizar_ligacoes(total_pontos)
 
@@ -215,7 +244,91 @@ func abrir_loja_automatica() -> void:
 
 
 # Chamado automaticamente quando o jogador clica no botão "Fechar" da loja
+# Chamado automaticamente quando o jogador clica no botão "Fechar" da loja
 func _on_loja_fechada_retomar() -> void:
-	print("🛍️ Loja fechada. Retomando os atendimentos...")
+	print("🛍️ Loja fechada. Reduzindo dia e retomando os atendimentos...")
+	
+	await animar_reducao_de_dia()
+
+	if jogo_finalizado:
+		return
+	
 	if painel_atendimento:
 		painel_atendimento.carregar_novo_relato()
+
+
+func animar_reducao_de_dia() -> void:
+	# 1. Reduz a lógica do dia
+	dias_restantes -= 1
+	
+	# Caso os nós de interface não existam por segurança, interrompe
+	if not lbl_animacao_dia or not painel_topo:
+		return
+
+	# 2. Configura o texto e a posição inicial (Centro da Tela)
+	lbl_animacao_dia.text = "-1 Dia" # Ou "Dia " + str(dias_restantes)
+	lbl_animacao_dia.visible = true
+	
+	var tamanho_tela = get_viewport_rect().size
+	lbl_animacao_dia.global_position = (tamanho_tela / 2) - (lbl_animacao_dia.size / 2)
+	lbl_animacao_dia.scale = Vector2(2.5, 2.5) # Começa bem grande
+	lbl_animacao_dia.modulate.a = 1.0          # Transparência 100%
+	
+	# 3. Pega a posição exata de destino lá no Label do Painel Topo
+	var destino = painel_topo.lbl_dias.global_position
+	
+	# 4. Criando a animação simultânea
+	var tween = create_tween().set_parallel(true)
+	
+	# Move do centro até o topo em 1.2 segundos com transição suave
+	tween.tween_property(lbl_animacao_dia, "global_position", destino, 1.2)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+		
+	# Diminui a escala ao mesmo tempo (de 2.5x para 1.0x)
+	tween.tween_property(lbl_animacao_dia, "scale", Vector2(1.0, 1.0), 1.2)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+		
+	# Faz desaparecer suavemente nos últimos instantes da animação
+	tween.tween_property(lbl_animacao_dia, "modulate:a", 0.0, 0.4).set_delay(0.8)
+	
+	# 5. Espera a animação acabar para ocultar o Label e atualizar o topo de fato
+	await tween.finished
+	lbl_animacao_dia.visible = false
+	
+	# Atualiza o contador oficial no topo após a animação chegar lá
+	painel_topo.atualizar_dias(dias_restantes, dias_totais)
+
+	if dias_restantes <= 0:
+		await _finalizar_jogo(false)
+
+
+func _finalizar_jogo(vitoria: bool) -> void:
+	if jogo_finalizado:
+		return
+
+	jogo_finalizado = true
+
+	if painel_atendimento and painel_atendimento.timer:
+		painel_atendimento.timer.paused = true
+
+	var tipo_resultado := "vitória" if vitoria else "derrota"
+	print("Fim de jogo (%s)! Transição em 3 segundos..." % tipo_resultado)
+	criar_popup_na_tela_cheia("Transição para a tela de %s em 3 segundos..." % tipo_resultado)
+
+	await get_tree().create_timer(3.0, false, false, false).timeout
+
+	var precisao_atual := 100.0
+	if total_tentativas > 0:
+		precisao_atual = (float(total_acertos) / float(total_tentativas)) * 100.0
+
+	EventBus.fim_de_jogo_vitoria = vitoria
+	EventBus.fim_de_jogo_stats = {
+		"tempo": int(tempo_jogo_segundos),
+		"ligacoes": total_ligacoes,
+		"precisao": int(precisao_atual),
+		"dias_restantes": dias_restantes,
+	}
+
+	TransitionScreen.transition_to_scene(CENA_VITORIA_DERROTA)
