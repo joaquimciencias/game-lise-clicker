@@ -51,6 +51,15 @@ var tempo_jogo_segundos: float = 0.0
 var total_ligacoes: int = 0
 
 func _ready() -> void:
+# --- ADICIONE ESTA LINHA AQUI ---
+	if get_node_or_null("/root/UpgradesManager"):
+		if not UpgradesManager.ponto_passivo_gerado.is_connected(_on_ponto_passivo_gerado):
+			UpgradesManager.ponto_passivo_gerado.connect(_on_ponto_passivo_gerado)
+
+	# Conecta a atualização dos Upgrades ao fluxo do Game
+	UpgradesManager.atributos_atualizados.connect(_on_atributos_upgrades_atualizados)
+	_on_atributos_upgrades_atualizados() # Aplica os valores iniciais
+	carregar_tutorial()
 	# Conecta o sinal global do minigame vindo do EventBus
 	EventBus.minigame_finalizado.connect(_on_minigame_extra_concluido)
 
@@ -82,8 +91,23 @@ func _process(delta: float) -> void:
 
 
 func _on_violencia_computada(tipo: String) -> void:
-	if pnl_conscientizacao.has_method("atualizar_contador"):
+	# 1. Normaliza a string para minúsculas e sem acentos para o EventBus
+	var tipo_limpo := tipo.to_lower()
+	if "fisic" in tipo_limpo:
+		tipo_limpo = "fisica"
+	elif "psico" in tipo_limpo:
+		tipo_limpo = "psicologica"
+	elif "mora" in tipo_limpo:
+		tipo_limpo = "moral"
+	elif "patri" in tipo_limpo:
+		tipo_limpo = "patrimonial"
+
+	# 2. Atualiza o painel visual
+	if pnl_conscientizacao and pnl_conscientizacao.has_method("atualizar_contador"):
 		pnl_conscientizacao.atualizar_contador(tipo)
+	
+	# 3. Registra o ponto acumulado no EventBus usando a chave padronizada (sem acento)
+	EventBus.adicionar_registro(tipo_limpo, 1)
 
 func _on_botao_pausa_pressed() -> void:
 	get_tree().paused = true
@@ -92,10 +116,10 @@ func _on_botao_pausa_pressed() -> void:
 func _on_jogo_retomado() -> void:
 	get_tree().paused = false 
 
-func criar_popup_na_tela_cheia(texto_recebido: String) -> void:
+func criar_popup_na_tela_cheia(texto_recebido: String, com_animacao: bool = true) -> void:
 	var novo_popup = POPUP_NOTIFICACAO_SCENE.instantiate()
 	add_child(novo_popup) 
-	novo_popup.mostrar_mensagem(texto_recebido)
+	novo_popup.mostrar_mensagem(texto_recebido, com_animacao)
 
 func _on_relato_concluido():
 	painel_fila_mulheres.avancar_fila()
@@ -179,6 +203,9 @@ func verificar_eventos_extras() -> void:
 
 func disparar_alerta_evento_extra(limiar: float) -> void:
 	print("ALERTA: Evento extra de %d%% será iniciado em 3 segundos!" % int(limiar))
+	
+	# Exibe o aviso sem a animação de popup de compra
+	criar_popup_na_tela_cheia("⚠️ AVISO: LIGAÇÃO INTERCEPTADA!", false)
 	
 	# O segundo argumento (process_always = false) garante que o timer de 3s
 	# rode mesmo se o jogo estiver com paused = true
@@ -315,7 +342,7 @@ func _finalizar_jogo(vitoria: bool) -> void:
 
 	var tipo_resultado := "vitória" if vitoria else "derrota"
 	print("Fim de jogo (%s)! Transição em 3 segundos..." % tipo_resultado)
-	criar_popup_na_tela_cheia("Transição para a tela de %s em 3 segundos..." % tipo_resultado)
+	criar_popup_na_tela_cheia("Fim de Jogo! Computando Resultados...", false)
 
 	await get_tree().create_timer(3.0, false, false, false).timeout
 
@@ -332,3 +359,40 @@ func _finalizar_jogo(vitoria: bool) -> void:
 	}
 
 	TransitionScreen.transition_to_scene(CENA_VITORIA_DERROTA)
+
+var tutorial_node: CanvasLayer = null
+
+
+
+func carregar_tutorial() -> void:
+	var tutorial_scene = preload("res://Scenes/tutorial_manager.tscn")
+	tutorial_node = tutorial_scene.instantiate()
+	add_child(tutorial_node)
+	tutorial_node.tutorial_concluido.connect(_on_tutorial_finalizado)
+
+func _on_tutorial_finalizado() -> void:
+	print("Tutorial finalizado!")
+
+func _on_atributos_upgrades_atualizados() -> void:
+	# 1. Aplica tempo de tolerância no Painel de Atendimento
+	if painel_atendimento and "tempo_limite" in painel_atendimento:
+		painel_atendimento.tempo_limite = UpgradesManager.tempo_limite_chamada + UpgradesManager.tempo_tolerancia_extra
+
+	# 2. Atualiza a meta de vitória no jogo
+	if UpgradesManager.meta_consciencia_vitoria < 100.0:
+		print("🎯 Meta de Vitória reduzida para: ", UpgradesManager.meta_conscientizacao_vitoria, "%")
+
+# Em Game.gd:
+func _on_ponto_passivo_gerado(tipo: String, quantidade: int) -> void:
+	if pnl_conscientizacao and pnl_conscientizacao.has_method("adicionar_pontos_por_tipo"):
+		pnl_conscientizacao.adicionar_pontos_por_tipo(tipo, quantidade)
+
+
+# Exemplo de fluxo quando a rodada encerra/inicia no Game:
+func preparar_proxima_rodada() -> void:
+	# 1. Aqui você usa a SUA variável/função real que já passa para a barra
+	# Exemplo: painel_barra_conscientizacao.definir_conscientizacao(sua_variavel_de_porcentagem)
+	
+	# 2. Chama o UpgradesManager para verificar a barra e definir se libera 1 ou 2 compras
+	if UpgradesManager:
+		UpgradesManager.iniciar_nova_rodada()

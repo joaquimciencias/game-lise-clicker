@@ -1,31 +1,21 @@
-[gd_scene format=3 uid="uid://b5f7ghs1mdmtx"]
+[gd_scene format=3 uid="uid://d3m0px78kqslv"]
 
-[ext_resource type="Script" uid="uid://b5ejs5lf8tots" path="res://Scripts/PainelLoja/linha_Requisito.gd" id="1_cxho5"]
-[ext_resource type="Texture2D" uid="uid://3ln5j0s5bw1x" path="res://Assets/IMG/icon.svg" id="2_50y00"]
+[ext_resource type="Script" path="res://Scripts/PainelLoja/linha_Requisito.gd" id="1_linha"]
 
-[node name="LinhaRequisito" type="HBoxContainer" unique_id=1572654862]
-script = ExtResource("1_cxho5")
+[node name="LinhaRequisito" type="HBoxContainer"]
+theme_override_constants/separation = 6
+script = ExtResource("1_linha")
 
-[node name="Imagem" type="TextureRect" parent="." unique_id=1042451]
-custom_minimum_size = Vector2(30, 30)
+[node name="IconeStatus" type="Label" parent="."]
 layout_mode = 2
-texture = ExtResource("2_50y00")
-expand_mode = 1
+theme_override_colors/font_color = Color(0.2, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 12
+text = "✔"
 
-[node name="Nome" type="Label" parent="." unique_id=1976265729]
-custom_minimum_size = Vector2(55, 0)
+[node name="LblTexto" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Físicas:"
-clip_text = true
-text_overrun_behavior = 5
-ellipsis_char = ":"
-
-[node name="Num" type="Label" parent="." unique_id=80950691]
-modulate = Color(0, 1, 0, 1)
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_constants/outline_size = 7
-text = "999 / 999"
-horizontal_alignment = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "Requisito necessário"
+autowrap_mode = 3

@@ -31,7 +31,7 @@ scale_min = 0.01
 scale_max = 0.089999996
 color = Color(1, 0.4862745, 0.99607843, 0.22352941)
 
-[node name="Painel_Barra_Conscientizacao" type="MarginContainer" unique_id=289334806]
+[node name="Painel_Barra_Conscientizacao" type="MarginContainer" unique_id=289334806 groups=["barra_conscientizacao"]]
 offset_right = 654.0
 offset_bottom = 46.0
 script = ExtResource("1_bfg5m")

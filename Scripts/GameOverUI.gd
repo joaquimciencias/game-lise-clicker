@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const CENA_GAME := "res://Scenes/01-game.tscn"
+const CENA_MENU_GAME := "res://Scenes/00-main_menu.tscn"
 
 @onready var label_vitoria: Label = $Control/VBoxContainer/LabelVitoria
 @onready var label_derrota: Label = $Control/VBoxContainer/LabelDerrota
@@ -35,6 +36,18 @@ func _configurar_resultado(vitoria: bool, stats: Dictionary) -> void:
 
 
 func _on_jogar_novamente_pressed() -> void:
+	if UpgradesManager:
+		UpgradesManager.resetar_upgrades()
+	
 	EventBus.fim_de_jogo_vitoria = false
 	EventBus.fim_de_jogo_stats = {}
 	TransitionScreen.transition_to_scene(CENA_GAME)
+
+
+func _on_button_2_pressed() -> void:
+	if UpgradesManager:
+		UpgradesManager.resetar_upgrades()
+	
+	EventBus.fim_de_jogo_vitoria = false
+	EventBus.fim_de_jogo_stats = {}
+	TransitionScreen.transition_to_scene(CENA_MENU_GAME)

@@ -1,5 +1,14 @@
 extends Node
 
+# --- ESTATÍSTICAS E RECURSOS DO JOGADOR ---
+var registros_totais: int = 0
+var registros_por_tipo: Dictionary = {
+	"fisica": 0,
+	"psicologica": 0,
+	"moral": 0,
+	"patrimonial": 0
+}
+
 # --- SINAIS DA LOJA E PONTOS ---
 @warning_ignore("unused_signal")
 signal pontos_atualizados
@@ -7,7 +16,6 @@ signal pontos_atualizados
 signal item_comprado(item)
 
 # --- SINAIS DE EVENTOS DE PROGRESSO ---
-# Emitidos quando o progresso atinge 25%, 50% ou 75%
 @warning_ignore("unused_signal")
 signal evento_gatilhado(porcentagem: int)
 @warning_ignore("unused_signal")
@@ -39,12 +47,26 @@ var fim_de_jogo_stats: Dictionary = {}
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-# Função utilitária para pausar o jogo de forma segura
+func adicionar_registro(tipo: String, quantidade: int = 1) -> void:
+	var tipo_normalizado = tipo.to_lower()
+	if registros_por_tipo.has(tipo_normalizado):
+		registros_por_tipo[tipo_normalizado] += quantidade
+		registros_totais += quantidade
+		pontos_atualizados.emit()
+
+func resetar_registros() -> void:
+	registros_totais = 0
+	registros_por_tipo = {
+		"fisica": 0,
+		"psicologica": 0,
+		"moral": 0,
+		"patrimonial": 0
+	}
+
 func pausar_jogo() -> void:
 	get_tree().paused = true
 	jogo_pausado.emit()
 
-# Função utilitária para retomar o jogo
 func retomar_jogo() -> void:
 	get_tree().paused = false
 	jogo_retomado.emit()

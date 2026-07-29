@@ -1,100 +1,69 @@
-@tool
-extends Control
+extends PanelContainer
 
-# Sinal para avisar a loja principal quando o botão de compra for clicado
-signal compra_solicitada(item_data: ItemLojaResource)
+var item_id: String = ""
 
-const LINHA_REQUISITO_SCENE = preload("res://Scenes/Paineis/Loja/Linha_Item_Requisito.tscn")
+@onready var lbl_nome = $Margin/VBox/HBoxHeader/LblNome
+@onready var lbl_nivel = $Margin/VBox/HBoxHeader/LblNivel
+@onready var lbl_desc = $Margin/VBox/LblDesc
+@onready var lbl_efeito = $Margin/VBox/LblEfeito
+@onready var progress_bar = $Margin/VBox/HBoxBottom/VBoxProgresso/ProgressBar
+@onready var lbl_progresso_txt = $Margin/VBox/HBoxBottom/VBoxProgresso/LblProgressoTxt
+@onready var btn_ativar = $Margin/VBox/HBoxBottom/BtnAtivar
 
-@onready var container_alvo = $VBoxContainer/HBoxContainer/VBoxContainer
-@onready var lbl_nome_item = $VBoxContainer/Label # Seu nó de título do item
+signal item_atualizado
 
-# Em vez de dicionário, exportamos o Resource do Item!
-@export var dados_item: ItemLojaResource:
-	set(value):
-		dados_item = value
-		if is_inside_tree():
-			_atualizar_linhas_requisitos()
+func configurar_card(id: String):
+	item_id = id
+	atualizar_ui()
 
-func _ready():
-	_atualizar_linhas_requisitos()
-
-func _atualizar_linhas_requisitos():
-	if not container_alvo:
-		container_alvo = $VBoxContainer/HBoxContainer/VBoxContainer
-	if not lbl_nome_item:
-		lbl_nome_item = $VBoxContainer/Label
-
-	if not dados_item:
-		return
-
-	lbl_nome_item.text = dados_item.nome_item
-
-	# --- NOVA LÓGICA DE VALIDAÇÃO DA COMPRA ---
-	var tudo_cumprido: bool = true
-
-	# 1. Se as linhas já existem no jogo, atualiza os valores e checa os requisitos
-	var linhas_existentes = []
-	for child in container_alvo.get_children():
-		if child.is_in_group("linha_dinamica"):
-			linhas_existentes.append(child)
-			
-	if linhas_existentes.size() == dados_item.requisitos.size() and not Engine.is_editor_hint():
-		for i in range(dados_item.requisitos.size()):
-			var req = dados_item.requisitos[i]
-			if req:
-				linhas_existentes[i]._atualizar_visual()
-				# Se o atual for menor que o custo, o jogador não pode comprar!
-				if req.atual < req.custo:
-					tudo_cumprido = false
-		
-		_organizar_e_bloquear_botao(tudo_cumprido)
-		return
-
-	# 2. Se estiver no Editor (ou criando do zero), faz a criação normal
-	for child in container_alvo.get_children():
-		if child.is_in_group("linha_dinamica") or child.name.begins_with("LinhaRequisito"):
-			container_alvo.remove_child(child)
-			child.queue_free()
+func atualizar_ui():
+	var dados = LojaData.banco_itens[item_id]
+	var nivel_atual = LojaData.niveis_itens[item_id]
 	
-	for i in range(dados_item.requisitos.size()):
-		var req = dados_item.requisitos[i]
-		if not req: continue
-		
-		var nova_linha = LINHA_REQUISITO_SCENE.instantiate()
-		nova_linha.name = "LinhaRequisito_%d" % i
-		nova_linha.add_to_group("linha_dinamica")
-		container_alvo.add_child(nova_linha)
+	lbl_nome.text = dados["nome"]
+	lbl_desc.text = dados["desc"]
+	lbl_nivel.text = "Nível " + str(nivel_atual) + "/3"
+	
+	if nivel_atual >= 3:
+		lbl_efeito.text = "✨ Benefício Máximo: " + dados["nv3"]["efeito"]
+		lbl_progresso_txt.text = "Concluído!"
+		progress_bar.value = 100
+		btn_ativar.disabled = true
+		btn_ativar.text = "✓ ATIVO"
+		return
 
-		if Engine.is_editor_hint():
-			nova_linha.owner = get_tree().edited_scene_root
+	var proximo_nv = nivel_atual + 1
+	var dados_nv = dados["nv" + str(proximo_nv)]
+	
+	lbl_efeito.text = "💡 O que muda: " + dados_nv["efeito"]
+	
+	# Verificação de requisitos
+	var total_atual = LojaData.get_total_registros()
+	var req_total_ok = total_atual >= dados_nv["req_total"]
+	
+	var req_especifico_ok = true
+	var txt_esp = ""
+	
+	if dados_nv["req_tipo"] != "":
+		var val_esp = LojaData.get(dados_nv["req_tipo"])
+		req_especifico_ok = val_esp >= dados_nv["val_tipo"]
+		txt_esp = " + " + str(dados_nv["val_tipo"]) + " " + dados_nv["req_tipo"].replace("reg_", "").capitalize()
 
-		nova_linha.dados_requisito = req
-		
-		# Checagem inicial para o editor ou nascimento do nó
-		if req.atual < req.custo:
-			tudo_cumprido = false
+	# Cálculo simples da porcentagem de progresso para a barra
+	var pct = clamp((float(total_atual) / float(dados_nv["req_total"])) * 100.0, 0.0, 100.0)
+	progress_bar.value = pct
+	
+	lbl_progresso_txt.text = "Meta: " + str(dados_nv["req_total"]) + " Acolhimentos" + txt_esp
+	
+	if req_total_ok and req_especifico_ok:
+		btn_ativar.disabled = false
+		btn_ativar.text = "🌟 APLICAR AÇÃO"
+	else:
+		btn_ativar.disabled = true
+		btn_ativar.text = "🔒 EM EM ANDAMENTO"
 
-	_organizar_e_bloquear_botao(tudo_cumprido)
-
-
-# Modificamos sua função antiga para também aplicar o estado do botão
-func _organizar_e_bloquear_botao(disponivel: bool):
-	if has_node("VBoxContainer/HBoxContainer/VBoxContainer/Button"):
-		var botao = $VBoxContainer/HBoxContainer/VBoxContainer/Button
-		container_alvo.move_child(botao, -1)
-		
-		# No editor, deixamos o botão sempre ativo para você testar o visual.
-		# No jogo rodando, ele obedece se os requisitos foram cumpridos!
-		if Engine.is_editor_hint():
-			botao.disabled = false
-		else:
-			# Se 'disponivel' for true, disabled vira false (botão ativo).
-			# Se 'disponivel' for false, disabled vira true (botão bloqueado).
-			botao.disabled = not disponivel
-
-# Conecte o sinal 'pressed' do seu Button a esta função no Inspector
-func _on_button_pressed() -> void:
-	if dados_item:
-		print("🔘 [ItemLoja]: Botão clicado! Emitindo sinal de compra...")
-		compra_solicitada.emit(dados_item)
+func _on_btn_ativar_pressed():
+	if LojaData.niveis_itens[item_id] < 3:
+		LojaData.niveis_itens[item_id] += 1
+		atualizar_ui()
+		emit_signal("item_atualizado")

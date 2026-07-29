@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bge17d1iadmth" path="res://Scenes/Paineis/Painel_Tipos_Conscientizados.tscn" id="4_welcp"]
 [ext_resource type="PackedScene" uid="uid://yy57y8fdh8yp" path="res://Scenes/Paineis/Painel_Conscientizacao_Populacao.tscn" id="6_tlyib"]
 [ext_resource type="PackedScene" uid="uid://dphycmd0ootjn" path="res://Scenes/jogo_pausado.tscn" id="8_tlyib"]
-[ext_resource type="PackedScene" uid="uid://jaayhjink2ho" path="res://Scenes/Paineis/Painel_Main_Loja.tscn" id="10_4pyk1"]
+[ext_resource type="PackedScene" uid="uid://cspiuqemguiso" path="res://Scenes/Paineis/Painel_Main_Loja.tscn" id="10_4pyk1"]
 [ext_resource type="PackedScene" uid="uid://bybpi3hsci57f" path="res://Scenes/painel_fila_mulheres.tscn" id="13_mlarl"]
 [ext_resource type="PackedScene" uid="uid://dng5vojaos8b4" path="res://Scenes/Paineis/painel_mini_mapa.tscn" id="14_7u3cf"]
 [ext_resource type="PackedScene" uid="uid://cmdjwaqdoemhv" path="res://Scenes/painel_resultado_acoes.tscn" id="15_toast"]
@@ -66,7 +66,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Painel_Tipos_Conscientizados" parent="." unique_id=321290812 instance=ExtResource("4_welcp")]
+[node name="Painel_Tipos_Conscientizados" parent="." unique_id=321290812 groups=["painel_pontos"] instance=ExtResource("4_welcp")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.010416667
@@ -139,10 +139,6 @@ theme_override_font_sizes/font_size = 32
 text = "-1 Dia"
 horizontal_alignment = 1
 
-[node name="PainelMainLoja" parent="." unique_id=1780509758 instance=ExtResource("10_4pyk1")]
+[node name="PainelMainLoja" parent="." unique_id=1749400548 instance=ExtResource("10_4pyk1")]
 visible = false
 layout_mode = 1
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 124.0
-offset_bottom = 50.0

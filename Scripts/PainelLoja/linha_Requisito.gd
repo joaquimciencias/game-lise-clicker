@@ -1,43 +1,21 @@
-@tool
 extends HBoxContainer
 
-@onready var imagem = $Imagem
-@onready var lbl_nome = $Nome
-@onready var lbl_num = $Num
-
-var dados_requisito: RequisitoResource:
-	set(value):
-		dados_requisito = value
-		if is_node_ready(): 
-			_atualizar_visual()
+var icone_status: Label
+var lbl_texto: Label
 
 func _ready():
-	_atualizar_visual()
+	_obter_referencias()
 
-func _atualizar_visual():
-	if not dados_requisito or not is_node_ready():
-		return
-		
-	var nome_tipo = RequisitoResource.TipoRequisito.keys()[dados_requisito.tipo].capitalize()
-	lbl_nome.text = nome_tipo + ":"
-	
-	imagem.texture = dados_requisito.icone
-	
-	# CORRIGIDO: de '.actual' para '.atual' nas duas linhas abaixo
-	var atual_formatado = formatar_numero(dados_requisito.atual)
-	var custo_formatado = formatar_numero(dados_requisito.custo)
-	
-	lbl_num.text = "%s / %s" % [atual_formatado, custo_formatado]
-	lbl_num.modulate = Color.GREEN if dados_requisito.atual >= dados_requisito.custo else Color.RED
+func _obter_referencias():
+	if not icone_status:
+		icone_status = get_node_or_null("IconeStatus") as Label
+	if not lbl_texto:
+		lbl_texto = get_node_or_null("LblTexto") as Label
 
-# NOVA FUNÇÃO: Transforma números gigantes em formatos compactos (ex: 1.5K, 2.3M)
-func formatar_numero(valor: float) -> String:
-	if valor >= 1_000_000_000:
-		return "%.1fB" % (valor / 1_000_000_000.0)
-	elif valor >= 1_000_000:
-		return "%.1fM" % (valor / 1_000_000.0)
-	elif valor >= 1_000:
-		return "%.1fK" % (valor / 1_000.0)
-	
-	# Se for menor que 1000, mostra o número inteiro normal
-	return str(int(valor))
+func configurar(texto: String, cumprido: bool = true):
+	_obter_referencias()
+	if lbl_texto:
+		lbl_texto.text = texto
+	if icone_status:
+		icone_status.text = "✔" if cumprido else "✖"
+		icone_status.add_theme_color_override("font_color", Color(0.2, 0.8, 0.2) if cumprido else Color(0.9, 0.2, 0.2))

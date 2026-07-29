@@ -7,6 +7,7 @@ extends MarginContainer
 var tween_dano: Tween
 
 func _ready() -> void:
+	add_to_group("barra_conscientizacao") # <--- ADICIONE ESTA LINHA
 	# Configura ambas as barras para 0-100%
 	progress_bar.max_value = 100.0
 	progress_bar.min_value = 0.0
@@ -95,3 +96,9 @@ func _atualizar_area_particulas() -> void:
 		# Y = Metade da altura da barra
 		# Z = 0 (jogo 2D)
 		mat.emission_box_extents = Vector3(largura_preenchida / 2.0, altura_barra / 2.0, 0.0)
+
+## Retorna a porcentagem atual da barra (0.0 a 100.0)
+func obter_porcentagem_atual() -> float:
+	if not progress_bar:
+		return 0.0
+	return progress_bar.value

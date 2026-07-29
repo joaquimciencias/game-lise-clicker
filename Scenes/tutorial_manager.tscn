@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c8y3k2m1n0pqr"]
+
+[ext_resource type="Script" uid="uid://8kl60k0ujaj5" path="res://Scripts/tutorial_manager.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dxl27w4ps02ih" path="res://Assets/fita-roxa.png" id="2_yvjw6"]
+
+[node name="TutorialManager" type="CanvasLayer" unique_id=693194704]
+script = ExtResource("1_script")
+
+[node name="Overlay" type="Control" parent="." unique_id=542400618]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="ColorRect" parent="Overlay" unique_id=1585141482]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="HighlightBox" type="ReferenceRect" parent="Overlay" unique_id=1950462335]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+border_color = Color(0.9, 0.8, 0.2, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="DialoguePanel" type="PanelContainer" parent="Overlay" unique_id=441843659]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -210.0
+offset_right = 400.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/DialoguePanel" unique_id=1003788899]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxMain" type="HBoxContainer" parent="Overlay/DialoguePanel/MarginContainer" unique_id=1398150822]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="FotoMentora" type="TextureRect" parent="Overlay/DialoguePanel/MarginContainer/HBoxMain" unique_id=183103381]
+custom_minimum_size = Vector2(130, 150)
+layout_mode = 2
+texture = ExtResource("2_yvjw6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContent" type="VBoxContainer" parent="Overlay/DialoguePanel/MarginContainer/HBoxMain" unique_id=1718049140]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="NomeSupervisor" type="Label" parent="Overlay/DialoguePanel/MarginContainer/HBoxMain/VBoxContent" unique_id=796216733]
+layout_mode = 2
+text = "Bia (Supervisora)"
+
+[node name="TextoBia" type="Label" parent="Overlay/DialoguePanel/MarginContainer/HBoxMain/VBoxContent" unique_id=1433460556]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Texto do tutorial..."
+autowrap_mode = 2
+
+[node name="HBoxButtons" type="HBoxContainer" parent="Overlay/DialoguePanel/MarginContainer/HBoxMain/VBoxContent" unique_id=462592921]
+layout_mode = 2
+alignment = 2
+
+[node name="BotaoAvancar" type="Button" parent="Overlay/DialoguePanel/MarginContainer/HBoxMain/VBoxContent/HBoxButtons" unique_id=1327460875]
+layout_mode = 2
+text = "Avançar [Enter]"

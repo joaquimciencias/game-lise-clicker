@@ -19,6 +19,7 @@ config/icon="uid://cr5rkomwwsq2v"
 
 TransitionScreen="*uid://dw8xa70pbo2mq"
 EventBus="*uid://d041rfax5h3mm"
+UpgradesManager="*uid://dq5drrm5jqdtd"
 
 [display]
 
