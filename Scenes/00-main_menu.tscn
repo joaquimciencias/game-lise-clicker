@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dj4kgjqwsuf4g" path="res://Scripts/00_main_menu.gd" id="1_7we58"]
 [ext_resource type="Texture2D" uid="uid://xim5o7d4p5r1" path="res://Assets/IMG/wmremove-transformed (1).png" id="2_s1yor"]
+[ext_resource type="AudioStream" uid="uid://cfheb3lya4foq" path="res://Assets/Audio/Galactic Rap.mp3" id="3_7m242"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jvruc"]
 texture = ExtResource("2_s1yor")
@@ -135,5 +136,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7dm0k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1bvp3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0xm2m")
 text = "Jogar"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1132893333]
+stream = ExtResource("3_7m242")
+autoplay = true
+bus = &"Musica"
 
 [connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]

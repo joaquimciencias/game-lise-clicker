@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dlyglhn36fiu7" path="res://Scripts/Eventos/evento_75.gd" id="1_t60wt"]
 [ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="2_stk3e"]
+[ext_resource type="AudioStream" uid="uid://bjqvjb0f1o0ux" path="res://Assets/Audio/soundreality-panic-run-232908.mp3" id="3_stk3e"]
+[ext_resource type="AudioStream" uid="uid://pajaidv32l3s" path="res://Assets/Audio/freesound_community-chipmunk-telephone-gibberish-1-99627.mp3" id="4_stk3e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("2_stk3e")
@@ -183,3 +185,14 @@ anchor_bottom = 1.0
 offset_top = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Fundo" type="AudioStreamPlayer" parent="." unique_id=1941208381]
+stream = ExtResource("3_stk3e")
+autoplay = true
+bus = &"Musica"
+parameters/looping = true
+
+[node name="Falas" type="AudioStreamPlayer" parent="." unique_id=161089948]
+stream = ExtResource("4_stk3e")
+bus = &"Musica"
+parameters/looping = true

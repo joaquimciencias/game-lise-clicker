@@ -1,13 +1,19 @@
 extends MarginContainer
 # Script conectado à raiz da cena JogoPausado
 
+const CENA_MENU = "res://Scenes/00-main_menu.tscn"
+
 signal jogo_retomado
+
 
 # Referências aos nós de UI criados na cena
 @onready var slider_musica: HSlider = $CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HSliderMusica
 @onready var slider_sfx: HSlider = $CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HSliderSfx
 @onready var btn_mute_musica: Button = $CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HBoxCabecalhoMusica/BtnMuteMusica
 @onready var btn_mute_sfx: Button = $CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HBoxCabecalhoSfx/BtnMuteSfx
+
+@onready var btn_menu: Button = $CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/HBoxContainer/BotaoMenu
+@onready var btn_fechar: Button = $CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/HBoxContainer/BotaoFechar
 
 # Guarda o último volume antes de mutar para poder restaurar ao desmutar
 var volume_anterior_musica: float = 100.0
@@ -108,3 +114,12 @@ func _atualizar_texto_botao_musica(mutado: bool) -> void:
 
 func _atualizar_texto_botao_sfx(mutado: bool) -> void:
 	btn_mute_sfx.text = "🔇 Mudo" if mutado else "🔊 Som"
+
+
+func _on_botao_menu_pressed() -> void:
+	get_tree().paused = false
+	TransitionScreen.transition_to_scene(CENA_MENU)
+
+
+func _on_botao_fechar_pressed() -> void:
+	get_tree().quit()

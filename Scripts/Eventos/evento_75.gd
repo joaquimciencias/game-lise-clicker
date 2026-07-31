@@ -26,6 +26,10 @@ var taxa_decaimento_credibilidade: float = 4.0 # Decaimento constante por segund
 @onready var label_aviso: Label = $MarginContainerRelato/Panel/Aviso if has_node("MarginContainerRelato/Panel/Aviso") else null
 @onready var timer: Timer = $TimerProgresso if has_node("TimerProgresso") else null
 
+# --- REFERÊNCIA DO ÁUDIO NA CENA ---
+# Substitua "SomClique" pelo nome exato do seu nó AudioStreamPlayer na árvore da cena
+@onready var som_clique: AudioStreamPlayer = $Falas
+
 var botao_iniciar: Button
 var painel_card_atual: PanelContainer
 var label_autor_card: Label
@@ -300,6 +304,11 @@ func _carregar_proxima_carta() -> void:
 func _processar_resposta(jogador_escolheu_desmentir: bool) -> void:
 	if estado != Estado.DURANTE:
 		return
+
+	# Toca o som usando o nó já existente na cena
+	if is_instance_valid(som_clique):
+		som_clique.stop() # Reseta caso seja clicado rápido
+		som_clique.play()
 
 	var dados_card: Dictionary = deck_postagens[carta_atual_index]
 	var e_fake: bool = dados_card["e_fake_news"]

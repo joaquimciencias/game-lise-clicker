@@ -44,8 +44,27 @@ signal jogo_retomado
 var fim_de_jogo_vitoria: bool = false
 var fim_de_jogo_stats: Dictionary = {}
 
+# --- CONFIGURAÇÃO DO SOM DE CLIQUE ---
+const CLICK_SFX = preload("res://Assets/Audio/click.ogg")
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+# --- DETECÇÃO GLOBAL DE CLIQUE ---
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			_tocar_som_clique()
+
+func _tocar_som_clique() -> void:
+	var sfx_player = AudioStreamPlayer.new()
+	sfx_player.stream = CLICK_SFX
+	# Garante que o som toque mesmo se o jogo estiver pausado
+	sfx_player.process_mode = Node.PROCESS_MODE_ALWAYS 
+	
+	get_tree().root.add_child(sfx_player)
+	sfx_player.play()
+	sfx_player.finished.connect(sfx_player.queue_free)
 
 func adicionar_registro(tipo: String, quantidade: int = 1) -> void:
 	var tipo_normalizado = tipo.to_lower()

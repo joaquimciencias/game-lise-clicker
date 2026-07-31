@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bxy6gpty4ihle" path="res://Scripts/Eventos/evento_25.gd" id="1_w6hpp"]
 [ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="3_b4q0l"]
+[ext_resource type="AudioStream" uid="uid://dknfr2lssrqti" path="res://Assets/Audio/liecio-heartbeat-297400.mp3" id="3_bvxae"]
+[ext_resource type="AudioStream" uid="uid://duck748m5hwx2" path="res://Assets/Audio/fronbondi_skegs-sfx-emergency-services-vehicle-siren-drive-by-sound-effect-476454.mp3" id="3_tism0"]
+[ext_resource type="AudioStream" uid="uid://b5vp8nwum8ld6" path="res://Assets/Audio/data_pion-sfx19-crash-338379.mp3" id="4_bvxae"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("3_b4q0l")
@@ -230,9 +233,15 @@ one_shot = true
 [node name="Audios" type="Node" parent="." unique_id=1164576342]
 
 [node name="AudioSirene" type="AudioStreamPlayer" parent="Audios" unique_id=1085154769]
+stream = ExtResource("3_tism0")
 
 [node name="AudioHeartbeat" type="AudioStreamPlayer" parent="Audios" unique_id=1622565349]
+stream = ExtResource("3_bvxae")
 
 [node name="AudioClick" type="AudioStreamPlayer" parent="Audios" unique_id=390938396]
 
 [node name="AudioGlitch" type="AudioStreamPlayer" parent="Audios" unique_id=1743318911]
+stream = ExtResource("4_bvxae")
+autoplay = true
+bus = &"SFX"
+parameters/looping = false

@@ -23,6 +23,9 @@ enum ResultadoRodada { CORRETO, ERRADO, TIMEOUT }
 @onready var lbl_resposta: Label = $HBoxContainer/VBoxContainer/Panel/PanelResposta/MarginContainer/VBoxContainer/Resposta
 @onready var lbl_valor_conscientizacao: Label = $HBoxContainer/VBoxContainer/Panel/PanelResposta/MarginContainer/VBoxContainer/ValorConscientizacao
 
+@onready var som_acerto: AudioStreamPlayer = $SomAcerto
+@onready var som_erro: AudioStreamPlayer = $SomErro
+
 # Variável para controlar o Tween da barra
 var tween_barra: Tween
 
@@ -169,10 +172,12 @@ func exibir_feedback(correto: bool, valor_conscientizacao: float) -> void:
 		cor_feedback = Color("47d162")
 		lbl_resposta.text = "Correto!"
 		lbl_valor_conscientizacao.text = "+" + str(valor_conscientizacao) + "% Conscientização"
+		som_acerto.play()
 	else:
 		cor_feedback = Color("e63946")
 		lbl_resposta.text = "Incorreto!"
 		lbl_valor_conscientizacao.text = str(valor_conscientizacao) + "% Conscientização"
+		som_erro.play()
 
 	lbl_resposta.modulate = cor_feedback
 	lbl_valor_conscientizacao.modulate = cor_feedback

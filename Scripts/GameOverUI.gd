@@ -15,6 +15,8 @@ const CENA_MENU_GAME := "res://Scenes/00-main_menu.tscn"
 @onready var lbl_precisao: Label = $Control/VBoxContainer/HBoxContainer/VBoxContainer3/MarginContainer/VBoxContainer/Num
 @onready var lbl_dias: Label = $Control/VBoxContainer/HBoxContainer/VBoxContainer4/MarginContainer/VBoxContainer/Num
 
+@onready var som_vitoria: AudioStreamPlayer = $SomVitoria
+@onready var som_derrota: AudioStreamPlayer = $SomDerrota
 
 func _ready() -> void:
 	btn_jogar_novamente.pressed.connect(_on_jogar_novamente_pressed)
@@ -23,12 +25,19 @@ func _ready() -> void:
 
 
 func _configurar_resultado(vitoria: bool, stats: Dictionary) -> void:
+	# Configura a visibilidade e o som correto baseando-se estritamente na condição
 	label_vitoria.visible = vitoria
 	label_descricao_vitoria.visible = vitoria
 
 	label_derrota.visible = not vitoria
 	label_descricao_derrota.visible = not vitoria
-
+	
+	if vitoria:
+		som_vitoria.play()
+	else:
+		som_derrota.play()
+	
+	# Preenche as estatísticas de término de jogo
 	lbl_tempo.text = str(stats.get("tempo", 0))
 	lbl_ligacoes.text = str(stats.get("ligacoes", 0))
 	lbl_precisao.text = str(stats.get("precisao", 0)) + "%"

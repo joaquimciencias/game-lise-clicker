@@ -119,8 +119,27 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Continuar Jogo"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=2068611114]
+layout_mode = 2
+
+[node name="BotaoMenu" type="Button" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2016929911]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Menu Principal"
+
+[node name="BotaoFechar" type="Button" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1815636710]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Fechar Jogo"
+
 [connection signal="toggled" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HBoxCabecalhoMusica/BtnMuteMusica" to="." method="_on_btn_mute_musica_toggled"]
 [connection signal="value_changed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HSliderMusica" to="." method="_on_h_slider_musica_value_changed"]
 [connection signal="toggled" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HBoxCabecalhoSfx/BtnMuteSfx" to="." method="_on_btn_mute_sfx_toggled"]
 [connection signal="value_changed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HSliderSfx" to="." method="_on_h_slider_sfx_value_changed"]
 [connection signal="pressed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/BotaoContinuar" to="." method="_on_botao_continuar_pressed"]
+[connection signal="pressed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/HBoxContainer/BotaoMenu" to="." method="_on_botao_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/HBoxContainer/BotaoFechar" to="." method="_on_botao_fechar_pressed"]

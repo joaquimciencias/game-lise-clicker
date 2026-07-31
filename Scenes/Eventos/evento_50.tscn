@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dt82ycpiuciqm" path="res://Scripts/Eventos/evento_50.gd" id="1_sj0du"]
 [ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="2_amkia"]
+[ext_resource type="AudioStream" uid="uid://c22gex0xfhu4l" path="res://Assets/Audio/freesound_community-fake-news-tb303-29926.mp3" id="3_sj0du"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("2_amkia")
@@ -154,3 +155,9 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.3, 0.8, 1, 1)
 theme_override_font_sizes/font_size = 14
 text = "🎯 Fake News Derrubadas: 0/3"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1371535799]
+stream = ExtResource("3_sj0du")
+autoplay = true
+bus = &"Musica"
+parameters/looping = true

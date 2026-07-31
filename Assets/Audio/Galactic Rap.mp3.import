@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfheb3lya4foq"
+path="res://.godot/imported/Galactic Rap.mp3-9675511ef71b1b903ccdca29d12029b2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Galactic Rap.mp3"
+dest_files=["res://.godot/imported/Galactic Rap.mp3-9675511ef71b1b903ccdca29d12029b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

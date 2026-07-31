@@ -23,6 +23,7 @@ UpgradesManager="*uid://dq5drrm5jqdtd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

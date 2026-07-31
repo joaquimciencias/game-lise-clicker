@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bq3kpovsdilsy" path="res://Scripts/PainelAtendimento/painel_atendimento.gd" id="1_ad4th"]
 [ext_resource type="Texture2D" uid="uid://dm0kfgcskim5f" path="res://Assets/IMG/sprite-lise.png" id="2_dnl3y"]
 [ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="3_50cth"]
+[ext_resource type="AudioStream" uid="uid://blmwkeuwvmnt8" path="res://Assets/Audio/acerto.wav" id="4_soeqh"]
+[ext_resource type="AudioStream" uid="uid://8o7woadesxmg" path="res://Assets/Audio/erro.wav" id="5_36mt7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
 bg_color = Color(0.06666667, 0.05490196, 0.101960786, 1)
@@ -392,6 +394,14 @@ theme_override_font_sizes/font_size = 9
 text = "Classifique o tipo de violência relatada antes que o tempo acabe."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SomAcerto" type="AudioStreamPlayer" parent="." unique_id=1322628600]
+stream = ExtResource("4_soeqh")
+bus = &"SFX"
+
+[node name="SomErro" type="AudioStreamPlayer" parent="." unique_id=1697722888]
+stream = ExtResource("5_36mt7")
+bus = &"SFX"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/GridContainer/ButtonFisica" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/GridContainer/ButtonPsicologica" to="." method="_on_button_pressed"]
