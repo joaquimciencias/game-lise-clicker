@@ -1,0 +1,640 @@
+[gd_scene format=3 uid="uid://b75ajde3dmcpu"]
+
+[ext_resource type="Script" uid="uid://dm8tum7kasfj8" path="res://Scripts/GameOverUI.gd" id="1_y7px2"]
+[ext_resource type="Texture2D" uid="uid://qymiy3gkugbd" path="res://Assets/Gemini_Generated_Image_47hrrj47hrrj47hr.png" id="2_c4txi"]
+[ext_resource type="Texture2D" uid="uid://dxl27w4ps02ih" path="res://Assets/fita-roxa.png" id="2_y7px2"]
+[ext_resource type="AudioStream" uid="uid://yd1o7tfmjfwo" path="res://Assets/Audio/vitoria.wav" id="4_l4x2o"]
+[ext_resource type="AudioStream" uid="uid://bqhyef8w480dv" path="res://Assets/Audio/derrota.wav" id="5_bmr2y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
+bg_color = Color(0.34901962, 0.21960784, 0.49019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knir1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf3fl"]
+bg_color = Color(0.5372549, 0.5254902, 0.61960787, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.972549, 0.972549, 0.972549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmr2y"]
+bg_color = Color(1, 1, 0.9411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra8dk"]
+bg_color = Color(0.16470589, 0.09411765, 0.14117648, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.972549, 0.44313726, 0.44313726, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4txi"]
+bg_color = Color(0.14509805, 0.1254902, 0.21568628, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7411765, 0.5294118, 0.972549, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4x2o"]
+bg_color = Color(0.16862746, 0.14901961, 0.10980392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9843137, 0.7411765, 0.14901961, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8efiy"]
+bg_color = Color(0.101960786, 0.15686275, 0.17254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3019608, 0.85882354, 0.5176471, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4q0l"]
+bg_color = Color(0.76862746, 0.12941177, 0.2784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rc1p"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqfgi"]
+bg_color = Color(0.29897165, 0.021204773, 0.0863372, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kr1m4"]
+bg_color = Color(0.4334148, 0.023803184, 0.23552802, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Animation" id="Animation_ra8dk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel4/Panel3:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1302.3281, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Panel4/Panel3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-92.17053, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Panel4/Panel3:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(643.17053, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/FitaRoxa:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/VBoxContainer/LabelDescricaoVitoria:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/VBoxContainer/LabelDescricaoDerrota:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c4txi"]
+resource_name = "chegando"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel4/Panel3:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1302.3281, 951), Vector2(1302.3281, 729)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Panel4/Panel3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-92.17053, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Panel4/Panel3:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(643.17053, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/FitaRoxa:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6333333, 3.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.39215687)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/VBoxContainer/LabelDescricaoVitoria:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.9950004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/VBoxContainer/LabelDescricaoDerrota:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4x2o"]
+_data = {
+&"RESET": SubResource("Animation_ra8dk"),
+&"chegando": SubResource("Animation_c4txi")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=902324983]
+process_mode = 3
+script = ExtResource("1_y7px2")
+metadata/_edit_horizontal_guides_ = [99.0, 552.0, 324.0, 0.0]
+metadata/_edit_vertical_guides_ = [185.0, 966.0, 576.0, 0.0, 1152.0]
+
+[node name="Control" type="Control" parent="." unique_id=470165899]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelDesfoque" type="Panel" parent="Control" unique_id=57193378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
+
+[node name="Panel2" type="Panel" parent="Control" unique_id=1309830451]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -24.640015
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(551, 299)
+theme_override_styles/panel = SubResource("StyleBoxFlat_knir1")
+
+[node name="Panel4" type="Panel" parent="Control" unique_id=1072151513]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -24.640015
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(551, 299)
+theme_override_styles/panel = SubResource("StyleBoxFlat_knir1")
+
+[node name="Panel3" type="TextureRect" parent="Control/Panel4" unique_id=260590486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.17053
+offset_top = -50.0
+offset_right = 107.79761
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(643.17053, 1)
+texture = ExtResource("2_c4txi")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="FitaRoxa" type="TextureRect" parent="Control" unique_id=377016747]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y7px2")
+
+[node name="Panel" type="Panel" parent="Control" unique_id=48067025]
+layout_mode = 0
+offset_top = 132.0
+offset_right = 1152.0
+offset_bottom = 132.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lf3fl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1142599088]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 185.0
+offset_top = 58.5
+offset_right = -186.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="LabelVitoria" type="Label" parent="Control/VBoxContainer" unique_id=1838131606]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.12941177, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(0.36078432, 0.101960786, 0.19607843, 1)
+theme_override_constants/outline_size = 22
+theme_override_font_sizes/font_size = 130
+text = "Vitória!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="LabelDerrota" type="Label" parent="Control/VBoxContainer" unique_id=1688958799]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.12941177, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(0.36078432, 0.101960786, 0.19607843, 1)
+theme_override_constants/outline_size = 22
+theme_override_font_sizes/font_size = 130
+text = "DERROTA!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer" unique_id=1309647138]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="LabelDescricaoVitoria" type="Label" parent="Control/VBoxContainer" unique_id=624927515]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Incrível! A sua liderança tornou a cidade um modelo 
+de segurança para todas as mulheres. O futuro é delas!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/LabelDescricaoVitoria" unique_id=1969369874]
+show_behind_parent = true
+layout_mode = 0
+offset_top = -9.0
+offset_right = 781.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bmr2y")
+
+[node name="LabelDescricaoDerrota" type="Label" parent="Control/VBoxContainer" unique_id=1743765964]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Não desista! Proteger a comunidade é um desafio contínuo. 
+Use esse aprendizado para liderar a mudança!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/LabelDescricaoDerrota" unique_id=2110605605]
+show_behind_parent = true
+layout_mode = 0
+offset_top = -9.0
+offset_right = 781.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bmr2y")
+
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer" unique_id=34524729]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="LabelResultado" type="Label" parent="Control/VBoxContainer" unique_id=1611319972]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Resultado das suas decisões:"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=267893222]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer" unique_id=1695407080]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1486458137]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1147492673]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ra8dk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=805527689]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Titulo" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=494579183]
+layout_mode = 2
+text = "TEMPO DE JOGO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=124425303]
+layout_mode = 2
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer" unique_id=534641745]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1587847480]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer" unique_id=1937807993]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4txi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer" unique_id=1064846524]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Titulo" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer" unique_id=1796293193]
+layout_mode = 2
+text = "LIGAÇÕES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer" unique_id=689915438]
+layout_mode = 2
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer" unique_id=585860252]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=1625376336]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer3/MarginContainer" unique_id=693007308]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_l4x2o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer3/MarginContainer" unique_id=1424240749]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Titulo" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer3/MarginContainer/VBoxContainer" unique_id=560127880]
+layout_mode = 2
+text = "PRECISÃO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer3/MarginContainer/VBoxContainer" unique_id=1884840762]
+layout_mode = 2
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer" unique_id=688991521]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer4" unique_id=190416507]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer4/MarginContainer" unique_id=700327187]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8efiy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer4/MarginContainer" unique_id=1870772302]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Titulo" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer4/MarginContainer/VBoxContainer" unique_id=1087608900]
+layout_mode = 2
+text = "DIAS RESTANTES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer4/MarginContainer/VBoxContainer" unique_id=106265431]
+layout_mode = 2
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer" unique_id=1600385612]
+custom_minimum_size = Vector2(288.06, 58.9)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_b4q0l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0rc1p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lqfgi")
+text = "JOGAR NOVAMENTE"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer" unique_id=911068042]
+custom_minimum_size = Vector2(288.06, 58.9)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_kr1m4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0rc1p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lqfgi")
+text = "Menu Principal"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=813675758]
+libraries/ = SubResource("AnimationLibrary_l4x2o")
+
+[node name="SomVitoria" type="AudioStreamPlayer" parent="." unique_id=1224114984]
+stream = ExtResource("4_l4x2o")
+bus = &"SFX"
+
+[node name="SomDerrota" type="AudioStreamPlayer" parent="." unique_id=1752868507]
+stream = ExtResource("5_bmr2y")
+bus = &"SFX"
+
+[connection signal="pressed" from="Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://bkhu68mhpns7a"]
+
+[ext_resource type="Script" uid="uid://bf0rfjn6e088l" path="res://Scripts/PainelLoja/CardItemLoja.gd" id="1_pu83x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CardItem"]
+bg_color = Color(0.13, 0.11, 0.21, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.25, 0.45, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_IconeBG"]
+bg_color = Color(0.08, 0.07, 0.14, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.35, 0.7, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_EffectBox"]
+bg_color = Color(0.09, 0.08, 0.15, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_VisualBox"]
+bg_color = Color(0.12, 0.1, 0.22, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.55, 0.85, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BtnComprar"]
+bg_color = Color(0.2, 0.15, 0.35, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.4, 0.9, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CardItemLoja" type="PanelContainer" unique_id=1820834132]
+theme_override_styles/panel = SubResource("StyleBoxFlat_CardItem")
+script = ExtResource("1_pu83x")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=826060166]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxMain" type="HBoxContainer" parent="Margin" unique_id=195786396]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="IconeBox" type="PanelContainer" parent="Margin/HBoxMain" unique_id=1868617985]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_IconeBG")
+
+[node name="LblIcone" type="Label" parent="Margin/HBoxMain/IconeBox" unique_id=1281047616]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "🚨"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxDetalhes" type="VBoxContainer" parent="Margin/HBoxMain" unique_id=30298726]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="HBoxTitulo" type="HBoxContainer" parent="Margin/HBoxMain/VBoxDetalhes" unique_id=477309095]
+layout_mode = 2
+
+[node name="LblNome" type="Label" parent="Margin/HBoxMain/VBoxDetalhes/HBoxTitulo" unique_id=543568484]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Nome do Item"
+
+[node name="LblNivel" type="Label" parent="Margin/HBoxMain/VBoxDetalhes/HBoxTitulo" unique_id=1983557845]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "[ Nível 1 / 3 ]"
+
+[node name="LblRequisito" type="Label" parent="Margin/HBoxMain/VBoxDetalhes" unique_id=647142657]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+text = "🔒 Requisito: 20 Registros Totais"
+
+[node name="BoxEfeitos" type="PanelContainer" parent="Margin/HBoxMain/VBoxDetalhes" unique_id=756456976]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_EffectBox")
+
+[node name="Margin" type="MarginContainer" parent="Margin/HBoxMain/VBoxDetalhes/BoxEfeitos" unique_id=2136383208]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBoxMain/VBoxDetalhes/BoxEfeitos/Margin" unique_id=2102989399]
+layout_mode = 2
+
+[node name="LblPassivo" type="Label" parent="Margin/HBoxMain/VBoxDetalhes/BoxEfeitos/Margin/VBox" unique_id=41173047]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.5, 1)
+theme_override_font_sizes/font_size = 12
+text = "⚡ Clicker Passivo: +1 Física/s"
+
+[node name="LblGameplay" type="Label" parent="Margin/HBoxMain/VBoxDetalhes/BoxEfeitos/Margin/VBox" unique_id=394048195]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.95, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "🎮 Efeito: +1,5s no tempo limite de resposta"
+
+[node name="BoxVisual" type="PanelContainer" parent="Margin/HBoxMain/VBoxDetalhes" unique_id=195469767]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_VisualBox")
+
+[node name="Margin" type="MarginContainer" parent="Margin/HBoxMain/VBoxDetalhes/BoxVisual" unique_id=594356547]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="LblVisual" type="Label" parent="Margin/HBoxMain/VBoxDetalhes/BoxVisual/Margin" unique_id=1235723755]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "👁️ Efeito Urbano: ..."
+
+[node name="BtnComprar" type="Button" parent="Margin/HBoxMain" unique_id=95661223]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_BtnComprar")
+text = "Implementar
+20 Reg."

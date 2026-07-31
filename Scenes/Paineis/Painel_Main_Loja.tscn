@@ -1,0 +1,272 @@
+[gd_scene format=3 uid="uid://cspiuqemguiso"]
+
+[ext_resource type="Script" uid="uid://dp16aigctnljd" path="res://Scripts/PainelLoja/painel_Main_Loja.gd" id="1_2pmxi"]
+[ext_resource type="AudioStream" uid="uid://blmwkeuwvmnt8" path="res://Assets/Audio/acerto.wav" id="2_i8emp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_FundoLoja"]
+bg_color = Color(0.102, 0.086, 0.169, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Header"]
+bg_color = Color(0.145, 0.125, 0.239, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0.28, 0.48, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Fisica"]
+bg_color = Color(0.22, 0.1, 0.13, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.3, 0.35, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Psico"]
+bg_color = Color(0.17, 0.11, 0.24, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.4, 0.85, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Moral"]
+bg_color = Color(0.22, 0.18, 0.1, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.7, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Patrimonial"]
+bg_color = Color(0.08, 0.2, 0.18, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.8, 0.6, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Aba"]
+bg_color = Color(0.18, 0.15, 0.28, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.35, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BtnFinalizar"]
+bg_color = Color(0.12, 0.28, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.85, 0.45, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Painel_Main_Loja" type="Control" unique_id=1941175710]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2pmxi")
+
+[node name="BackgroundOverlay" type="ColorRect" parent="." unique_id=99696570]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.07, 0.85)
+
+[node name="MainPanelContainer" type="PanelContainer" parent="." unique_id=938999391]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = 37.0
+offset_right = -86.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_FundoLoja")
+
+[node name="Margin" type="MarginContainer" parent="MainPanelContainer" unique_id=1847393067]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxMain" type="VBoxContainer" parent="MainPanelContainer/Margin" unique_id=511739323]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderTotais" type="PanelContainer" parent="MainPanelContainer/Margin/VBoxMain" unique_id=1140902949]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_Header")
+
+[node name="Margin" type="MarginContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais" unique_id=1330681298]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxHeader" type="VBoxContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin" unique_id=490232362]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LblTituloLoja" type="Label" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader" unique_id=1699950935]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.92, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "🏛️ PAINEL DE INVESTIMENTOS PÚBLICOS (LOJA DE INFRAESTRUTURA)"
+horizontal_alignment = 1
+
+[node name="LblSubtitulo" type="Label" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader" unique_id=70040628]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "Invista os registros acumulados para implementar tecnologias, aparelhos governamentais e redes de apoio na cidade."
+horizontal_alignment = 1
+
+[node name="HBoxBadges" type="HBoxContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader" unique_id=1676651464]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BadgeFisica" type="PanelContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges" unique_id=785391865]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_Fisica")
+
+[node name="Lbl" type="Label" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges/BadgeFisica" unique_id=183030699]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.75, 0.78, 1)
+theme_override_font_sizes/font_size = 13
+text = "🥊 Físicos: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BadgePsico" type="PanelContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges" unique_id=588812784]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_Psico")
+
+[node name="Lbl" type="Label" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges/BadgePsico" unique_id=534383368]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "🧠 Psicológicos: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BadgeMoral" type="PanelContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges" unique_id=522619945]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_Moral")
+
+[node name="Lbl" type="Label" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges/BadgeMoral" unique_id=75931569]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.65, 1)
+theme_override_font_sizes/font_size = 13
+text = "🗣️ Morais: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BadgePatrimonial" type="PanelContainer" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges" unique_id=573372933]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_Patrimonial")
+
+[node name="Lbl" type="Label" parent="MainPanelContainer/Margin/VBoxMain/HeaderTotais/Margin/VBoxHeader/HBoxBadges/BadgePatrimonial" unique_id=1670398092]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 1, 0.85, 1)
+theme_override_font_sizes/font_size = 13
+text = "💔 Patrimoniais: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxAbas" type="HBoxContainer" parent="MainPanelContainer/Margin/VBoxMain" unique_id=628724685]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnExpansao" type="Button" parent="MainPanelContainer/Margin/VBoxMain/HBoxAbas" unique_id=505415221]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_Aba")
+text = "🏙️ 1. EXPANSÃO URBANA"
+
+[node name="BtnConscientizacao" type="Button" parent="MainPanelContainer/Margin/VBoxMain/HBoxAbas" unique_id=1055195730]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_Aba")
+text = "📢 2. CONSCIENTIZAÇÃO"
+
+[node name="BtnFormacao" type="Button" parent="MainPanelContainer/Margin/VBoxMain/HBoxAbas" unique_id=1583104875]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_Aba")
+text = "🎓 3. FORMAÇÃO & LEGISLAÇÃO"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanelContainer/Margin/VBoxMain" unique_id=1012162351]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContainerItens" type="VBoxContainer" parent="MainPanelContainer/Margin/VBoxMain/ScrollContainer" unique_id=1628734817]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="BtnFinalizarTurno" type="Button" parent="MainPanelContainer/Margin/VBoxMain" unique_id=611006212]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 1, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_BtnFinalizar")
+text = "ENCERRAR EXPEDIENTE"
+
+[node name="SomCompra" type="AudioStreamPlayer" parent="." unique_id=1087486889]
+stream = ExtResource("2_i8emp")

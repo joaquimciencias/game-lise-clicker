@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmj6ia0nscmn7"
+path="res://.godot/imported/Blippy Trance.mp3-276cadba57c58f9566fd766298781662.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Blippy Trance.mp3"
+dest_files=["res://.godot/imported/Blippy Trance.mp3-276cadba57c58f9566fd766298781662.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

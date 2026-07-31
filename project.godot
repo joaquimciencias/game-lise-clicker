@@ -12,8 +12,28 @@ config_version=5
 
 config/name="Game_Lise_Clicker"
 run/main_scene="uid://jji7dfptqi1l"
-config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://Assets/icon.svg"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="uid://cr5rkomwwsq2v"
+
+[autoload]
+
+TransitionScreen="*uid://dw8xa70pbo2mq"
+EventBus="*uid://d041rfax5h3mm"
+UpgradesManager="*uid://dq5drrm5jqdtd"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/count/Desktop/LISE.avi"
+
+[gui]
+
+theme/custom_font="uid://dv3mpogiuq8d4"
 
 [physics]
 

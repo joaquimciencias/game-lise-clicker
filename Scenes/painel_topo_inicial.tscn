@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://bbyfet6onremx"]
+
+[ext_resource type="Script" uid="uid://bwg3e8qgn8347" path="res://Scripts/PainelTopoInicial/painel_topo_inicial.gd" id="1_82mt0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+bg_color = Color(0.07058824, 0.0627451, 0.12941177, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.22, 0.13287999, 0.07479999, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4q0l"]
+bg_color = Color(0.23921569, 0.21176471, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+anti_aliasing_size = 10.0
+
+[node name="Painel_Topo_Inicial" type="MarginContainer" unique_id=423273896]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = -17.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_82mt0")
+
+[node name="Panel" type="Panel" parent="." unique_id=723659250]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yf5fn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1406141130]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=1140762218]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel" unique_id=1552862909]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -11.5
+offset_right = 15.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lise"
+
+[node name="HBoxConteudo" type="HBoxContainer" parent="." unique_id=381024708]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxDiasRestantes" type="VBoxContainer" parent="HBoxConteudo" unique_id=1489087061]
+layout_mode = 2
+
+[node name="BotaoDiasRestantes" type="TextureButton" parent="HBoxConteudo/VBoxDiasRestantes" unique_id=676511418]
+self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
+custom_minimum_size = Vector2(100, 30)
+custom_maximum_size = Vector2(-1, 60)
+layout_mode = 2
+size_flags_vertical = 3
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxConteudo/VBoxDiasRestantes/BotaoDiasRestantes" unique_id=574426012]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxConteudo/VBoxDiasRestantes/BotaoDiasRestantes/CenterContainer" unique_id=762729752]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Titulo" type="Label" parent="HBoxConteudo/VBoxDiasRestantes/BotaoDiasRestantes/CenterContainer/VBoxContainer" unique_id=743703893]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+theme_override_font_sizes/font_size = 12
+text = "Dias Restantes"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Num" type="Label" parent="HBoxConteudo/VBoxDiasRestantes/BotaoDiasRestantes/CenterContainer/VBoxContainer" unique_id=1571919757]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "30/30"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxLigacoesTotais" type="VBoxContainer" parent="HBoxConteudo" unique_id=429483789]
+layout_mode = 2
+
+[node name="BotaoLigacoesTotais" type="TextureButton" parent="HBoxConteudo/HBoxLigacoesTotais" unique_id=1099720533]
+self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
+custom_minimum_size = Vector2(100, 30)
+custom_maximum_size = Vector2(-1, 60)
+layout_mode = 2
+size_flags_vertical = 3
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxConteudo/HBoxLigacoesTotais/BotaoLigacoesTotais" unique_id=716894893]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxConteudo/HBoxLigacoesTotais/BotaoLigacoesTotais/CenterContainer" unique_id=862563132]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Titulo" type="Label" parent="HBoxConteudo/HBoxLigacoesTotais/BotaoLigacoesTotais/CenterContainer/VBoxContainer" unique_id=1623449056]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+theme_override_font_sizes/font_size = 12
+text = "Ligações Totais"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Num" type="Label" parent="HBoxConteudo/HBoxLigacoesTotais/BotaoLigacoesTotais/CenterContainer/VBoxContainer" unique_id=1343560887]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "9999"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxPrecisao" type="VBoxContainer" parent="HBoxConteudo" unique_id=358823732]
+layout_mode = 2
+
+[node name="BotaoPrecisao" type="TextureButton" parent="HBoxConteudo/HBoxPrecisao" unique_id=1652455913]
+self_modulate = Color(0.2159017, 0.21590173, 0.2159017, 1)
+custom_minimum_size = Vector2(100, 30)
+custom_maximum_size = Vector2(-1, 60)
+layout_mode = 2
+size_flags_vertical = 3
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxConteudo/HBoxPrecisao/BotaoPrecisao" unique_id=227182314]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxConteudo/HBoxPrecisao/BotaoPrecisao/CenterContainer" unique_id=263042197]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Titulo" type="Label" parent="HBoxConteudo/HBoxPrecisao/BotaoPrecisao/CenterContainer/VBoxContainer" unique_id=735455777]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+theme_override_font_sizes/font_size = 12
+text = "Precisão"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Num" type="Label" parent="HBoxConteudo/HBoxPrecisao/BotaoPrecisao/CenterContainer/VBoxContainer" unique_id=1403534447]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "68%"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BotaoPausa" type="Button" parent="HBoxConteudo" unique_id=966531429]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.7411765, 0.98039216, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_b4q0l")
+text = "Pausar Jogo"
+
+[connection signal="pressed" from="HBoxConteudo/BotaoPausa" to="." method="_on_botao_pausa_pressed"]

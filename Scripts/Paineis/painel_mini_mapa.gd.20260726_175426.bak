@@ -1,0 +1,332 @@
+extends MarginContainer
+
+const MAP_SIZE := Vector2(860, 200)
+const STAGE_HOSTIL := 0
+const STAGE_SINAIS := 1
+const STAGE_REDE := 2
+const STAGE_FORTE := 3
+
+var conscientizacao: float = 0.0
+var stage: int = -1
+var chibis: Array[Dictionary] = []
+var walk_speed_multiplier: float = 1.0
+var missed_call_time_left: float = 0.0
+var light_flicker_time: float = 0.0
+
+var background: ColorRect
+var sky: ColorRect
+var street: ColorRect
+var sidewalk: ColorRect
+var title_label: Label
+var status_label: Label
+var overlay_dark: ColorRect
+var props_layer: Control
+var chibi_layer: Control
+var safe_seal: Label
+var support_house: Label
+var panic_totem: Label
+var graffiti: Label
+var posters: Array[Label] = []
+var lamps: Array[ColorRect] = []
+var patrol_label: Label
+
+func _ready() -> void:
+	custom_minimum_size = MAP_SIZE
+	clip_contents = true
+	_build_scene()
+	_connect_event_bus()
+	_apply_stage(0.0, true)
+	set_process(true)
+
+func _process(delta: float) -> void:
+	light_flicker_time += delta
+	if missed_call_time_left > 0.0:
+		missed_call_time_left = max(0.0, missed_call_time_left - delta)
+		overlay_dark.modulate.a = 0.38
+	else:
+		overlay_dark.modulate.a = move_toward(overlay_dark.modulate.a, 0.0, delta * 1.8)
+	_update_lamps()
+	_update_chibis(delta)
+
+func _connect_event_bus() -> void:
+	if not has_node('/root/EventBus'):
+		return
+	var bus = get_node('/root/EventBus')
+	if bus.has_signal('conscientizacao_alterada') and not bus.conscientizacao_alterada.is_connected(_on_conscientizacao_alterada):
+		bus.conscientizacao_alterada.connect(_on_conscientizacao_alterada)
+	if bus.has_signal('atendimento_classificacao_correta') and not bus.atendimento_classificacao_correta.is_connected(_on_classificacao_correta):
+		bus.atendimento_classificacao_correta.connect(_on_classificacao_correta)
+	if bus.has_signal('atendimento_classificacao_errada') and not bus.atendimento_classificacao_errada.is_connected(_on_classificacao_errada):
+		bus.atendimento_classificacao_errada.connect(_on_classificacao_errada)
+	if bus.has_signal('atendimento_ligacao_perdida') and not bus.atendimento_ligacao_perdida.is_connected(_on_ligacao_perdida):
+		bus.atendimento_ligacao_perdida.connect(_on_ligacao_perdida)
+
+func _build_scene() -> void:
+	background = _rect('Background', Vector2.ZERO, MAP_SIZE, Color('#15151d'))
+	add_child(background)
+	sky = _rect('Sky', Vector2(0, 0), Vector2(MAP_SIZE.x, 92), Color('#27293a'))
+	add_child(sky)
+	props_layer = Control.new()
+	props_layer.name = 'PropsLayer'
+	props_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	props_layer.clip_contents = true
+	add_child(props_layer)
+	_build_buildings()
+	_build_street()
+	_build_header()
+	_build_world_props()
+	chibi_layer = Control.new()
+	chibi_layer.name = 'ChibiLayer'
+	chibi_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	chibi_layer.clip_contents = true
+	add_child(chibi_layer)
+	_spawn_chibis()
+	overlay_dark = _rect('LigacaoPerdidaOverlay', Vector2.ZERO, MAP_SIZE, Color(0.02, 0.02, 0.08, 0.0))
+	overlay_dark.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(overlay_dark)
+
+func _build_header() -> void:
+	title_label = _label('Title', 'MINIMAPA RUA RIVER CITY', Vector2(10, 4), Vector2(300, 22), 15, Color('#f5e9ff'))
+	add_child(title_label)
+	status_label = _label('Status', 'Cidade Hostil • 0%', Vector2(610, 4), Vector2(235, 22), 12, Color('#d7c7ff'))
+	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	add_child(status_label)
+
+func _build_buildings() -> void:
+	var xs := [16, 116, 236, 344, 474, 604, 724]
+	var widths := [82, 96, 76, 106, 92, 102, 84]
+	var heights := [62, 76, 55, 70, 64, 82, 60]
+	for i in xs.size():
+		var b = _rect('Predio_%d' % i, Vector2(xs[i], 48 + (82 - heights[i])), Vector2(widths[i], heights[i]), Color('#34323d'))
+		props_layer.add_child(b)
+		for wx in range(10, int(widths[i]) - 10, 22):
+			for wy in range(10, int(heights[i]) - 14, 20):
+				props_layer.add_child(_rect('Janela', Vector2(xs[i] + wx, 48 + (82 - heights[i]) + wy), Vector2(10, 8), Color('#57525e')))
+
+func _build_street() -> void:
+	sidewalk = _rect('Calcada', Vector2(0, 118), Vector2(MAP_SIZE.x, 24), Color('#4a4650'))
+	add_child(sidewalk)
+	street = _rect('Rua', Vector2(0, 142), Vector2(MAP_SIZE.x, 58), Color('#24242a'))
+	add_child(street)
+	for x in range(12, int(MAP_SIZE.x), 64):
+		add_child(_rect('FaixaRua', Vector2(x, 169), Vector2(34, 4), Color('#7c7883')))
+	for x in [72, 258, 446, 650, 802]:
+		props_layer.add_child(_rect('Poste_%d' % x, Vector2(x, 76), Vector2(5, 54), Color('#595361')))
+		var lamp = _rect('LuzPoste_%d' % x, Vector2(x - 8, 72), Vector2(21, 8), Color('#4c4555'))
+		props_layer.add_child(lamp)
+		lamps.append(lamp)
+
+func _build_world_props() -> void:
+	for data in [[140, 82, 'INFO'], [392, 80, '180'], [742, 90, 'REDE']]:
+		var p = _label('Cartaz', data[2], Vector2(data[0], data[1]), Vector2(48, 18), 11, Color('#332244'))
+		p.modulate.a = 0.0
+		props_layer.add_child(p)
+		posters.append(p)
+	graffiti = _label('GrafiteLilas', 'REDE LILAS', Vector2(498, 83), Vector2(92, 20), 12, Color('#d69bff'))
+	graffiti.modulate.a = 0.0
+	props_layer.add_child(graffiti)
+	safe_seal = _label('SeloLocalSeguro', '* Local Seguro', Vector2(612, 78), Vector2(112, 20), 12, Color('#b9ffde'))
+	safe_seal.modulate.a = 0.0
+	props_layer.add_child(safe_seal)
+	support_house = _label('CasaApoio', 'Casa de Apoio', Vector2(22, 94), Vector2(126, 22), 12, Color('#ffd8f6'))
+	support_house.modulate.a = 0.0
+	props_layer.add_child(support_house)
+	panic_totem = _label('TotemPanico', 'Totem', Vector2(728, 112), Vector2(78, 22), 12, Color('#d8e8ff'))
+	panic_totem.modulate.a = 0.0
+	props_layer.add_child(panic_totem)
+	patrol_label = _label('PatrulhaLilas', 'Patrulha Lilas', Vector2(664, 132), Vector2(160, 24), 13, Color('#d5c4ff'))
+	patrol_label.modulate.a = 0.0
+	props_layer.add_child(patrol_label)
+
+func _spawn_chibis() -> void:
+	var starts := [82.0, 250.0, 420.0, 570.0, 710.0]
+	for i in starts.size():
+		var chibi = _create_chibi(i, Vector2(starts[i], 130.0 + float(i % 2) * 14.0))
+		chibi_layer.add_child(chibi['root'])
+		chibis.append(chibi)
+
+func _create_chibi(index: int, pos: Vector2) -> Dictionary:
+	var root = Control.new()
+	root.name = 'Chibi_%d' % index
+	root.position = pos
+	root.size = Vector2(38, 46)
+	root.pivot_offset = Vector2(19, 34)
+	var bubble = _label('Balao', '', Vector2(-28, -30), Vector2(104, 22), 11, Color('#ffffff'))
+	bubble.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	bubble.modulate.a = 0.0
+	root.add_child(bubble)
+	var emoji = _label('EmojiErro', '', Vector2(4, -20), Vector2(30, 22), 17, Color('#ffffff'))
+	emoji.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	emoji.modulate.a = 0.0
+	root.add_child(emoji)
+	root.add_child(_rect('Cabeca', Vector2(12, 3), Vector2(15, 15), Color('#f2c7a8')))
+	root.add_child(_rect('Cabelo', Vector2(10, 1), Vector2(19, 8), Color(['#56321d', '#40214f', '#242424', '#7c4a24', '#6d2e2e'][index % 5])))
+	root.add_child(_rect('Corpo', Vector2(9, 18), Vector2(21, 18), Color(['#a855f7', '#ec4899', '#60a5fa', '#34d399', '#f59e0b'][index % 5])))
+	root.add_child(_label('Pernas', '| |', Vector2(8, 31), Vector2(28, 14), 13, Color('#1b1b24')))
+	return {'root': root, 'bubble': bubble, 'emoji': emoji, 'speed': 18.0 + float(index * 4), 'direction': 1.0 if index % 2 == 0 else -1.0, 'base_y': pos.y, 'visible_stage': 1 if index < 2 else 2 if index < 4 else 3, 'running': false, 'paused': false}
+
+func _on_conscientizacao_alterada(valor: float) -> void:
+	_apply_stage(valor, false)
+
+func _on_classificacao_correta(_tipo: String = '') -> void:
+	walk_speed_multiplier = min(walk_speed_multiplier + 0.18, 2.0)
+	var chibi = _nearest_visible_chibi()
+	if not chibi.is_empty():
+		_react_success(chibi)
+
+func _on_classificacao_errada(tipo: String = '') -> void:
+	var emoji := _emoji_para_tipo(tipo)
+	for chibi in chibis:
+		if chibi['root'].visible:
+			_react_error(chibi, emoji)
+
+func _on_ligacao_perdida(_tipo: String = '') -> void:
+	missed_call_time_left = 2.0
+	for chibi in chibis:
+		if chibi['root'].visible:
+			chibi['running'] = true
+			chibi['paused'] = false
+			(chibi['emoji'] as Label).text = '!'
+			(chibi['emoji'] as Label).modulate.a = 1.0
+
+func _apply_stage(valor: float, force: bool) -> void:
+	conscientizacao = clamp(valor, 0.0, 100.0)
+	var new_stage := STAGE_HOSTIL
+	if conscientizacao >= 75.0:
+		new_stage = STAGE_FORTE
+	elif conscientizacao >= 50.0:
+		new_stage = STAGE_REDE
+	elif conscientizacao >= 25.0:
+		new_stage = STAGE_SINAIS
+	if new_stage == stage and not force:
+		status_label.text = '%s • %d%%' % [_stage_name(stage), int(conscientizacao)]
+		_update_chibi_visibility()
+		return
+	stage = new_stage
+	status_label.text = '%s • %d%%' % [_stage_name(stage), int(conscientizacao)]
+	match stage:
+		STAGE_HOSTIL:
+			background.color = Color('#15151d'); sky.color = Color('#252636'); street.color = Color('#232329'); sidewalk.color = Color('#45424a')
+		STAGE_SINAIS:
+			background.color = Color('#202030'); sky.color = Color('#34374f'); street.color = Color('#2e2e36'); sidewalk.color = Color('#5a5660')
+		STAGE_REDE:
+			background.color = Color('#2f2445'); sky.color = Color('#4a3b76'); street.color = Color('#343241'); sidewalk.color = Color('#68616f')
+		STAGE_FORTE:
+			background.color = Color('#382052'); sky.color = Color('#7650a8'); street.color = Color('#3d374b'); sidewalk.color = Color('#80748d')
+	for p in posters:
+		p.modulate.a = 1.0 if stage >= STAGE_SINAIS else 0.0
+	graffiti.modulate.a = 1.0 if stage >= STAGE_REDE else 0.0
+	safe_seal.modulate.a = 1.0 if stage >= STAGE_REDE else 0.0
+	support_house.modulate.a = 1.0 if stage >= STAGE_FORTE else 0.0
+	panic_totem.modulate.a = 1.0 if stage >= STAGE_FORTE else 0.0
+	patrol_label.modulate.a = 1.0 if stage >= STAGE_FORTE else 0.0
+	_update_chibi_visibility()
+
+func _update_chibi_visibility() -> void:
+	for chibi in chibis:
+		chibi['root'].visible = stage >= int(chibi['visible_stage'])
+
+func _update_chibis(delta: float) -> void:
+	for chibi in chibis:
+		var root: Control = chibi['root']
+		if not root.visible or chibi['paused']:
+			continue
+		var speed: float = chibi['speed'] * walk_speed_multiplier
+		if chibi['running']:
+			speed *= 4.5
+		root.position.x += speed * float(chibi['direction']) * delta
+		root.position.y = float(chibi['base_y']) + sin(Time.get_ticks_msec() / 150.0 + float(chibis.find(chibi))) * 1.5
+		if root.position.x > MAP_SIZE.x + 48:
+			root.position.x = -46; chibi['running'] = false; (chibi['emoji'] as Label).modulate.a = 0.0
+		elif root.position.x < -52:
+			root.position.x = MAP_SIZE.x + 42; chibi['running'] = false; (chibi['emoji'] as Label).modulate.a = 0.0
+	walk_speed_multiplier = move_toward(walk_speed_multiplier, 1.0, delta * 0.08)
+
+func _update_lamps() -> void:
+	for lamp in lamps:
+		if stage == STAGE_HOSTIL:
+			lamp.color = Color('#8b7b51') if sin(light_flicker_time * 9.0 + float(lamps.find(lamp))) > 0.45 else Color('#403a44')
+		elif stage == STAGE_SINAIS:
+			lamp.color = Color('#bda96b')
+		else:
+			lamp.color = Color('#ffe49a')
+
+func _react_success(chibi: Dictionary) -> void:
+	chibi['paused'] = true
+	var root: Control = chibi['root']
+	var bubble: Label = chibi['bubble']
+	bubble.text = ['Obrigada!', 'Yay!', 'Estamos seguras!'].pick_random()
+	bubble.modulate.a = 1.0
+	var original_pos := root.position
+	var tween := create_tween()
+	tween.tween_property(root, 'position:y', original_pos.y - 18.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(root, 'position:y', original_pos.y, 0.18).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_interval(0.75)
+	tween.tween_property(bubble, 'modulate:a', 0.0, 0.25)
+	await tween.finished
+	chibi['paused'] = false
+
+func _react_error(chibi: Dictionary, emoji: String) -> void:
+	chibi['paused'] = true
+	var root: Control = chibi['root']
+	var emoji_label: Label = chibi['emoji']
+	emoji_label.text = emoji
+	emoji_label.modulate.a = 1.0
+	var tween := create_tween()
+	tween.tween_property(root, 'rotation', deg_to_rad(-8.0), 0.12)
+	tween.tween_property(root, 'rotation', deg_to_rad(8.0), 0.12)
+	tween.tween_property(root, 'rotation', 0.0, 0.12)
+	tween.tween_interval(0.85)
+	tween.tween_property(emoji_label, 'modulate:a', 0.0, 0.25)
+	await tween.finished
+	chibi['paused'] = false
+
+func _nearest_visible_chibi() -> Dictionary:
+	for chibi in chibis:
+		if chibi['root'].visible:
+			return chibi
+	return {}
+
+func _emoji_para_tipo(tipo: String) -> String:
+	var t := tipo.to_lower()
+	if 'fisica' in t or 'física' in t:
+		return '🩸'
+	if 'psicol' in t:
+		return '🌩️'
+	if 'moral' in t:
+		return '🤐'
+	if 'patrimonial' in t:
+		return '🔓'
+	return '⚠️'
+
+func _stage_name(value: int) -> String:
+	match value:
+		STAGE_SINAIS:
+			return 'Primeiros Sinais'
+		STAGE_REDE:
+			return 'Rede em Expansao'
+		STAGE_FORTE:
+			return 'Comunidade Fortalecida'
+		_:
+			return 'Cidade Hostil'
+
+func _rect(node_name: String, pos: Vector2, rect_size: Vector2, color: Color) -> ColorRect:
+	var r := ColorRect.new()
+	r.name = node_name
+	r.position = pos
+	r.size = rect_size
+	r.color = color
+	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return r
+
+func _label(node_name: String, text_value: String, pos: Vector2, rect_size: Vector2, font_size: int, color: Color) -> Label:
+	var l := Label.new()
+	l.name = node_name
+	l.position = pos
+	l.size = rect_size
+	l.text = text_value
+	l.add_theme_font_size_override('font_size', font_size)
+	l.add_theme_color_override('font_color', color)
+	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return l

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cbsfgqo2wkxqx"]
+
+[ext_resource type="Script" uid="uid://b517hud0f8gyt" path="res://Scripts/popup_notificacao.gd" id="1_e0my2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.6, 0.24, 0.24, 1)
+
+[node name="PopupNotificacao" type="MarginContainer" unique_id=1801569535]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e0my2")
+
+[node name="Panel" type="Panel" parent="." unique_id=467716157]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=1442843018]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/CenterContainer" unique_id=879697900]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Compra Realizada!"
+horizontal_alignment = 1

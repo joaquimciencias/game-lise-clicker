@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d3m0px78kqslv"]
+
+[ext_resource type="Script" path="res://Scripts/PainelLoja/linha_Requisito.gd" id="1_linha"]
+
+[node name="LinhaRequisito" type="HBoxContainer"]
+theme_override_constants/separation = 6
+script = ExtResource("1_linha")
+
+[node name="IconeStatus" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 12
+text = "✔"
+
+[node name="LblTexto" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "Requisito necessário"
+autowrap_mode = 3

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bc2nhddrlgab5"]
+
+[ext_resource type="Script" uid="uid://cm5pnpmg8ote6" path="res://Scripts/PainelResultado/toast_acao.gd" id="1_toast"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.12, 0.84)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon"]
+bg_color = Color(0.08, 0.22, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.87, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ToastAcao" type="PanelContainer" unique_id=836510959]
+offset_right = 251.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+script = ExtResource("1_toast")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=973040232]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="IconPanel" type="Panel" parent="HBoxContainer" unique_id=394585796]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon")
+
+[node name="Icon" type="Label" parent="HBoxContainer/IconPanel" unique_id=199003779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "✓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Categoria" type="Label" parent="HBoxContainer" unique_id=315372393]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.97, 1)
+theme_override_font_sizes/font_size = 15
+text = "Patrimonial"
+vertical_alignment = 1
+
+[node name="Pontos" type="Label" parent="HBoxContainer" unique_id=679096209]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "+3%"
+horizontal_alignment = 2
+vertical_alignment = 1

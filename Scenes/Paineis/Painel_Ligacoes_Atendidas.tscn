@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://1vh6fq5cf15l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
+bg_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PnlLigacoes_Atendidas" type="MarginContainer" unique_id=289334806]
+offset_right = 231.0
+offset_bottom = 89.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1116868257]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogn1v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=464679814]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=91612]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1908187550]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LigAtendidas" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=969365343]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Total"
+horizontal_alignment = 1
+
+[node name="NumAtendidas" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1553768399]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "129"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1694530501]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LigAtendidas" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1841338359]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Precisão"
+horizontal_alignment = 1
+
+[node name="NumAtendidas" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2078515026]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.37950012, 0.99, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "60%"
+horizontal_alignment = 1

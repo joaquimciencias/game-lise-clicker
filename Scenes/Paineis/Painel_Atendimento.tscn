@@ -1,0 +1,409 @@
+[gd_scene format=3 uid="uid://dqdlordgd2hni"]
+
+[ext_resource type="Script" uid="uid://bq3kpovsdilsy" path="res://Scripts/PainelAtendimento/painel_atendimento.gd" id="1_ad4th"]
+[ext_resource type="Texture2D" uid="uid://dm0kfgcskim5f" path="res://Assets/IMG/sprite-lise.png" id="2_dnl3y"]
+[ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="3_50cth"]
+[ext_resource type="AudioStream" uid="uid://blmwkeuwvmnt8" path="res://Assets/Audio/acerto.wav" id="4_soeqh"]
+[ext_resource type="AudioStream" uid="uid://8o7woadesxmg" path="res://Assets/Audio/erro.wav" id="5_36mt7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogn1v"]
+bg_color = Color(0.06666667, 0.05490196, 0.101960786, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3a5q"]
+bg_color = Color(0.21960784, 0.21176471, 0.3254902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36mt7"]
+bg_color = Color(0.2901961, 0.87058824, 0.5019608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.12941177, 0.11764706, 0.21568628, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e347v"]
+shader = ExtResource("3_50cth")
+shader_parameter/lod = 3.50000016625
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50cth"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.12, 0.84)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c5dk"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.12, 0.84)
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+bg_color = Color(0.1882353, 0.105882354, 0.14901961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.972549, 0.44313726, 0.44313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnl3y"]
+bg_color = Color(0.14509805, 0.1254902, 0.21568628, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.5294118, 0.972549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e347v"]
+bg_color = Color(0.16862746, 0.14901961, 0.10980392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9843137, 0.7411765, 0.14901961, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_soeqh"]
+bg_color = Color(0.101960786, 0.15686275, 0.17254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3019608, 0.85882354, 0.5176471, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Painel_Atendimento" type="MarginContainer" unique_id=289334806]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -601.0
+offset_bottom = -379.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ad4th")
+
+[node name="TempoAtendimento" type="Timer" parent="." unique_id=205181764]
+wait_time = 60.0
+one_shot = true
+
+[node name="Panel" type="Panel" parent="." unique_id=1116868257]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogn1v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1901428892]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=242347716]
+custom_minimum_size = Vector2(128, 269)
+layout_mode = 2
+texture = ExtResource("2_dnl3y")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1908187550]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1035999113]
+layout_mode = 2
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=510126843]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_n3a5q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_36mt7")
+value = 65.0
+show_percentage = false
+
+[node name="lbl_tempo" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1180024755]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 10
+text = "60s"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer" unique_id=855197519]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Panel" unique_id=306887041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer" unique_id=135007815]
+layout_mode = 2
+
+[node name="lblRelatoTitulo" type="Label" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1110102889]
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(3, 0)
+theme_override_colors/font_color = Color(0.54509807, 0.5294118, 0.72156864, 1)
+theme_override_font_sizes/font_size = 12
+text = "Relato Recebido"
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="lblRelato" type="Label" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=2013545199]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+text = "“Ao tentar me separar, descobri que meu marido havia transferido todos os bens do casal para o nome da família dele sem meu conhecimento.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelResposta" type="Panel" parent="HBoxContainer/VBoxContainer/Panel" unique_id=1353284938]
+visible = false
+material = SubResource("ShaderMaterial_e347v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_50cth")
+
+[node name="PanelResposta2" type="Panel" parent="HBoxContainer/VBoxContainer/Panel/PanelResposta" unique_id=465222817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0c5dk")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Panel/PanelResposta" unique_id=1137557984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Panel/PanelResposta/MarginContainer" unique_id=408039090]
+layout_mode = 2
+
+[node name="Resposta" type="Label" parent="HBoxContainer/VBoxContainer/Panel/PanelResposta/MarginContainer/VBoxContainer" unique_id=618158396]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 18
+text = "##Resposta##"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="ValorConscientizacao" type="Label" parent="HBoxContainer/VBoxContainer/Panel/PanelResposta/MarginContainer/VBoxContainer" unique_id=1490200361]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 18
+text = "##Valor_Conscientizacao##"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer" unique_id=1438806154]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.991, 0.991)
+offset_transform_visual_only = false
+columns = 2
+
+[node name="ButtonFisica" type="Button" parent="HBoxContainer/VBoxContainer/GridContainer" unique_id=1712713884]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.972549, 0.44313726, 0.44313726, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+text = "Física "
+
+[node name="Bonus" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer/ButtonFisica" unique_id=1576824400]
+visible = false
+modulate = Color(0.972549, 0.44313726, 0.44313726, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "+10"
+
+[node name="ButtonPsicologica" type="Button" parent="HBoxContainer/VBoxContainer/GridContainer" unique_id=723482612]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.7411765, 0.5294118, 0.972549, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dnl3y")
+text = "Psicológica"
+
+[node name="Bonus" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer/ButtonPsicologica" unique_id=797169657]
+visible = false
+modulate = Color(0.7411765, 0.5294118, 0.972549, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "+10"
+
+[node name="ButtonMoral" type="Button" parent="HBoxContainer/VBoxContainer/GridContainer" unique_id=1875866250]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.9843137, 0.7411765, 0.14901961, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_e347v")
+text = "Moral"
+
+[node name="Bonus" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer/ButtonMoral" unique_id=798583761]
+visible = false
+modulate = Color(0.9843137, 0.7411765, 0.14901961, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "+10"
+
+[node name="ButtonPatrimonial" type="Button" parent="HBoxContainer/VBoxContainer/GridContainer" unique_id=549642735]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.30588236, 0.8627451, 0.5176471, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_soeqh")
+text = "Patrimonial"
+
+[node name="Bonus" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer/ButtonPatrimonial" unique_id=1074394513]
+visible = false
+modulate = Color(0.3019608, 0.85882354, 0.5176471, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "+10"
+
+[node name="Texto" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=239273400]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 9
+text = "Classifique o tipo de violência relatada antes que o tempo acabe."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SomAcerto" type="AudioStreamPlayer" parent="." unique_id=1322628600]
+stream = ExtResource("4_soeqh")
+bus = &"SFX"
+
+[node name="SomErro" type="AudioStreamPlayer" parent="." unique_id=1697722888]
+stream = ExtResource("5_36mt7")
+bus = &"SFX"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/GridContainer/ButtonFisica" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/GridContainer/ButtonPsicologica" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/GridContainer/ButtonMoral" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/GridContainer/ButtonPatrimonial" to="." method="_on_button_pressed"]

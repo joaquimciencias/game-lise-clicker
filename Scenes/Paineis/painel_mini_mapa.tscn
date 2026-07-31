@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dng5vojaos8b4"]
+
+[ext_resource type="Script" uid="uid://fairvtjs801o" path="res://Scripts/Paineis/painel_mini_mapa.gd" id="1_minimap"]
+
+[node name="Painel_MiniMapa" type="MarginContainer" unique_id=2011799781]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 427.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_minimap")
+
+[node name="Panel" type="Panel" parent="." unique_id=48462426]
+layout_mode = 2
