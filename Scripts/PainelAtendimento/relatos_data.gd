@@ -1,4 +1,3 @@
-# RelatosData.gd
 class_name RelatosData
 
 static func get_todos_os_relatos() -> Array[Dictionary]:
@@ -62,11 +61,6 @@ static func get_todos_os_relatos() -> Array[Dictionary]:
 		{
 			"id": "relato_fisica_12",
 			"texto": "Ele jogou uma xícara de café fervendo no meu braço só porque o almoço não estava pronto exatamente na hora em que ele havia exigido.",
-			"tipo": "Física"
-		},
-		{
-			"id": "relato_fisica_13",
-			"texto": "Estávamos discutindo no carro e ele acelerou bruscamente a cento e quarenta quilômetros por hora, jogando o veículo na direção do acostamento para me ver gritar.",
 			"tipo": "Física"
 		},
 		{
@@ -206,11 +200,16 @@ static func get_todos_os_relatos() -> Array[Dictionary]:
 			"texto": "Ele me chantageia dizendo que se eu não fizer exatamente o que ele manda, vai espalhar segredos íntimos meus para todos os conhecidos me odiarem.",
 			"tipo": "Psicológica"
 		},
+		{
+			"id": "relato_fisica_13",
+			"texto": "Estávamos discutindo no carro e ele acelerou bruscamente a cento e quarenta quilômetros por hora, jogando o veículo na direção do acostamento para me ver gritar.",
+			"tipo": "Psicológica"
+		},
 
 		# --- VIOLÊNCIA PATRIMONIAL ---
 		{
 			"id": "relato_patrimonial_1",
-			"texto": "Ao tentar me separar, descobri que meu marido havia transferido todos os bens do casal para o nome da família dele sem meu conhecimento[cite: 3].",
+			"texto": "Ao tentar me separar, descobri que meu marido havia transferido todos os bens do casal para o nome da família dele sem meu conhecimento.",
 			"tipo": "Patrimonial"
 		},
 		{

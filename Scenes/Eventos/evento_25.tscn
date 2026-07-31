@@ -115,7 +115,7 @@ offset_bottom = 145.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.2, 0.3, 1)
 theme_override_font_sizes/font_size = 22
-text = "LIGAÇÃO INTERCEPTADA — EMERGÊNCIA"
+text = "LIGAÇÃO INTERCEPTADA"
 horizontal_alignment = 1
 uppercase = true
 
@@ -131,32 +131,8 @@ offset_bottom = 170.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_font_sizes/font_size = 14
-text = "PRIORIDADE MÁXIMA — VÍTIMA EM RISCO IMINENTE"
+text = "PRIORIDADE MÁXIMA "
 horizontal_alignment = 1
-
-[node name="PanelTimer" type="Panel" parent="." unique_id=1440823777]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -280.0
-offset_top = 95.0
-offset_right = -200.0
-offset_bottom = 135.0
-grow_horizontal = 0
-
-[node name="LabelTimer" type="Label" parent="PanelTimer" unique_id=1469245993]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.1, 0.2, 1)
-theme_override_font_sizes/font_size = 22
-text = "35.0s"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainerRelato" type="VBoxContainer" parent="." unique_id=651418089]
 layout_mode = 1
@@ -193,6 +169,30 @@ theme_override_font_sizes/font_size = 15
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="PanelTimer" type="Panel" parent="." unique_id=1440823777]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -617.0
+offset_top = 179.0
+offset_right = -537.0
+offset_bottom = 219.0
+grow_horizontal = 0
+
+[node name="LabelTimer" type="Label" parent="PanelTimer" unique_id=1469245993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.1, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "15.0s"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainerAcao" type="MarginContainer" parent="." unique_id=1346454290]
 visible = false

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcycgdagw1gtj"]
+[gd_scene format=3 uid="uid://dcycgdagw1gtj"]
 
 [ext_resource type="Script" uid="uid://dt82ycpiuciqm" path="res://Scripts/Eventos/evento_50.gd" id="1_sj0du"]
 [ext_resource type="Shader" uid="uid://dul2sx0alsefr" path="res://Shader/desfoque_panel.gdshader" id="2_amkia"]
-[ext_resource type="Texture2D" uid="uid://d2nrqdr1xr7fi" path="res://Assets/exclamation.png" id="3_p2lgt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("2_amkia")
@@ -69,7 +68,7 @@ offset_right = 781.0
 offset_bottom = 42.0
 theme_override_colors/font_color = Color(0.6, 0.78, 1, 1)
 theme_override_font_sizes/font_size = 12
-text = "MONITORAMENTO DE REDES — OPERAÇÃO REDE LILÁS"
+text = "MONITORAMENTO DE REDES "
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -83,17 +82,12 @@ theme_override_colors/font_color = Color(0.231, 0.51, 0.965, 1)
 theme_override_colors/font_outline_color = Color(0.02, 0.05, 0.15, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 22
-text = "🛡️ REDE LILÁS: COMBATE À DESINFORMAÇÃO"
+text = "🛡️ COMBATE À DESINFORMAÇÃO"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=945650988]
-position = Vector2(391, 10)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("3_p2lgt")
-
-[node name="MarginContainerRelato" type="MarginContainer" parent="."]
+[node name="MarginContainerRelato" type="MarginContainer" parent="." unique_id=1424327898]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,10 +100,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 15
 
-[node name="Panel" type="Panel" parent="MarginContainerRelato"]
+[node name="Panel" type="Panel" parent="MarginContainerRelato" unique_id=317944776]
 layout_mode = 2
 
-[node name="Aviso" type="Label" parent="MarginContainerRelato/Panel"]
+[node name="Aviso" type="Label" parent="MarginContainerRelato/Panel" unique_id=1498940686]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +118,7 @@ theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
 theme_override_font_sizes/font_size = 14
 autowrap_mode = 3
 
-[node name="ContainerBaloes" type="Control" parent="."]
+[node name="ContainerBaloes" type="Control" parent="." unique_id=2069990221]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -134,14 +128,12 @@ offset_top = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelTimerHUD" type="Label" parent="."]
+[node name="LabelTimerHUD" type="Label" parent="." unique_id=1027958515]
 visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 offset_left = -160.0
 offset_top = 15.0
 offset_right = -25.0
@@ -152,14 +144,9 @@ theme_override_font_sizes/font_size = 14
 text = "⏱️ Tempo: 30.0s"
 horizontal_alignment = 2
 
-[node name="LabelPlacarHUD" type="Label" parent="."]
+[node name="LabelPlacarHUD" type="Label" parent="." unique_id=1986213306]
 visible = false
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 25.0
 offset_top = 15.0
 offset_right = 200.0

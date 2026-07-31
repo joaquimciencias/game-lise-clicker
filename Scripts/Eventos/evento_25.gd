@@ -6,7 +6,7 @@ extends Control
 
 const BONUS_CONSCIENTIZACAO: float = 5.0
 const PENALIDADE_CONSCIENTIZACAO: float = 3.0
-const TEMPO_LIMITE_SEGUNDOS: float = 35.0
+const TEMPO_LIMITE_SEGUNDOS: float = 15.0
 
 const COR_EMERGENCIA := Color("ff0033")
 const COR_AZUL_POLICIA := Color("0066ff")
@@ -247,7 +247,7 @@ func _criar_botao_entendi() -> void:
 		return
 	botao_entendi = Button.new()
 	botao_entendi.name = "BotaoEntendi"
-	botao_entendi.text = "🚨 TENTAR REESTABELECER CONEXÃO (190)"
+	botao_entendi.text = "🚨 ENTENDIDO! ESTABELECER CONEXÃO"
 	botao_entendi.custom_minimum_size = Vector2(340, 52)
 	botao_entendi.add_theme_font_size_override("font_size", 16)
 	botao_entendi.add_theme_color_override("font_color", Color.WHITE)
