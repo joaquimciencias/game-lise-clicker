@@ -84,8 +84,6 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 4
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7px2"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4q0l"]
 bg_color = Color(0.76862746, 0.12941177, 0.2784314, 1)
 corner_radius_top_left = 20
@@ -108,6 +106,16 @@ shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqfgi"]
 bg_color = Color(0.29897165, 0.021204773, 0.0863372, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kr1m4"]
+bg_color = Color(0.4334148, 0.023803184, 0.23552802, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -594,13 +602,6 @@ text = "000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer" unique_id=326036149]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 4
-theme_override_constants/separation = 25
-theme_override_styles/separator = SubResource("StyleBoxEmpty_y7px2")
-
 [node name="Button" type="Button" parent="Control/VBoxContainer" unique_id=1600385612]
 custom_minimum_size = Vector2(288.06, 58.9)
 layout_mode = 2
@@ -618,7 +619,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_b4q0l")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kr1m4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0rc1p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqfgi")
 text = "Menu Principal"

@@ -173,3 +173,8 @@ func resetar_upgrades() -> void:
 	_recalcular_efeitos()
 	atributos_atualizados.emit()
 	limite_compras_mudou.emit(obter_compras_restantes(), limite_compras_rodada)
+
+	# --- ADICIONE ESTA LINHA AQUI ---
+	# Reinicia o timer passivo para a nova partida
+	if timer_passivo:
+		timer_passivo.start()

@@ -38,7 +38,7 @@ static func get_todos_os_upgrades() -> Dictionary:
 				"icone": "🏛️",
 				"niveis": {
 					1: {
-						"req_totais": 1, "req_especifico": {},
+						"req_totais": 90, "req_especifico": {},
 						"passivo": {"todos": 2},
 						"txt_passivo": "+2 em Todos os 4 Tipos/s",
 						"txt_gameplay": "Acelera em 25% a revelação dos detalhes visuais da vítima.",
@@ -66,7 +66,7 @@ static func get_todos_os_upgrades() -> Dictionary:
 				"icone": "🚔",
 				"niveis": {
 					1: {
-						"req_totais": 1, "req_especifico": {},
+						"req_totais": 120, "req_especifico": {},
 						"passivo": {"fisica": 2, "psicologica": 2},
 						"txt_passivo": "+2 Física/s e +2 Psicológica/s",
 						"txt_gameplay": "Reduz em 50% a perda de multiplicadores em erros.",

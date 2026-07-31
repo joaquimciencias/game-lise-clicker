@@ -50,6 +50,8 @@ var jogo_finalizado: bool = false
 var tempo_jogo_segundos: float = 0.0
 var total_ligacoes: int = 0
 
+var tutorial_node: CanvasLayer = null
+
 func _ready() -> void:
 # --- ADICIONE ESTA LINHA AQUI ---
 	if get_node_or_null("/root/UpgradesManager"):
@@ -67,7 +69,8 @@ func _ready() -> void:
 	painel_atendimento.relato_respondido.connect(_on_relato_concluido)
 	painel_atendimento.painel_fila = painel_fila_mulheres
 	painel_atendimento.carregar_novo_relato()
-	jogo_pausado.jogo_retomado.connect(_on_jogo_retomado)
+	if jogo_pausado:
+		jogo_pausado.jogo_retomado.connect(_on_jogo_retomado)
 
 	# --- CONEXÕES PARA O PAINEL SUPERIOR ---
 	painel_atendimento.tentativa_respondida.connect(_on_tentativa_atendimento_processada)
@@ -81,6 +84,14 @@ func _ready() -> void:
 	var loja = get_tree().get_first_node_in_group("loja_principal")
 	if loja:
 		loja.compra_finalizada_com_sucesso.connect(criar_popup_na_tela_cheia)
+# SE O TUTORIAL ESTIVER ATIVO, GARANTE QUE O TIMER FIQUE PARADO/PAUSADO
+	if tutorial_node != null and is_instance_valid(tutorial_node):
+		if painel_atendimento and painel_atendimento.timer:
+			painel_atendimento.timer.stop()
+	else:
+		# Se o tutorial já foi concluído anteriormente e o nó nem existiu, inicia o tempo direto
+		if painel_atendimento:
+			painel_atendimento.iniciar_novo_tempo()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -109,12 +120,12 @@ func _on_violencia_computada(tipo: String) -> void:
 	# 3. Registra o ponto acumulado no EventBus usando a chave padronizada (sem acento)
 	EventBus.adicionar_registro(tipo_limpo, 1)
 
-func _on_botao_pausa_pressed() -> void:
-	get_tree().paused = true
-	jogo_pausado.abrir()
+
+
 
 func _on_jogo_retomado() -> void:
-	get_tree().paused = false 
+	# Descongela o jogo ao clicar no botão 'Continuar' da tela de pausa
+	get_tree().paused = false
 
 func criar_popup_na_tela_cheia(texto_recebido: String, com_animacao: bool = true) -> void:
 	var novo_popup = POPUP_NOTIFICACAO_SCENE.instantiate()
@@ -336,9 +347,20 @@ func _finalizar_jogo(vitoria: bool) -> void:
 		return
 
 	jogo_finalizado = true
+	
+	# Desativa o _process da cena principal para não contar mais tempo
+	set_process(false) 
 
+	# Interrompe o atendimento da cena de ação
 	if painel_atendimento and painel_atendimento.timer:
 		painel_atendimento.timer.paused = true
+
+	# --- ADICIONE ESTAS LINHAS AQUI ---
+	# Para o timer de geração passiva de pontos no UpgradesManager
+	if get_node_or_null("/root/UpgradesManager"):
+		if UpgradesManager.timer_passivo:
+			UpgradesManager.timer_passivo.stop()
+	# ----------------------------------
 
 	var tipo_resultado := "vitória" if vitoria else "derrota"
 	print("Fim de jogo (%s)! Transição em 3 segundos..." % tipo_resultado)
@@ -360,7 +382,7 @@ func _finalizar_jogo(vitoria: bool) -> void:
 
 	TransitionScreen.transition_to_scene(CENA_VITORIA_DERROTA)
 
-var tutorial_node: CanvasLayer = null
+
 
 
 
@@ -372,6 +394,9 @@ func carregar_tutorial() -> void:
 
 func _on_tutorial_finalizado() -> void:
 	print("Tutorial finalizado!")
+	# Inicia o tempo no painel de atendimento assim que o tutorial terminar
+	if painel_atendimento and painel_atendimento.has_method("iniciar_novo_tempo"):
+		painel_atendimento.iniciar_novo_tempo()
 
 func _on_atributos_upgrades_atualizados() -> void:
 	# 1. Aplica tempo de tolerância no Painel de Atendimento
@@ -396,3 +421,10 @@ func preparar_proxima_rodada() -> void:
 	# 2. Chama o UpgradesManager para verificar a barra e definir se libera 1 ou 2 compras
 	if UpgradesManager:
 		UpgradesManager.iniciar_nova_rodada()
+
+
+func _on_painel_topo_inicial_jogo_pausado() -> void:
+	# Congela todo o processamento do jogo (timers, tweens, entradas das outras telas)
+	get_tree().paused = true
+	# Abre a janela do menu de pausa
+	jogo_pausado.abrir()

@@ -3,27 +3,124 @@
 [ext_resource type="Script" uid="uid://f3rg0brkldp2" path="res://Scripts/jogo_pausado.gd" id="1_lm0au"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
-bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.7764706)
+bg_color = Color(0.1, 0.1, 0.1, 0.85)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_painel_centro"]
+bg_color = Color(0.1834138, 0.15373549, 0.32220486, 0.9490196)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 8
 
 [node name="JogoPausado" type="MarginContainer" unique_id=2052550778]
 process_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lm0au")
 
-[node name="Panel" type="Panel" parent="." unique_id=993514297]
+[node name="FundoEscuro" type="Panel" parent="." unique_id=993514297]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
 
-[node name="BotaoContinuar" type="Button" parent="." unique_id=1451417804]
-custom_minimum_size = Vector2(400, 200)
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=111222333]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 34
-text = "Despausar Jogo"
 
-[connection signal="pressed" from="BotaoContinuar" to="." method="_on_botao_continuar_pressed"]
+[node name="PainelConteudo" type="PanelContainer" parent="CenterContainer" unique_id=444555666]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_painel_centro")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PainelConteudo" unique_id=777888999]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PainelConteudo/MarginContainer" unique_id=123456789]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LblTitulo" type="Label" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=987654321]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "JOGO PAUSADO"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=112233445]
+layout_mode = 2
+
+[node name="ControleMusica" type="VBoxContainer" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=556677889]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxCabecalhoMusica" type="HBoxContainer" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica" unique_id=10101010]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelMusica" type="Label" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HBoxCabecalhoMusica" unique_id=998877665]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Volume Música"
+
+[node name="BtnMuteMusica" type="Button" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HBoxCabecalhoMusica" unique_id=50505050]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+toggle_mode = true
+text = "🔊 Ligado"
+
+[node name="HSliderMusica" type="HSlider" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica" unique_id=334455667]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="ControleSfx" type="VBoxContainer" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=887766554]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxCabecalhoSfx" type="HBoxContainer" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx" unique_id=20202020]
+layout_mode = 2
+
+[node name="LabelSfx" type="Label" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HBoxCabecalhoSfx" unique_id=223344556]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Volume Efeitos (SFX)"
+
+[node name="BtnMuteSfx" type="Button" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HBoxCabecalhoSfx" unique_id=60606060]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+toggle_mode = true
+text = "🔊 Ligado"
+
+[node name="HSliderSfx" type="HSlider" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx" unique_id=776655443]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="ControlEspaco" type="Control" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=665544332]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="BotaoContinuar" type="Button" parent="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer" unique_id=1451417804]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Continuar Jogo"
+
+[connection signal="toggled" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HBoxCabecalhoMusica/BtnMuteMusica" to="." method="_on_btn_mute_musica_toggled"]
+[connection signal="value_changed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleMusica/HSliderMusica" to="." method="_on_h_slider_musica_value_changed"]
+[connection signal="toggled" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HBoxCabecalhoSfx/BtnMuteSfx" to="." method="_on_btn_mute_sfx_toggled"]
+[connection signal="value_changed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/ControleSfx/HSliderSfx" to="." method="_on_h_slider_sfx_value_changed"]
+[connection signal="pressed" from="CenterContainer/PainelConteudo/MarginContainer/VBoxContainer/BotaoContinuar" to="." method="_on_botao_continuar_pressed"]

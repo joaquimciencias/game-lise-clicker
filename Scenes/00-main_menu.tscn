@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://jji7dfptqi1l"]
 
 [ext_resource type="Script" uid="uid://dj4kgjqwsuf4g" path="res://Scripts/00_main_menu.gd" id="1_7we58"]
-[ext_resource type="Texture2D" uid="uid://bvmehehh1ej4p" path="res://Assets/IMG/Fundo.png" id="2_7we58"]
+[ext_resource type="Texture2D" uid="uid://xim5o7d4p5r1" path="res://Assets/IMG/wmremove-transformed (1).png" id="2_s1yor"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jvruc"]
-texture = ExtResource("2_7we58")
+texture = ExtResource("2_s1yor")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(1, 1, 1, 1)
@@ -45,6 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7we58")
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Panel" parent="." unique_id=1100237124]
 layout_mode = 1
@@ -54,39 +55,79 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_jvruc")
+metadata/_edit_lock_ = true
 
-[node name="UserInterface" type="MarginContainer" parent="." unique_id=831212140]
+[node name="LiseLogo" type="Label" parent="." unique_id=2049152389]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 120.0
+offset_right = 423.0
+offset_bottom = 352.0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_shadow_color = Color(0.35686275, 0.13333334, 0.44313726, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 31
+theme_override_font_sizes/font_size = 170
+text = "LISE"
+horizontal_alignment = 1
+
+[node name="LiseLogo2" type="Label" parent="." unique_id=1809536170]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -273.0
+offset_right = -658.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_shadow_color = Color(0.11372549, 0.05882353, 0.05882353, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 33
+text = "Toque na tela para jogar"
+horizontal_alignment = 1
+
+[node name="LiseLogo3" type="Label" parent="." unique_id=2136603658]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(1, 1, 1, 0.4745098)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 11
+text = "Idealizadores: Igor Cunha |Isadora Amancio| Hitallo |Joaquim Lopes	| Lucas Brito | Lucas Barbosa | Todos os direitos reservados: 2026"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FraseFlutuante" type="RichTextLabel" parent="." unique_id=909568649]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 70
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 130
 
-[node name="MenuOptions" type="VBoxContainer" parent="UserInterface" unique_id=989155235]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="LiseLogo" type="Label" parent="UserInterface/MenuOptions" unique_id=2049152389]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme_override_colors/font_shadow_color = Color(0.51274824, 0.107140146, 0.229482, 0)
-theme_override_font_sizes/font_size = 150
-text = "LISE"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="UserInterface/MenuOptions" unique_id=221334401]
+[node name="Jogar" type="Button" parent="." unique_id=821937510]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Jogar" type="Button" parent="UserInterface/MenuOptions" unique_id=821937510]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 70
@@ -95,15 +136,4 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_1bvp3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0xm2m")
 text = "Jogar"
 
-[node name="Opcoes" type="Button" parent="UserInterface/MenuOptions" unique_id=1414709962]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_7dm0k")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_1bvp3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0xm2m")
-text = "Opções"
-
-[connection signal="pressed" from="UserInterface/MenuOptions/Jogar" to="." method="_on_jogar_pressed"]
-[connection signal="pressed" from="UserInterface/MenuOptions/Opcoes" to="." method="_on_opcoes_pressed"]
+[connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]

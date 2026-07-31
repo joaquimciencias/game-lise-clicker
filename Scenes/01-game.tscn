@@ -111,10 +111,6 @@ anchor_bottom = 0.97530866
 offset_top = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="JogoPausado" parent="." unique_id=2052550778 instance=ExtResource("8_tlyib")]
-visible = false
-layout_mode = 1
-
 [node name="Painel_ResultadoAcoes" parent="." unique_id=541315978 instance=ExtResource("15_toast")]
 layout_mode = 1
 offset_left = 886.0
@@ -142,3 +138,9 @@ horizontal_alignment = 1
 [node name="PainelMainLoja" parent="." unique_id=1749400548 instance=ExtResource("10_4pyk1")]
 visible = false
 layout_mode = 1
+
+[node name="JogoPausado" parent="." unique_id=2052550778 instance=ExtResource("8_tlyib")]
+visible = false
+layout_mode = 1
+
+[connection signal="jogo_pausado" from="Painel_Topo_Inicial" to="." method="_on_painel_topo_inicial_jogo_pausado"]
